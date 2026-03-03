@@ -343,11 +343,12 @@ Error:        #9B2C2C (深い赤)
 ### Step 2: 変換スクリプト実行
 
 ```bash
-# 変換実行
-python scripts/svg2pptx.py slides/ output.pptx
+# 変換実行（フォルダ名から自動命名）
+python scripts/svg2pptx.py output/slides/2026-03-03_143052_テーマ名/
+# → 2026-03-03_テーマ名.pptx が同フォルダに生成される
 
-# 個別スライドの変換
-python scripts/svg2pptx.py slide01.svg slide02.svg output.pptx
+# 出力ファイル名を明示する場合
+python scripts/svg2pptx.py slides/ -o custom_name.pptx
 ```
 
 変換スクリプトの実体は `scripts/svg2pptx.py`（リポジトリルート）。
@@ -547,7 +548,7 @@ python scripts/svg2pptx.py slide01.svg slide02.svg output.pptx
 | 成果物の種類 | 保存先 |
 |-------------|--------|
 | SVG スライド | `output/slides/YYYY-MM-DD_HHmmss_スライド名/slide01.svg` 〜 |
-| 変換後 PPTX | `output/slides/YYYY-MM-DD_HHmmss_スライド名/output.pptx` |
+| 変換後 PPTX | `output/slides/YYYY-MM-DD_HHmmss_スライド名/YYYY-MM-DD_スライド名.pptx`（自動命名） |
 
 ### 重複回避
 

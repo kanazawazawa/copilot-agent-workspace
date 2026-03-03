@@ -53,7 +53,7 @@ output/
         ├── slide01.svg
         ├── slide02.svg
         ├── ...
-        └── output.pptx       # 変換後の PPTX
+        └── YYYY-MM-DD_スライド名.pptx  # 変換後の PPTX（自動命名）
 ```
 
 ### ファイル命名規則
@@ -65,7 +65,7 @@ output/
 | 区切りはハイフン `-` またはアンダースコア `_` | `azure-functions_料金比較.md` |
 | 主要ファイルは用途別の名前にする | `report.md`（調査）/ `profile.md`（顧客）/ `document.md`（提案書等） |
 | SVG は `slide01.svg` 〜 連番 | `slide01.svg`, `slide02.svg`, ... |
-| PPTX は `output.pptx` またはテーマ名 | `output.pptx`, `顧客提案_v1.pptx` |
+| PPTX はフォルダ名から自動命名 | `2026-03-03_テーマ名.pptx`（`-o` で上書き可） |
 
 ### 重複回避
 
@@ -162,7 +162,7 @@ Skills は `.github/skills/` にあるドメイン知識パッケージです。
 1. 目的・対象読者・ページ数を確認
 2. アウトライン（構成案）を先に提示
 3. 承認後、スライドごとに SVG (960x540) を生成
-4. `python scripts/svg2pptx.py slides/ output.pptx` で PPTX に変換
+4. `python scripts/svg2pptx.py output/slides/YYYY-MM-DD_HHmmss_スライド名/` で PPTX に変換（自動命名）
 5. PowerPoint で微調整（テキスト編集・色変更・アニメーション追加可能）
 
 ---
