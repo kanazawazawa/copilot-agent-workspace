@@ -69,8 +69,8 @@ Microsoft Learn（MS Learn）の公式ドキュメントを効率的に調査し
 
 ### 保存先
 
-- 調査結果を保存する場合: `output/research/YYYY-MM-DD_テーマ名/report.md`
-- 例: `output/research/2026-03-03_cosmos-db-比較/report.md`
+- 調査結果を保存する場合: `output/research/YYYY-MM-DD_HHmmss_テーマ名/report.md`
+- 例: `output/research/2026-03-03_143052_cosmos-db-比較/report.md`
 
 ### 品質基準
 

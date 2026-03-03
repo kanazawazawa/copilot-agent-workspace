@@ -103,8 +103,8 @@ description: '顧客企業の情報、業界動向、導入事例を調査し、
 ### 保存先
 
 - 企業調査: `output/customers/企業名/profile.md`（最新の企業概要）
-- テーマ別調査: `output/customers/企業名/YYYY-MM-DD_調査テーマ.md`
-- 業界調査: `output/research/YYYY-MM-DD_業界名_調査/report.md`
+- テーマ別調査: `output/customers/企業名/YYYY-MM-DD_HHmmss_調査テーマ.md`
+- 業界調査: `output/research/YYYY-MM-DD_HHmmss_業界名_調査/report.md`
 
 ### 品質基準
 

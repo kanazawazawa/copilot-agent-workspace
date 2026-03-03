@@ -601,25 +601,22 @@ python scripts/svg2pptx.py slide01.svg slide02.svg output.pptx
 
 | 成果物の種類 | 保存先 |
 |-------------|--------|
-| 提案書・報告書・議事録（Markdown） | `output/documents/YYYY-MM-DD_ドキュメント名/document.md` |
-| SVG スライド | `output/slides/YYYY-MM-DD_スライド名/slide01.svg` 〜 |
-| 変換後 PPTX | `output/slides/YYYY-MM-DD_スライド名/output.pptx` |
-| 調査結果 | `output/research/YYYY-MM-DD_テーマ名/report.md` |
+| 提案書・報告書・議事録（Markdown） | `output/documents/YYYY-MM-DD_HHmmss_ドキュメント名/document.md` |
+| SVG スライド | `output/slides/YYYY-MM-DD_HHmmss_スライド名/slide01.svg` 〜 |
+| 変換後 PPTX | `output/slides/YYYY-MM-DD_HHmmss_スライド名/output.pptx` |
+| 調査結果 | `output/research/YYYY-MM-DD_HHmmss_テーマ名/report.md` |
 
-### 重複回避ルール
+### 重複回避
 
-出力先ディレクトリが既に存在する場合、**上書きせず** サフィックスを付与する:
+フォルダ名に時分秒（`HHmmss`）を含めることで自然に一意になる。
+同日・同テーマでも実行時刻が異なれば別フォルダになるため、サフィックス管理は不要。
 
 ```
-output/slides/2026-03-03_ACA-ネットワーク/       ← 既存
-output/slides/2026-03-03_ACA-ネットワーク_v2/    ← 2回目
-output/slides/2026-03-03_ACA-ネットワーク_v3/    ← 3回目
+output/slides/2026-03-03_143052_ACA-ネットワーク/   ← 1回目（14:30:52）
+output/slides/2026-03-03_153210_ACA-ネットワーク/   ← 2回目（15:32:10）
 ```
 
-**手順:**
-1. ファイル作成前に、対象ディレクトリの存在を確認する
-2. 存在する場合は `_v2`, `_v3`, ... のサフィックスを付けた新規ディレクトリに出力する
-3. 既存ファイルは絶対に上書き・削除しない
+- 既存ファイルは絶対に上書き・削除しない
 
 ### 品質基準
 

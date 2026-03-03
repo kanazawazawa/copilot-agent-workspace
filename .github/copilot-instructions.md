@@ -33,10 +33,10 @@
 ## ファイル出力ルール
 
 - すべての成果物は `output/` 配下に保存する
-  - 調査結果 → `output/research/YYYY-MM-DD_テーマ名/report.md`
+  - 調査結果 → `output/research/YYYY-MM-DD_HHmmss_テーマ名/report.md`
   - 顧客調査 → `output/customers/企業名/profile.md`
-  - 提案書・報告書 → `output/documents/YYYY-MM-DD_ドキュメント名/document.md`
-  - SVGスライド → `output/slides/YYYY-MM-DD_スライド名/slide01.svg` 〜
+  - 提案書・報告書 → `output/documents/YYYY-MM-DD_HHmmss_ドキュメント名/document.md`
+  - SVGスライド → `output/slides/YYYY-MM-DD_HHmmss_スライド名/slide01.svg` 〜
 - Markdown を主要フォーマットとする（再利用性・検索性・差分管理のため）
 - ファイル名にスペースを使わない（`_` または `-` で区切る）
 - フォルダ内の主要ファイルは用途別に命名する（`report.md` / `profile.md` / `document.md`）
