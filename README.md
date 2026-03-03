@@ -16,7 +16,8 @@ ghcpskills/
 │   ├── skills/                                  # タスク別の専門知識
 │   │   ├── ms-learn-research/SKILL.md           # MS Learn 調査
 │   │   ├── customer-research/SKILL.md           # 顧客情報調査
-│   │   └── slide-creator/SKILL.md            # SVGスライド→PPTX変換
+│   │   ├── slide-creator/SKILL.md            # SVGスライド→PPTX変換
+│   │   └── document-writer/SKILL.md          # Markdown ドキュメント作成
 │   └── instructions/                            # ファイルパターン別ルール
 │       ├── markdown-quality.instructions.md     # *.md 向け
 │       └── research-quality.instructions.md     # 調査ドキュメント向け
