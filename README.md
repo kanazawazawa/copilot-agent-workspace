@@ -16,7 +16,7 @@ ghcpskills/
 │   ├── skills/                                  # タスク別の専門知識
 │   │   ├── ms-learn-research/SKILL.md           # MS Learn 調査
 │   │   ├── customer-research/SKILL.md           # 顧客情報調査
-│   │   └── document-creator/SKILL.md            # ドキュメント作成
+│   │   └── slide-creator/SKILL.md            # SVGスライド→PPTX変換
 │   └── instructions/                            # ファイルパターン別ルール
 │       ├── markdown-quality.instructions.md     # *.md 向け
 │       └── research-quality.instructions.md     # 調査ドキュメント向け
@@ -92,7 +92,7 @@ ghcpskills/
 ```
 「〇〇社向けに Azure AI サービスの提案スライドを10枚で作って」
 ```
-→ `document-creator` スキルが発動 → アウトライン提示 → 承認後にスライド作成
+→ `slide-creator` スキルが発動 → アウトライン提示 → 承認後に SVG スライド生成 → PPTX 変換
 
 ### 例3: 業界動向の調査
 ```
