@@ -636,3 +636,28 @@ output/slides/2026-03-03_153210_ACA-ネットワーク/   ← 2回目（15:32:10
 - **ティール装飾円** — ダーク背景のタイトルスライドには大きなティール円（`#1A3A4A`, `#2A7A8C`）を重ねて深みを出す
 - アクセント色（Warm）は明確な意図がある場合のみ使用する
 - ファイル名は `slide01.svg`, `slide02.svg`, ... の連番
+- **ハイパーリンク** — 情報源の URL を `<a>` タグで埋め込む（PPTX でクリック可能になる）
+
+### ハイパーリンクの記法
+
+各スライドに情報源（MS Learn 等）へのリンクを入れる場合、SVG の `<a>` タグを使う:
+
+```xml
+<!-- パターン A: テキスト全体がリンク -->
+<a href="https://learn.microsoft.com/ja-jp/azure/...">
+  <text x="30" y="520" font-size="10" fill="#00D4FF">📖 詳細: MS Learn →</text>
+</a>
+
+<!-- パターン B: テキストの一部がリンク（<text> 内に <a> を入れる） -->
+<text x="30" y="520" font-size="10" fill="#B0C4D8">
+  出典:
+  <a href="https://learn.microsoft.com/ja-jp/azure/...">
+    <tspan fill="#00D4FF">MS Learn — Azure Container Apps</tspan>
+  </a>
+</text>
+```
+
+**ルール:**
+- リンクテキストの fill は `#00D4FF`（Cyan）で統一する
+- フッター付近（`y="510"〜520"`）に配置する
+- 調査スライドには必ず情報源リンクを入れる

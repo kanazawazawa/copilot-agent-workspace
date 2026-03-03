@@ -33,6 +33,7 @@ from pptx.oxml.ns import qn
 
 # SVG namespace
 SVG_NS = "http://www.w3.org/2000/svg"
+XLINK_NS = "http://www.w3.org/1999/xlink"
 NSMAP = {"svg": SVG_NS}
 
 # スライドサイズ (16:9 標準)
@@ -261,10 +262,10 @@ def parse_gradient_defs(root) -> dict:
             continue
 
         if tag == "linearGradient":
-            x1 = float(elem.get("x1", "0"))
-            y1 = float(elem.get("y1", "0"))
-            x2 = float(elem.get("x2", "1"))
-            y2 = float(elem.get("y2", "0"))
+            x1 = float(elem.get("x1", "0").replace("%", "")) / (100 if "%" in elem.get("x1", "") else 1)
+            y1 = float(elem.get("y1", "0").replace("%", "")) / (100 if "%" in elem.get("y1", "") else 1)
+            x2 = float(elem.get("x2", "1").replace("%", "")) / (100 if "%" in elem.get("x2", "") else 1)
+            y2 = float(elem.get("y2", "0").replace("%", "")) / (100 if "%" in elem.get("y2", "") else 1)
 
             angle_rad = math.atan2(y2 - y1, x2 - x1)
             angle_deg = math.degrees(angle_rad)
@@ -400,8 +401,23 @@ def get_attr(elem, attr, default=None):
     return default
 
 
-def collect_text_content(elem):
-    """<text> 要素の直接テキストと <tspan> 子要素のテキストを収集"""
+def _get_href(elem):
+    """<a> 要素から href を取得する（href / xlink:href 両対応）"""
+    href = elem.get("href") or elem.get(f"{{{XLINK_NS}}}href")
+    return href
+
+
+def _strip_tag(tag_str: str) -> str:
+    """lxml のタグ文字列から namespace を除去して要素名だけ返す"""
+    if not isinstance(tag_str, str):
+        return ""
+    if "}" in tag_str:
+        return tag_str.split("}")[-1]
+    return tag_str
+
+
+def collect_text_content(elem, href: str | None = None):
+    """<text> 要素の直接テキストと <tspan> / <a> 子要素のテキストを収集"""
     texts = []
 
     # 直接テキスト
@@ -412,11 +428,13 @@ def collect_text_content(elem):
             "font_weight": get_attr(elem, "font-weight"),
             "fill": get_attr(elem, "fill"),
             "font_family": get_attr(elem, "font-family"),
+            "href": href,
         })
 
-    # <tspan> 子要素
+    # 子要素（<tspan> / <a>）
     for child in elem:
-        tag = child.tag.replace(f"{{{SVG_NS}}}", "") if SVG_NS in child.tag else child.tag
+        tag = _strip_tag(child.tag)
+
         if tag == "tspan" and child.text and child.text.strip():
             texts.append({
                 "text": child.text.strip(),
@@ -424,7 +442,13 @@ def collect_text_content(elem):
                 "font_weight": get_attr(child, "font-weight") or get_attr(elem, "font-weight"),
                 "fill": get_attr(child, "fill") or get_attr(elem, "fill"),
                 "font_family": get_attr(child, "font-family") or get_attr(elem, "font-family"),
+                "href": href,
             })
+
+        elif tag == "a":
+            # <a href="..."> 内の <tspan> やテキストを再帰的に収集
+            link_href = _get_href(child) or href
+            texts.extend(collect_text_content(child, href=link_href))
 
     return texts
 
@@ -592,13 +616,13 @@ def add_rect(slide, elem, inherited_opacity: float = 1.0, gradients: dict | None
     return shape
 
 
-def add_text(slide, elem):
-    """<text> → TextBox（改良版: CJK幅推定・ベースライン補正・マージン除去）"""
+def add_text(slide, elem, href: str | None = None):
+    """<text> → TextBox（改良版: CJK幅推定・ベースライン補正・マージン除去・ハイパーリンク対応）"""
     x_val = float(get_attr(elem, "x", "0"))
     y_val = float(get_attr(elem, "y", "0"))
     text_anchor = get_attr(elem, "text-anchor", "start")
 
-    texts = collect_text_content(elem)
+    texts = collect_text_content(elem, href=href)
     if not texts:
         return None
 
@@ -675,6 +699,10 @@ def add_text(slide, elem):
         if text_info.get("font_family"):
             font_name = text_info["font_family"].split(",")[0].strip().strip("'\"")
             run.font.name = font_name
+
+        # ハイパーリンク
+        if text_info.get("href"):
+            run.hyperlink.address = text_info["href"]
 
     return txBox
 
@@ -885,6 +913,21 @@ def process_element(slide, elem, inherited_opacity: float = 1.0, gradients: dict
             add_text(slide, elem)
         except Exception as e:
             print(f"  ⚠ {tag} 要素の変換をスキップ: {e}", file=sys.stderr)
+        return
+
+    # <a> リンク: 子要素を href 付きで処理
+    if tag == "a":
+        href = _get_href(elem)
+        for child in elem:
+            child_tag = _strip_tag(child.tag)
+            if child_tag == "text":
+                try:
+                    # collect_text_content に href を伝播
+                    add_text(slide, child, href=href)
+                except Exception as e:
+                    print(f"  ⚠ a>text 要素の変換をスキップ: {e}", file=sys.stderr)
+            else:
+                process_element(slide, child, inherited_opacity, gradients)
         return
 
     handler = gradient_handlers.get(tag)
