@@ -976,6 +976,11 @@ def main():
     for svg_file in svg_files:
         convert_svg_to_slide(prs, svg_file)
 
+    # プロパティをクリア（デフォルトテンプレートの作者情報を除去）
+    prs.core_properties.author = ""
+    prs.core_properties.last_modified_by = ""
+    prs.core_properties.comments = ""
+
     # 保存
     prs.save(args.output)
     print(f"✅ 保存完了: {args.output}")
