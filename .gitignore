@@ -1,0 +1,41 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# ===== 成果物 =====
+# output/ は個人の調査結果・スライド等なので共有対象外
+# 仕組み（skills, scripts, 設定）だけを共有する
+# ディレクトリ構造は .gitkeep で保持
+output/**
+!output/**/
+!output/**/.gitkeep
+
+# ===== MCP データ =====
+# memory MCP のデータは個人のセッション記憶なので共有対象外
+.github/memory.json
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ===== エディタ =====
+*.swp
+*.swo
+*~
+.idea/
+
+# ===== VSCode =====
+# mcp.json はプロジェクト設定なので追跡する
+# .vscode/ 内のユーザー固有ファイルのみ除外
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json

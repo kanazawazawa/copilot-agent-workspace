@@ -1,0 +1,43 @@
+{
+	"servers": {
+		"microsoft-docs": {
+			"url": "https://learn.microsoft.com/api/mcp",
+			"type": "http"
+		},
+		"context7": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@upstash/context7-mcp@latest"
+			]
+		},
+		"deepwiki": {
+			"url": "https://mcp.deepwiki.com/sse",
+			"type": "http"
+		},
+		"sequentialthinking": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-sequential-thinking"
+			],
+			"type": "stdio"
+		},
+		"memory": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-memory"
+			],
+			"env": {
+				"MEMORY_FILE_PATH": "${workspaceFolder}/.github/memory.json"
+			},
+			"type": "stdio"
+		},
+		"github": {
+			"url": "https://api.githubcopilot.com/mcp/",
+			"type": "http"
+		}
+	}
+}
