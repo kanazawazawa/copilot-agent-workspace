@@ -133,6 +133,34 @@ public class BlobStorageService
             _logger.LogError(ex, "Failed to list all PPTX blobs");
         }
 
+        // prompt.txt を読み取ってプロンプトを紐付け
+        var promptCache = new Dictionary<int, string>();
+        foreach (var file in files)
+        {
+            if (!promptCache.ContainsKey(file.RunNumber))
+            {
+                var promptBlobName = $"runs/{file.RunNumber}/prompt.txt";
+                try
+                {
+                    var promptBlob = _container.GetBlobClient(promptBlobName);
+                    if (await promptBlob.ExistsAsync())
+                    {
+                        var response = await promptBlob.DownloadContentAsync();
+                        promptCache[file.RunNumber] = response.Value.Content.ToString().Trim();
+                    }
+                    else
+                    {
+                        promptCache[file.RunNumber] = "";
+                    }
+                }
+                catch
+                {
+                    promptCache[file.RunNumber] = "";
+                }
+            }
+            file.Prompt = promptCache[file.RunNumber];
+        }
+
         // 新しい順にソート
         return files.OrderByDescending(f => f.LastModified).ToList();
     }
@@ -160,4 +188,5 @@ public class PptxFileInfo
     public int RunNumber { get; set; }
     public long Size { get; set; }
     public DateTimeOffset? LastModified { get; set; }
+    public string? Prompt { get; set; }
 }

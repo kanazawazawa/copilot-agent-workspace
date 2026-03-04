@@ -103,6 +103,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>作成日</th>
+                                    <th>プロンプト</th>
                                     <th>ファイル名</th>
                                     <th style="width:120px">ダウンロード</th>
                                 </tr>
@@ -115,6 +116,9 @@
                                             @(file.LastModified.HasValue
                                                 ? file.LastModified.Value.LocalDateTime.ToString("yyyy-MM-dd HH:mm")
                                                 : "—")
+                                        </td>
+                                        <td class="small text-muted" style="max-width:300px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="@file.Prompt">
+                                            @(string.IsNullOrEmpty(file.Prompt) ? "—" : file.Prompt)
                                         </td>
                                         <td>@file.FileName</td>
                                         <td>

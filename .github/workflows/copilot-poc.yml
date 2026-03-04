@@ -134,7 +134,17 @@ jobs:
           retention-days: 7
 
       # -------------------------------------------------------
-      # 8. Blob Storage にアップロード（Web App 用）
+      # 8. プロンプトを prompt.txt として保存
+      # -------------------------------------------------------
+      - name: Save prompt text
+        if: always()
+        run: |
+          mkdir -p output
+          echo "${{ inputs.prompt }}" > output/prompt.txt
+          echo "✅ Saved prompt.txt"
+
+      # -------------------------------------------------------
+      # 9. Blob Storage にアップロード（Web App 用）
       # -------------------------------------------------------
       - name: Upload to Blob Storage
         if: always()
