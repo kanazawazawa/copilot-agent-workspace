@@ -4,3 +4,4 @@ nul
 *.user
 *.suo
 .vs/
+appsettings.Development.json

@@ -3,6 +3,7 @@
 @inject GitHubActionsService GitHub
 @inject BlobStorageService BlobStorage
 @inject IJSRuntime JS
+@inject IConfiguration Configuration
 @rendermode InteractiveServer
 
 <PageTitle>Copilot Slide Generator</PageTitle>
@@ -48,6 +49,35 @@
                     {
                         <div class="alert @statusCss mt-3 mb-0" role="alert">
                             @statusMessage
+                        </div>
+                    }
+
+                    @* 実行キー入力ダイアログ *@
+                    @if (showExecKeyDialog)
+                    {
+                        <div class="modal d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">実行キー</h5>
+                                        <button type="button" class="btn-close" @onclick="CloseExecKeyDialog"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" placeholder="実行キー" @bind="execKeyInput"
+                                                   @onkeydown="ExecKeyKeyDown" />
+                                        </div>
+                                        @if (execKeyError)
+                                        {
+                                            <div class="text-danger small mt-2">キーが一致しません</div>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" @onclick="CloseExecKeyDialog">キャンセル</button>
+                                        <button class="btn btn-primary btn-sm" @onclick="SubmitExecKey">実行</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     }
                 </div>
@@ -191,6 +221,10 @@
     private bool isRunning = false;
     private string statusMessage = "";
     private string statusCss = "alert-info";
+    private bool showExecKeyDialog = false;
+    private string execKeyInput = "";
+    private bool execKeyError = false;
+    private bool isAuthenticated = false;
 
     private const string placeholderText =
         "例: Azure の ○○ について提案書を PPTX で作成して\n" +
@@ -216,6 +250,64 @@
     };
 
     private async Task RunWorkflow()
+    {
+        // Cookie チェック → 認証済みならそのまま実行、未認証ならダイアログ表示
+        if (!isAuthenticated)
+        {
+            var cookie = await JS.InvokeAsync<string>("getCookie", "exec_key_verified");
+            if (cookie == "true")
+            {
+                isAuthenticated = true;
+            }
+            else
+            {
+                showExecKeyDialog = true;
+                execKeyInput = "";
+                execKeyError = false;
+                StateHasChanged();
+                return;
+            }
+        }
+
+        await ExecuteWorkflow();
+    }
+
+    private async Task SubmitExecKey()
+    {
+        var expectedKey = Configuration["ExecKey"] ?? "";
+        if (execKeyInput == expectedKey)
+        {
+            isAuthenticated = true;
+            execKeyError = false;
+            showExecKeyDialog = false;
+
+            // Cookie に保存（30日間）
+            await JS.InvokeVoidAsync("setCookie", "exec_key_verified", "true", 30);
+
+            await ExecuteWorkflow();
+        }
+        else
+        {
+            execKeyError = true;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ExecKeyKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SubmitExecKey();
+        }
+    }
+
+    private void CloseExecKeyDialog()
+    {
+        showExecKeyDialog = false;
+        execKeyError = false;
+    }
+
+    private async Task ExecuteWorkflow()
     {
         isRunning = true;
         statusMessage = "ワークフローをトリガーしています...";
