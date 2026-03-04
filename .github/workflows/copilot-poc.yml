@@ -100,15 +100,45 @@ jobs:
       # -------------------------------------------------------
       # 5b. Agent モード（本命テスト）
       # -------------------------------------------------------
-      - name: "Run: copilot agent mode"
+      - name: "Investigate: try to find/install copilot CLI"
         if: inputs.mode == 'agent'
         run: |
-          echo "🤖 Running Copilot Agent Mode..."
+          echo "=============================="
+          echo "🔍 Copilot CLI 調査"
+          echo "=============================="
+          
           echo ""
-          echo "📍 Which copilot: $(which copilot 2>/dev/null || echo 'not in PATH')"
-          echo "📍 Copilot version: $(copilot --version 2>/dev/null || echo 'unknown')"
+          echo "--- 1. PATH 上の copilot 系コマンド ---"
+          compgen -c | grep -i copilot || echo "  なし"
+          
           echo ""
-          copilot -p "${{ inputs.prompt }}" --allow-all 2>&1
+          echo "--- 2. gh copilot のサブコマンド一覧 ---"
+          gh copilot --help 2>&1 || true
+          
+          echo ""
+          echo "--- 3. gh extension の中身 ---"
+          gh extension list
+          ls -la $(gh extension list 2>/dev/null | awk '{print $NF}') 2>/dev/null || true
+          find ~/.local/share/gh/extensions/ -name "copilot*" -o -name "gh-copilot*" 2>/dev/null | head -20
+
+          echo ""
+          echo "--- 4. npm で copilot 系パッケージを検索 ---"
+          npm search @github/copilot --long 2>/dev/null | head -10 || echo "  npm search failed"
+          npm search @githubnext/github-copilot-cli --long 2>/dev/null | head -10 || echo "  npm search failed"
+          npm search github-copilot --long 2>/dev/null | head -10 || echo "  npm search failed"
+
+          echo ""
+          echo "--- 5. GitHub Copilot Coding Agent のインストール試行 ---"
+          npm install -g @github/copilot-cli 2>&1 || echo "  @github/copilot-cli: not found"
+          npm install -g @githubnext/github-copilot-cli 2>&1 || echo "  @githubnext/github-copilot-cli: not found"
+          
+          echo ""
+          echo "--- 6. copilot コマンド再チェック ---"
+          which copilot 2>/dev/null && copilot --help 2>&1 || echo "  copilot: still not found"
+
+          echo ""
+          echo "--- 7. GitHub API: Copilot 関連エンドポイント確認 ---"
+          gh api /user 2>/dev/null | jq '{login, plan: .plan.name}' || true
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
