@@ -3,7 +3,7 @@
 # =============================================================
 # 前提:
 #   1. Fine-grained PAT を作成（Permission: Copilot Requests）
-#   2. リポジトリ Secret に PERSONAL_ACCESS_TOKEN として登録
+#   2. リポジトリ Secret に COPILOT_FG_TOKEN として登録
 #   3. Actions タブ → "Copilot CLI PoC" → "Run workflow" で手動実行
 #
 # 参考: https://docs.github.com/copilot/using-copilot/using-copilot-cli/automating-tasks-with-copilot-cli-and-github-actions
@@ -64,7 +64,7 @@ jobs:
       # -------------------------------------------------------
       - name: Check authentication
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_FG_TOKEN }}
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
             echo "❌ COPILOT_GITHUB_TOKEN is EMPTY — Secret が正しく設定されていません"
@@ -78,22 +78,11 @@ jobs:
       # -------------------------------------------------------
       - name: Run Copilot CLI
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_FG_TOKEN }}
         run: |
           echo "🤖 Prompt: ${{ inputs.prompt }}"
-          echo ""
-          echo "--- 環境変数チェック ---"
           echo "COPILOT_GITHUB_TOKEN length: ${#COPILOT_GITHUB_TOKEN}"
-          echo "GH_TOKEN length: ${#GH_TOKEN}"
-          echo "GITHUB_TOKEN length: ${#GITHUB_TOKEN}"
           echo ""
-          echo "--- gh auth でログイン試行 ---"
-          echo "$COPILOT_GITHUB_TOKEN" | gh auth login --with-token 2>&1 || echo "gh auth login failed"
-          gh auth status 2>&1 || true
-          echo ""
-          echo "--- copilot 実行 ---"
           copilot -p "${{ inputs.prompt }}"
 
       # -------------------------------------------------------
