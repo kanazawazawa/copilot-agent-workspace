@@ -78,6 +78,39 @@ public class GitHubActionsService
     }
 
     /// <summary>
+    /// 実行中・待機中のワークフロー実行を取得する（プロンプト付き）。
+    /// </summary>
+    public async Task<List<InProgressRunInfo>> GetInProgressRunsAsync()
+    {
+        var result = new List<InProgressRunInfo>();
+        try
+        {
+            var runs = await GetRecentRunsAsync(20);
+            foreach (var run in runs)
+            {
+                var status = run.Status.StringValue;
+                if (status == "in_progress" || status == "queued")
+                {
+                    result.Add(new InProgressRunInfo
+                    {
+                        RunNumber = (int)run.RunNumber,
+                        RunId = run.Id,
+                        Status = status,
+                        Prompt = run.DisplayTitle ?? run.Name ?? "",
+                        CreatedAt = run.CreatedAt,
+                        HtmlUrl = run.HtmlUrl
+                    });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to get in-progress runs");
+        }
+        return result;
+    }
+
+    /// <summary>
     /// 特定の実行の詳細を取得する。
     /// </summary>
     public async Task<WorkflowRun?> GetRunAsync(long runId)
@@ -130,4 +163,17 @@ public class GitHubActionsService
             return null;
         }
     }
+}
+
+/// <summary>
+/// 実行中・待機中のワークフロー情報。
+/// </summary>
+public class InProgressRunInfo
+{
+    public int RunNumber { get; set; }
+    public long RunId { get; set; }
+    public string Status { get; set; } = string.Empty;
+    public string Prompt { get; set; } = string.Empty;
+    public DateTimeOffset CreatedAt { get; set; }
+    public string HtmlUrl { get; set; } = string.Empty;
 }

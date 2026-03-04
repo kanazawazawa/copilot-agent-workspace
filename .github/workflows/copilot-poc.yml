@@ -10,6 +10,7 @@
 # =============================================================
 
 name: Copilot CLI PoC
+run-name: "${{ inputs.prompt }}"
 
 on:
   workflow_dispatch:

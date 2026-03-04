@@ -104,17 +104,18 @@
                             <span class="ms-2 text-muted">読み込み中...</span>
                         </div>
                     }
-                    else if (historyFiles.Count == 0)
+                    else if (historyFiles.Count == 0 && (inProgressRuns == null || inProgressRuns.Count == 0))
                     {
                         <div class="text-muted text-center py-4">まだ PPTX ファイルがありません</div>
                     }
                     else
                     {
                         var filtered = FilteredHistoryFiles;
+                        var filteredInProgress = FilteredInProgressRuns;
                         @if (!string.IsNullOrEmpty(historyFilter))
                         {
                             <div class="px-3 pt-2">
-                                <small class="text-muted">@filtered.Count / @historyFiles.Count 件がヒット</small>
+                                <small class="text-muted">@(filtered.Count + filteredInProgress.Count) / @(historyFiles.Count + (inProgressRuns?.Count ?? 0)) 件がヒット</small>
                             </div>
                         }
                         <table class="table table-hover mb-0">
@@ -127,6 +128,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var run in filteredInProgress)
+                                {
+                                    <tr class="table-warning">
+                                        <td class="text-nowrap">
+                                            @run.CreatedAt.LocalDateTime.ToString("yyyy-MM-dd HH:mm")
+                                        </td>
+                                        <td class="small" style="max-width:300px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="@run.Prompt">
+                                            @(string.IsNullOrEmpty(run.Prompt) ? "—" : run.Prompt)
+                                        </td>
+                                        <td>
+                                            <span class="badge @(run.Status == "queued" ? "bg-secondary" : "bg-warning text-dark")">
+                                                <span class="spinner-border spinner-border-sm me-1" style="width: 0.7rem; height: 0.7rem;"></span>
+                                                @(run.Status == "queued" ? "🕐 待機中" : "⚙️ 作成中")
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="@run.HtmlUrl" target="_blank" class="btn btn-outline-secondary btn-sm">GitHub ↗</a>
+                                        </td>
+                                    </tr>
+                                }
                                 @foreach (var file in filtered)
                                 {
                                     <tr>
@@ -233,6 +254,7 @@
 
     // --- 履歴テーブル ---
     private List<PptxFileInfo>? historyFiles;
+    private List<InProgressRunInfo>? inProgressRuns;
     private bool isHistoryLoading = false;
     private string? downloadingBlob;
     private string historyFilter = string.Empty;
@@ -246,6 +268,13 @@
                 (f.RelativePath?.Contains(historyFilter, StringComparison.OrdinalIgnoreCase) ?? false)
             ).ToList();
 
+    private List<InProgressRunInfo> FilteredInProgressRuns =>
+        inProgressRuns == null ? new()
+        : string.IsNullOrWhiteSpace(historyFilter) ? inProgressRuns
+        : inProgressRuns.Where(r =>
+            r.Prompt?.Contains(historyFilter, StringComparison.OrdinalIgnoreCase) ?? false
+        ).ToList();
+
     protected override async Task OnInitializedAsync()
     {
         await RefreshHistory();
@@ -256,7 +285,12 @@
         isHistoryLoading = true;
         StateHasChanged();
 
-        historyFiles = await BlobStorage.ListAllPptxAsync();
+        var historyTask = BlobStorage.ListAllPptxAsync();
+        var inProgressTask = GitHub.GetInProgressRunsAsync();
+        await Task.WhenAll(historyTask, inProgressTask);
+
+        historyFiles = historyTask.Result;
+        inProgressRuns = inProgressTask.Result;
 
         isHistoryLoading = false;
         StateHasChanged();
