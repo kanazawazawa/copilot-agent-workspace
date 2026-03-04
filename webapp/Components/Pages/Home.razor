@@ -77,13 +77,24 @@
             <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">📚 作成履歴</h5>
-                    <button @onclick="RefreshHistory" class="btn btn-outline-primary btn-sm" disabled="@isHistoryLoading">
-                        @if (isHistoryLoading)
-                        {
-                            <span class="spinner-border spinner-border-sm me-1"></span>
-                        }
-                        🔄 更新
-                    </button>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="input-group input-group-sm" style="width: 260px;">
+                            <span class="input-group-text">🔍</span>
+                            <input type="text" class="form-control" placeholder="キーワードで絞り込み..."
+                                   @bind="historyFilter" @bind:event="oninput" />
+                            @if (!string.IsNullOrEmpty(historyFilter))
+                            {
+                                <button class="btn btn-outline-secondary" @onclick="() => historyFilter = string.Empty">✕</button>
+                            }
+                        </div>
+                        <button @onclick="RefreshHistory" class="btn btn-outline-primary btn-sm" disabled="@isHistoryLoading">
+                            @if (isHistoryLoading)
+                            {
+                                <span class="spinner-border spinner-border-sm me-1"></span>
+                            }
+                            🔄 更新
+                        </button>
+                    </div>
                 </div>
                 <div class="card-body p-0">
                     @if (historyFiles == null)
@@ -99,6 +110,13 @@
                     }
                     else
                     {
+                        var filtered = FilteredHistoryFiles;
+                        @if (!string.IsNullOrEmpty(historyFilter))
+                        {
+                            <div class="px-3 pt-2">
+                                <small class="text-muted">@filtered.Count / @historyFiles.Count 件がヒット</small>
+                            </div>
+                        }
                         <table class="table table-hover mb-0">
                             <thead class="table-light">
                                 <tr>
@@ -109,7 +127,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var file in historyFiles)
+                                @foreach (var file in filtered)
                                 {
                                     <tr>
                                         <td class="text-nowrap">
@@ -217,6 +235,16 @@
     private List<PptxFileInfo>? historyFiles;
     private bool isHistoryLoading = false;
     private string? downloadingBlob;
+    private string historyFilter = string.Empty;
+
+    private List<PptxFileInfo> FilteredHistoryFiles =>
+        string.IsNullOrWhiteSpace(historyFilter) || historyFiles == null
+            ? historyFiles ?? new()
+            : historyFiles.Where(f =>
+                (f.FileName?.Contains(historyFilter, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (f.Prompt?.Contains(historyFilter, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (f.RelativePath?.Contains(historyFilter, StringComparison.OrdinalIgnoreCase) ?? false)
+            ).ToList();
 
     protected override async Task OnInitializedAsync()
     {

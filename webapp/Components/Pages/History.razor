@@ -9,13 +9,24 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>📚 PPTX 履歴</h3>
-        <button @onclick="Refresh" class="btn btn-outline-primary btn-sm" disabled="@isLoading">
-            @if (isLoading)
-            {
-                <span class="spinner-border spinner-border-sm me-1"></span>
-            }
-            🔄 更新
-        </button>
+        <div class="d-flex align-items-center gap-2">
+            <div class="input-group input-group-sm" style="width: 280px;">
+                <span class="input-group-text">🔍</span>
+                <input type="text" class="form-control" placeholder="キーワードで絞り込み..."
+                       @bind="filterText" @bind:event="oninput" />
+                @if (!string.IsNullOrEmpty(filterText))
+                {
+                    <button class="btn btn-outline-secondary" @onclick="() => filterText = string.Empty">✕</button>
+                }
+            </div>
+            <button @onclick="Refresh" class="btn btn-outline-primary btn-sm" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span class="spinner-border spinner-border-sm me-1"></span>
+                }
+                🔄 更新
+            </button>
+        </div>
     </div>
 
     @if (files == null)
@@ -33,10 +44,20 @@
     }
     else
     {
-        <p class="text-muted mb-3">全 @files.Count 件の PPTX ファイル（新しい順）</p>
+        var filtered = FilteredFiles;
+        <p class="text-muted mb-3">
+            @if (!string.IsNullOrEmpty(filterText))
+            {
+                <span>@filtered.Count / @files.Count 件がヒット</span>
+            }
+            else
+            {
+                <span>全 @files.Count 件の PPTX ファイル（新しい順）</span>
+            }
+        </p>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-            @foreach (var file in files)
+            @foreach (var file in filtered)
             {
                 <div class="col">
                     <div class="card h-100 shadow-sm">
@@ -82,6 +103,16 @@
     private List<PptxFileInfo>? files;
     private bool isLoading = false;
     private string? downloadingBlobName;
+    private string filterText = string.Empty;
+
+    private List<PptxFileInfo> FilteredFiles =>
+        string.IsNullOrWhiteSpace(filterText) || files == null
+            ? files ?? new()
+            : files.Where(f =>
+                (f.FileName?.Contains(filterText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (f.Prompt?.Contains(filterText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (f.RelativePath?.Contains(filterText, StringComparison.OrdinalIgnoreCase) ?? false)
+            ).ToList();
 
     protected override async Task OnInitializedAsync()
     {
