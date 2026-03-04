@@ -60,7 +60,21 @@ jobs:
           copilot --help 2>&1 | head -20 || true
 
       # -------------------------------------------------------
-      # 5. Copilot CLI 実行（プログラムモード）
+      # 5. 認証チェック
+      # -------------------------------------------------------
+      - name: Check authentication
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
+            echo "❌ COPILOT_GITHUB_TOKEN is EMPTY — Secret が正しく設定されていません"
+            exit 1
+          else
+            echo "✅ COPILOT_GITHUB_TOKEN is set (length: ${#COPILOT_GITHUB_TOKEN})"
+          fi
+
+      # -------------------------------------------------------
+      # 6. Copilot CLI 実行（プログラムモード）
       # -------------------------------------------------------
       - name: Run Copilot CLI
         env:
