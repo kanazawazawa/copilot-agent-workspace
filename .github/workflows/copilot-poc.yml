@@ -94,7 +94,7 @@ jobs:
           echo "🧠 Model: ${{ inputs.model }}"
           echo "COPILOT_GITHUB_TOKEN length: ${#COPILOT_GITHUB_TOKEN}"
           echo ""
-          copilot -p "${{ inputs.prompt }}" --model ${{ inputs.model }}
+          copilot -p "${{ inputs.prompt }}" --model ${{ inputs.model }} --allow-all
 
       # -------------------------------------------------------
       # 6. 成果物の確認
