@@ -96,3 +96,47 @@ main {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+/* Disclaimer footer bar */
+.disclaimer-bar {
+    background: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #94a3b8;
+    font-size: 0.72rem;
+    padding: 0.5rem 1.5rem;
+    border-top: 1px solid #334155;
+    line-height: 1.6;
+}
+
+.disclaimer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.disclaimer-content strong {
+    color: #f59e0b;
+}
+
+.disclaimer-content span::before {
+    content: "·";
+    margin-right: 0.4rem;
+    color: #475569;
+}
+
+.disclaimer-content span:first-child::before {
+    content: none;
+}
+
+@media (max-width: 640.98px) {
+    .disclaimer-content {
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+    }
+
+    .disclaimer-content span::before {
+        content: none;
+    }
+}
