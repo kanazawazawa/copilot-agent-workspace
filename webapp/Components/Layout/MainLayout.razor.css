@@ -6,6 +6,14 @@
 
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .sidebar {
@@ -97,7 +105,7 @@ main {
         top: 0.5rem;
     }
 
-/* Disclaimer footer bar */
+/* Disclaimer footer bar — sticky at bottom */
 .disclaimer-bar {
     background: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     color: #94a3b8;
@@ -105,6 +113,10 @@ main {
     padding: 0.5rem 1.5rem;
     border-top: 1px solid #334155;
     line-height: 1.6;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    flex-shrink: 0;
 }
 
 .disclaimer-content {
