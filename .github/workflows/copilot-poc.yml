@@ -1,11 +1,12 @@
 # =============================================================
-# Copilot CLI PoC — GitHub Actions で Copilot Agent が動くか検証
+# Copilot CLI PoC — GitHub Actions で Copilot CLI を実行
 # =============================================================
-# 使い方:
-#   1. GitHub リポジトリの Settings > Secrets and variables > Actions で
-#      GH_TOKEN（PAT: repo, workflow, copilot スコープ）を登録
-#   2. Actions タブ → "Copilot CLI PoC" → "Run workflow" で手動実行
-#   3. ログと Artifacts を確認
+# 前提:
+#   1. Fine-grained PAT を作成（Permission: Copilot Requests）
+#   2. リポジトリ Secret に PERSONAL_ACCESS_TOKEN として登録
+#   3. Actions タブ → "Copilot CLI PoC" → "Run workflow" で手動実行
+#
+# 参考: https://docs.github.com/copilot/using-copilot/using-copilot-cli/automating-tasks-with-copilot-cli-and-github-actions
 # =============================================================
 
 name: Copilot CLI PoC
@@ -17,21 +18,16 @@ on:
         description: 'Copilot に渡すプロンプト'
         required: true
         default: 'output/research/ 配下に Azure App Service の概要を report.md としてまとめてください。'
-      mode:
-        description: '実行モード'
-        required: true
-        type: choice
-        options:
-          - suggest    # gh copilot suggest（軽量テスト）
-          - agent      # copilot -p（Agent モード）
-        default: suggest
+
+permissions:
+  contents: read
 
 concurrency:
   group: copilot-poc
   cancel-in-progress: false
 
 jobs:
-  copilot-test:
+  copilot-run:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -40,107 +36,39 @@ jobs:
       # 1. チェックアウト
       # -------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # -------------------------------------------------------
-      # 2. 環境情報の確認
+      # 2. Node.js セットアップ
       # -------------------------------------------------------
-      - name: Show environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      # -------------------------------------------------------
+      # 3. Copilot CLI インストール（公式手順）
+      # -------------------------------------------------------
+      - name: Install Copilot CLI
+        run: npm install -g @github/copilot
+
+      # -------------------------------------------------------
+      # 4. インストール確認
+      # -------------------------------------------------------
+      - name: Verify installation
         run: |
-          echo "🔍 OS: $(uname -a)"
-          echo "🔍 GitHub CLI: $(gh --version)"
-          echo "🔍 Node: $(node --version 2>/dev/null || echo 'not found')"
-          echo "🔍 Python: $(python3 --version 2>/dev/null || echo 'not found')"
-          echo "🔍 Prompt: ${{ inputs.prompt }}"
-          echo "🔍 Mode: ${{ inputs.mode }}"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          echo "📍 Which copilot: $(which copilot)"
+          echo "📍 Copilot version: $(copilot --version 2>/dev/null || echo 'unknown')"
+          copilot --help 2>&1 | head -20 || true
 
       # -------------------------------------------------------
-      # 3. GitHub Copilot CLI 拡張のインストール
+      # 5. Copilot CLI 実行（プログラムモード）
       # -------------------------------------------------------
-      - name: Install Copilot CLI extension
+      - name: Run Copilot CLI
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          echo "📦 Installing gh-copilot extension..."
-          gh extension install github/gh-copilot 2>&1 || echo "⚠️ Already installed or failed"
+          echo "🤖 Prompt: ${{ inputs.prompt }}"
           echo ""
-          echo "📋 Installed extensions:"
-          gh extension list
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      # -------------------------------------------------------
-      # 4. Copilot CLI の認証テスト
-      # -------------------------------------------------------
-      - name: Test Copilot authentication
-        run: |
-          echo "🔑 Testing Copilot authentication..."
-          gh auth status
-          echo ""
-          echo "🔑 Testing Copilot access..."
-          gh copilot --version 2>&1 || echo "⚠️ gh copilot --version failed"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      # -------------------------------------------------------
-      # 5a. Suggest モード（軽量テスト）
-      # -------------------------------------------------------
-      - name: "Run: gh copilot suggest"
-        if: inputs.mode == 'suggest'
-        run: |
-          echo "🤖 Running gh copilot suggest..."
-          echo ""
-          gh copilot suggest "${{ inputs.prompt }}" --shell 2>&1 || {
-            echo "❌ gh copilot suggest failed with exit code $?"
-            echo "💡 PAT に copilot スコープが含まれているか確認してください"
-          }
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      # -------------------------------------------------------
-      # 5b. Agent モード（本命テスト）
-      # -------------------------------------------------------
-      - name: "Investigate: try to find/install copilot CLI"
-        if: inputs.mode == 'agent'
-        run: |
-          echo "=============================="
-          echo "🔍 Copilot CLI 調査"
-          echo "=============================="
-          
-          echo ""
-          echo "--- 1. PATH 上の copilot 系コマンド ---"
-          compgen -c | grep -i copilot || echo "  なし"
-          
-          echo ""
-          echo "--- 2. gh copilot のサブコマンド一覧 ---"
-          gh copilot --help 2>&1 || true
-          
-          echo ""
-          echo "--- 3. gh extension の中身 ---"
-          gh extension list
-          ls -la $(gh extension list 2>/dev/null | awk '{print $NF}') 2>/dev/null || true
-          find ~/.local/share/gh/extensions/ -name "copilot*" -o -name "gh-copilot*" 2>/dev/null | head -20
-
-          echo ""
-          echo "--- 4. npm で copilot 系パッケージを検索 ---"
-          npm search @github/copilot --long 2>/dev/null | head -10 || echo "  npm search failed"
-          npm search @githubnext/github-copilot-cli --long 2>/dev/null | head -10 || echo "  npm search failed"
-          npm search github-copilot --long 2>/dev/null | head -10 || echo "  npm search failed"
-
-          echo ""
-          echo "--- 5. GitHub Copilot Coding Agent のインストール試行 ---"
-          npm install -g @github/copilot-cli 2>&1 || echo "  @github/copilot-cli: not found"
-          npm install -g @githubnext/github-copilot-cli 2>&1 || echo "  @githubnext/github-copilot-cli: not found"
-          
-          echo ""
-          echo "--- 6. copilot コマンド再チェック ---"
-          which copilot 2>/dev/null && copilot --help 2>&1 || echo "  copilot: still not found"
-
-          echo ""
-          echo "--- 7. GitHub API: Copilot 関連エンドポイント確認 ---"
-          gh api /user 2>/dev/null | jq '{login, plan: .plan.name}' || true
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          copilot -p "${{ inputs.prompt }}"
 
       # -------------------------------------------------------
       # 6. 成果物の確認
@@ -163,7 +91,7 @@ jobs:
           git status --short
 
       # -------------------------------------------------------
-      # 7. 成果物を Artifact としてアップロード（確認用）
+      # 7. 成果物を Artifact としてアップロード
       # -------------------------------------------------------
       - name: Upload output artifacts
         uses: actions/upload-artifact@v4
