@@ -77,7 +77,7 @@ flowchart LR
 2. **Copilot SDK** (`@github/copilot-sdk`) starts an agent session
 3. Copilot queries the **MS Learn MCP server** for official documentation → generates **SVG slides** (960×540)
 4. `svg2pptx.py` converts SVG elements to **native PowerPoint objects** (shapes, text boxes, styled paragraphs — not images)
-5. Generated `.pptx` is uploaded to Azure Blob Storage → accessible via Blazor web app
+5. Generated `.pptx` is downloadable from **GitHub Actions Artifacts** and also uploaded to **Azure Blob Storage** → accessible via Blazor web app
 
 ---
 
@@ -303,7 +303,7 @@ flowchart LR
 2. **Copilot SDK**（`@github/copilot-sdk`）がエージェントセッションを開始
 3. Copilot が **MS Learn MCP サーバー** で公式ドキュメントを調査 → **SVG スライド** を生成
 4. `svg2pptx.py` が SVG 要素を **ネイティブ PowerPoint オブジェクト** に変換（図形・テキストボックス — 画像埋め込みではない）
-5. 生成された `.pptx` を Azure Blob Storage にアップロード → Web アプリで配布
+5. 生成された `.pptx` は **GitHub Actions Artifacts** からダウンロード可能。さらに **Azure Blob Storage** にアップロード → Web アプリでも配布
 
 ---
 
