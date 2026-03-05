@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <radialGradient id="glow-cyan" cx="0.3" cy="0.6" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-dark)"/>
+
+  <!-- Decorative elements -->
+  <circle cx="150" cy="450" r="280" fill="#1A3A4A" opacity="0.6"/>
+  <circle cx="850" cy="100" r="200" fill="#2A7A8C" opacity="0.3"/>
+  <circle cx="500" cy="300" r="350" fill="url(#glow-cyan)"/>
+
+  <!-- Network dots -->
+  <circle cx="100" cy="100" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="140" cy="80" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="120" cy="130" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <line x1="100" y1="100" x2="140" y2="80" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <line x1="140" y1="80" x2="120" y2="130" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <line x1="120" y1="130" x2="100" y2="100" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+
+  <!-- Title -->
+  <text x="480" y="100" font-size="32" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Why Azure App Service?</text>
+  <line x1="340" y1="115" x2="620" y2="115" stroke="#00D4FF" stroke-width="3"/>
+
+  <!-- Value props in 2 columns -->
+  <!-- Left column -->
+  <circle cx="195" cy="180" r="18" fill="#1A3A4A"/>
+  <text x="195" y="186" font-size="16" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">1</text>
+  <text x="225" y="178" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Focus on Code, Not Infra</text>
+  <text x="225" y="200" font-size="13" fill="#B0C4D8" font-family="Segoe UI">Fully managed PaaS with auto-patching</text>
+
+  <circle cx="195" cy="250" r="18" fill="#1A3A4A"/>
+  <text x="195" y="256" font-size="16" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">2</text>
+  <text x="225" y="248" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Any Language, Any Platform</text>
+  <text x="225" y="270" font-size="13" fill="#B0C4D8" font-family="Segoe UI">.NET, Java, Node.js, Python, PHP, containers</text>
+
+  <circle cx="195" cy="320" r="18" fill="#1A3A4A"/>
+  <text x="195" y="326" font-size="16" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">3</text>
+  <text x="225" y="318" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Enterprise Security</text>
+  <text x="225" y="340" font-size="13" fill="#B0C4D8" font-family="Segoe UI">VNet, Private Endpoints, WAF, compliance</text>
+
+  <!-- Right column -->
+  <circle cx="565" cy="180" r="18" fill="#2A7A8C"/>
+  <text x="565" y="186" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">4</text>
+  <text x="595" y="178" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Scale Without Limits</text>
+  <text x="595" y="200" font-size="13" fill="#B0C4D8" font-family="Segoe UI">Auto-scale, zone redundancy, multi-region</text>
+
+  <circle cx="565" cy="250" r="18" fill="#2A7A8C"/>
+  <text x="565" y="256" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">5</text>
+  <text x="595" y="248" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">DevOps Built-in</text>
+  <text x="595" y="270" font-size="13" fill="#B0C4D8" font-family="Segoe UI">GitHub Actions, deployment slots, CI/CD</text>
+
+  <circle cx="565" cy="320" r="18" fill="#2A7A8C"/>
+  <text x="565" y="326" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">6</text>
+  <text x="595" y="318" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Optimize Costs</text>
+  <text x="595" y="340" font-size="13" fill="#B0C4D8" font-family="Segoe UI">Free tier, savings plans, up to 55% off</text>
+
+  <!-- CTA box -->
+  <rect x="230" y="385" width="500" height="70" rx="10" fill="#1A3A4A" stroke="#00D4FF" stroke-width="1.5"/>
+  <text x="480" y="415" font-size="18" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Ready to Get Started?</text>
+  <text x="480" y="440" font-size="14" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Contact us for a tailored architecture assessment</text>
+
+  <!-- References -->
+  <text x="480" y="490" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">Sources: MS Learn — App Service Overview | Azure Architecture Center — Web App Architectures</text>
+
+  <!-- Footer -->
+  <text x="80" y="520" font-size="12" fill="#8B939E" font-family="Segoe UI">Sales Overview | March 2026</text>
+  <text x="880" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">10 / 10</text>
+</svg>

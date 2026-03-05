@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">What is Azure App Service?</text>
+
+  <!-- Key message box -->
+  <rect x="40" y="95" width="880" height="55" rx="6" fill="#E0F7FA"/>
+  <text x="60" y="128" font-size="16" font-weight="bold" fill="#1A3A4A" font-family="Segoe UI">A fully managed PaaS that lets you focus on your apps — not infrastructure.</text>
+
+  <!-- Left column: Description -->
+  <text x="40" y="195" font-size="18" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Platform Overview</text>
+  <line x1="40" y1="205" x2="200" y2="205" stroke="#00D4FF" stroke-width="2"/>
+
+  <text x="40" y="240" font-size="14" fill="#4A5568" font-family="Segoe UI">Azure App Service is an HTTP-based service for hosting</text>
+  <text x="40" y="260" font-size="14" fill="#4A5568" font-family="Segoe UI">web applications, REST APIs, and mobile back ends.</text>
+
+  <text x="40" y="295" font-size="14" fill="#4A5568" font-family="Segoe UI">• Supports .NET, Java, Node.js, Python, PHP</text>
+  <text x="40" y="320" font-size="14" fill="#4A5568" font-family="Segoe UI">• Runs on both Windows and Linux</text>
+  <text x="40" y="345" font-size="14" fill="#4A5568" font-family="Segoe UI">• Custom container deployment supported</text>
+  <text x="40" y="370" font-size="14" fill="#4A5568" font-family="Segoe UI">• Built-in autoscaling and load balancing</text>
+  <text x="40" y="395" font-size="14" fill="#4A5568" font-family="Segoe UI">• CI/CD with GitHub Actions, Azure Pipelines</text>
+  <text x="40" y="420" font-size="14" fill="#4A5568" font-family="Segoe UI">• Enterprise-grade SLA and compliance</text>
+
+  <!-- Right column: Key numbers -->
+  <rect x="540" y="180" width="380" height="280" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+
+  <text x="730" y="215" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Key Highlights</text>
+  <line x1="580" y1="225" x2="880" y2="225" stroke="#C8CED6" stroke-width="1"/>
+
+  <text x="730" y="265" font-size="36" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">99.95%</text>
+  <text x="730" y="290" font-size="14" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">SLA for Standard tier and above</text>
+
+  <line x1="600" y1="310" x2="860" y2="310" stroke="#C8CED6" stroke-width="1"/>
+
+  <text x="730" y="345" font-size="36" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">60+</text>
+  <text x="730" y="370" font-size="14" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Azure regions worldwide</text>
+
+  <line x1="600" y1="390" x2="860" y2="390" stroke="#C8CED6" stroke-width="1"/>
+
+  <text x="730" y="425" font-size="36" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Free</text>
+  <text x="730" y="450" font-size="14" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Tier available to get started</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/app-service/overview">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: MS Learn — Azure App Service Overview</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">2 / 10</text>
+</svg>

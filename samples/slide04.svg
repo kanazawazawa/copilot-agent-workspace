@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Supported Languages &amp; Platforms</text>
+
+  <!-- Left section: Languages -->
+  <text x="40" y="115" font-size="18" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Languages &amp; Frameworks</text>
+  <line x1="40" y1="125" x2="260" y2="125" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- Language pills -->
+  <rect x="40" y="145" width="120" height="40" rx="20" fill="#1B2A4A"/>
+  <text x="100" y="170" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">.NET</text>
+
+  <rect x="175" y="145" width="120" height="40" rx="20" fill="#1B2A4A"/>
+  <text x="235" y="170" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Java</text>
+
+  <rect x="310" y="145" width="120" height="40" rx="20" fill="#1A3A4A"/>
+  <text x="370" y="170" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Node.js</text>
+
+  <rect x="40" y="200" width="120" height="40" rx="20" fill="#1A3A4A"/>
+  <text x="100" y="225" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Python</text>
+
+  <rect x="175" y="200" width="120" height="40" rx="20" fill="#2A7A8C"/>
+  <text x="235" y="225" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">PHP</text>
+
+  <rect x="310" y="200" width="160" height="40" rx="20" fill="#2A7A8C"/>
+  <text x="390" y="225" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Custom Container</text>
+
+  <!-- Right section: OS -->
+  <text x="560" y="115" font-size="18" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Operating Systems</text>
+  <line x1="560" y1="125" x2="740" y2="125" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- OS cards -->
+  <rect x="560" y="145" width="170" height="95" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="605" cy="180" r="18" fill="#1B2A4A"/>
+  <text x="605" y="186" font-size="14" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">W</text>
+  <text x="640" y="185" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Windows</text>
+  <text x="580" y="220" font-size="12" fill="#4A5568" font-family="Segoe UI">.NET Framework, IIS</text>
+
+  <rect x="750" y="145" width="170" height="95" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="795" cy="180" r="18" fill="#1A3A4A"/>
+  <text x="795" y="186" font-size="14" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">L</text>
+  <text x="830" y="185" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Linux</text>
+  <text x="770" y="220" font-size="12" fill="#4A5568" font-family="Segoe UI">Containers, open-source</text>
+
+  <!-- Java flavors -->
+  <text x="40" y="290" font-size="18" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Java Hosting Options</text>
+  <line x1="40" y1="300" x2="220" y2="300" stroke="#00D4FF" stroke-width="2"/>
+
+  <rect x="40" y="315" width="270" height="55" rx="6" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="60" y="340" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Java SE</text>
+  <text x="60" y="360" font-size="12" fill="#4A5568" font-family="Segoe UI">Standalone Java apps, Spring Boot</text>
+
+  <rect x="345" y="315" width="270" height="55" rx="6" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="365" y="340" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Tomcat</text>
+  <text x="365" y="360" font-size="12" fill="#4A5568" font-family="Segoe UI">Traditional Java web apps (WAR)</text>
+
+  <rect x="650" y="315" width="270" height="55" rx="6" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="670" y="340" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">JBoss EAP</text>
+  <text x="670" y="360" font-size="12" fill="#4A5568" font-family="Segoe UI">Enterprise Jakarta EE workloads</text>
+
+  <!-- Dev tools -->
+  <text x="40" y="420" font-size="18" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Developer Tools &amp; CLI</text>
+  <line x1="40" y1="430" x2="260" y2="430" stroke="#00D4FF" stroke-width="2"/>
+
+  <text x="40" y="460" font-size="14" fill="#4A5568" font-family="Segoe UI">• Visual Studio / VS Code / IntelliJ / Eclipse</text>
+  <text x="40" y="485" font-size="14" fill="#4A5568" font-family="Segoe UI">• Azure CLI / Azure PowerShell / Azure Developer CLI (azd)</text>
+  <text x="560" y="460" font-size="14" fill="#4A5568" font-family="Segoe UI">• Maven / Gradle integration</text>
+  <text x="560" y="485" font-size="14" fill="#4A5568" font-family="Segoe UI">• GitHub Actions / Azure Pipelines</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/app-service/overview">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: MS Learn — Azure App Service Overview</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">4 / 10</text>
+</svg>

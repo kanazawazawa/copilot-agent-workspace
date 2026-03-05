@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Pricing Tiers at a Glance</text>
+
+  <!-- Table header -->
+  <rect x="40" y="95" width="180" height="40" rx="4" fill="#1B2A4A"/>
+  <text x="130" y="121" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Category</text>
+
+  <rect x="225" y="95" width="140" height="40" rx="4" fill="#1B2A4A"/>
+  <text x="295" y="121" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Tiers</text>
+
+  <rect x="370" y="95" width="550" height="40" rx="4" fill="#1B2A4A"/>
+  <text x="645" y="121" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Description</text>
+
+  <!-- Row 1: Shared Compute -->
+  <rect x="40" y="140" width="180" height="70" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="130" y="170" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Shared</text>
+  <text x="130" y="190" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Compute</text>
+
+  <rect x="225" y="140" width="140" height="70" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="295" y="170" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Free</text>
+  <text x="295" y="190" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Shared</text>
+
+  <rect x="370" y="140" width="550" height="70" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="390" y="167" font-size="13" fill="#4A5568" font-family="Segoe UI">Shared VM resources with CPU quotas.</text>
+  <text x="390" y="190" font-size="13" fill="#4A5568" font-family="Segoe UI">Ideal for development and testing. Cannot scale out.</text>
+
+  <!-- Row 2: Dedicated Compute -->
+  <rect x="40" y="215" width="180" height="95" fill="#E0F7FA" stroke="#C8CED6"/>
+  <text x="130" y="255" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Dedicated</text>
+  <text x="130" y="275" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Compute</text>
+
+  <rect x="225" y="215" width="140" height="95" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="295" y="240" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Basic</text>
+  <text x="295" y="258" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Standard</text>
+  <text x="295" y="276" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Premium (v2/v3/v4)</text>
+
+  <rect x="370" y="215" width="550" height="95" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="390" y="242" font-size="13" fill="#4A5568" font-family="Segoe UI">Dedicated Azure VMs. Apps in the same plan share</text>
+  <text x="390" y="262" font-size="13" fill="#4A5568" font-family="Segoe UI">compute resources. Higher tiers = more instances,</text>
+  <text x="390" y="282" font-size="13" fill="#4A5568" font-family="Segoe UI">autoscaling, slots, backups, Traffic Manager.</text>
+  <text x="390" y="300" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">★ Recommended for production workloads</text>
+
+  <!-- Row 3: Isolated -->
+  <rect x="40" y="315" width="180" height="70" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="130" y="345" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Isolated</text>
+  <text x="130" y="365" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Compute</text>
+
+  <rect x="225" y="315" width="140" height="70" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="295" y="355" font-size="13" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Isolated v2</text>
+
+  <rect x="370" y="315" width="550" height="70" fill="#FAFBFC" stroke="#C8CED6"/>
+  <text x="390" y="342" font-size="13" fill="#4A5568" font-family="Segoe UI">Dedicated VMs on dedicated VNets. Network + compute</text>
+  <text x="390" y="362" font-size="13" fill="#4A5568" font-family="Segoe UI">isolation. Maximum scale-out. For regulated industries.</text>
+
+  <!-- Cost optimization note -->
+  <rect x="40" y="410" width="880" height="75" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="60" y="435" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI">💡 Cost Optimization Tips</text>
+  <text x="60" y="460" font-size="13" fill="#4A5568" font-family="Segoe UI">• Azure Savings Plans: Save up to 55% on predictable workloads</text>
+  <text x="60" y="478" font-size="13" fill="#4A5568" font-family="Segoe UI">• Reserved Instances: Commit to 1-year or 3-year plans for additional savings</text>
+  <text x="560" y="460" font-size="13" fill="#4A5568" font-family="Segoe UI">• Dev/Test subscriptions: Reduced rates for non-production</text>
+  <text x="560" y="478" font-size="13" fill="#4A5568" font-family="Segoe UI">• High-density hosting with P*mv3/v4 tiers</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: MS Learn — App Service Hosting Plans</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">5 / 10</text>
+</svg>

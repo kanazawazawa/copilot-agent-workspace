@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <radialGradient id="glow-cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-dark)"/>
+
+  <!-- Teal decorative circles -->
+  <circle cx="700" cy="500" r="320" fill="#1A3A4A" opacity="0.7"/>
+  <circle cx="880" cy="380" r="240" fill="#2A7A8C" opacity="0.45"/>
+
+  <!-- Cyan glow -->
+  <circle cx="820" cy="120" r="220" fill="url(#glow-cyan)"/>
+
+  <!-- Network dots -->
+  <circle cx="780" cy="90" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="820" cy="60" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="860" cy="95" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="840" cy="130" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="800" cy="140" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <line x1="780" y1="90" x2="820" y2="60" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="820" y1="60" x2="860" y2="95" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="860" y1="95" x2="840" y2="130" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="840" y1="130" x2="800" y2="140" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="800" y1="140" x2="780" y2="90" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+
+  <!-- Title -->
+  <text x="80" y="200" font-size="42" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure App Service</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="255" font-size="24" fill="#00D4FF" font-family="Segoe UI">Build, Deploy, and Scale Web Apps</text>
+  <text x="80" y="285" font-size="24" fill="#00D4FF" font-family="Segoe UI">with Confidence</text>
+
+  <!-- Accent line -->
+  <line x1="80" y1="310" x2="320" y2="310" stroke="#00D4FF" stroke-width="3"/>
+
+  <!-- Description -->
+  <text x="80" y="350" font-size="15" fill="#B0C4D8" font-family="Segoe UI">Fully managed platform for hosting web applications,</text>
+  <text x="80" y="375" font-size="15" fill="#B0C4D8" font-family="Segoe UI">RESTful APIs, and mobile back ends — enterprise-grade</text>
+  <text x="80" y="400" font-size="15" fill="#B0C4D8" font-family="Segoe UI">security, scalability, and global reach.</text>
+
+  <!-- Date -->
+  <text x="80" y="490" font-size="14" fill="#8B939E" font-family="Segoe UI">Sales Overview | March 2026</text>
+
+  <!-- Footer -->
+  <text x="880" y="520" font-size="12" fill="#8B939E" font-family="Segoe UI" text-anchor="end">Microsoft Azure</text>
+</svg>

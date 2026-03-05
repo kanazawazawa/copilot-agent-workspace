@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Key Benefits for Your Business</text>
+
+  <!-- Card 1: Cost-Effective -->
+  <rect x="40" y="100" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="80" cy="135" r="20" fill="#1B2A4A"/>
+  <text x="80" y="142" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">$</text>
+  <text x="115" y="140" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Cost-Effective</text>
+  <text x="60" y="170" font-size="13" fill="#4A5568" font-family="Segoe UI">Pay only for what you use.</text>
+  <text x="60" y="190" font-size="13" fill="#4A5568" font-family="Segoe UI">Save up to 55% with Azure</text>
+  <text x="60" y="210" font-size="13" fill="#4A5568" font-family="Segoe UI">Savings Plans and Reserved</text>
+  <text x="60" y="230" font-size="13" fill="#4A5568" font-family="Segoe UI">Instances.</text>
+  <text x="60" y="265" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">Up to 55% savings</text>
+
+  <!-- Card 2: Auto-Scaling -->
+  <rect x="345" y="100" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="385" cy="135" r="20" fill="#1A3A4A"/>
+  <text x="385" y="142" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">⚡</text>
+  <text x="420" y="140" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Auto-Scaling</text>
+  <text x="365" y="170" font-size="13" fill="#4A5568" font-family="Segoe UI">Automatically scale up/down</text>
+  <text x="365" y="190" font-size="13" fill="#4A5568" font-family="Segoe UI">based on demand. Handle</text>
+  <text x="365" y="210" font-size="13" fill="#4A5568" font-family="Segoe UI">traffic spikes without manual</text>
+  <text x="365" y="230" font-size="13" fill="#4A5568" font-family="Segoe UI">intervention.</text>
+  <text x="365" y="265" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">Scale to meet any demand</text>
+
+  <!-- Card 3: Global Reach -->
+  <rect x="650" y="100" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="690" cy="135" r="20" fill="#2A7A8C"/>
+  <text x="690" y="142" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🌐</text>
+  <text x="725" y="140" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Global Reach</text>
+  <text x="670" y="170" font-size="13" fill="#4A5568" font-family="Segoe UI">Deploy across 60+ Azure</text>
+  <text x="670" y="190" font-size="13" fill="#4A5568" font-family="Segoe UI">regions. Bring your apps</text>
+  <text x="670" y="210" font-size="13" fill="#4A5568" font-family="Segoe UI">closer to your users for</text>
+  <text x="670" y="230" font-size="13" fill="#4A5568" font-family="Segoe UI">lower latency.</text>
+  <text x="670" y="265" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">60+ regions worldwide</text>
+
+  <!-- Card 4: CI/CD Built-in -->
+  <rect x="40" y="310" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="80" cy="345" r="20" fill="#1B2A4A"/>
+  <text x="80" y="352" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🔄</text>
+  <text x="115" y="350" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">CI/CD Built-in</text>
+  <text x="60" y="380" font-size="13" fill="#4A5568" font-family="Segoe UI">Deploy continuously with</text>
+  <text x="60" y="400" font-size="13" fill="#4A5568" font-family="Segoe UI">GitHub Actions, Azure Pipelines.</text>
+  <text x="60" y="420" font-size="13" fill="#4A5568" font-family="Segoe UI">Staging slots for zero-</text>
+  <text x="60" y="440" font-size="13" fill="#4A5568" font-family="Segoe UI">downtime deployments.</text>
+  <text x="60" y="475" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">Zero-downtime deploys</text>
+
+  <!-- Card 5: Security & Compliance -->
+  <rect x="345" y="310" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="385" cy="345" r="20" fill="#1A3A4A"/>
+  <text x="385" y="352" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🔒</text>
+  <text x="420" y="350" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Security</text>
+  <text x="365" y="380" font-size="13" fill="#4A5568" font-family="Segoe UI">ISO, SOC, PCI compliant.</text>
+  <text x="365" y="400" font-size="13" fill="#4A5568" font-family="Segoe UI">VNet integration, Private</text>
+  <text x="365" y="420" font-size="13" fill="#4A5568" font-family="Segoe UI">Endpoints, WAF, Managed</text>
+  <text x="365" y="440" font-size="13" fill="#4A5568" font-family="Segoe UI">Identity support.</text>
+  <text x="365" y="475" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">Enterprise-grade security</text>
+
+  <!-- Card 6: Fully Managed -->
+  <rect x="650" y="310" width="270" height="185" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <circle cx="690" cy="345" r="20" fill="#2A7A8C"/>
+  <text x="690" y="352" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="725" y="350" font-size="16" font-weight="bold" fill="#1E2328" font-family="Segoe UI">Fully Managed</text>
+  <text x="670" y="380" font-size="13" fill="#4A5568" font-family="Segoe UI">OS patching, load balancing,</text>
+  <text x="670" y="400" font-size="13" fill="#4A5568" font-family="Segoe UI">health checks are all handled</text>
+  <text x="670" y="420" font-size="13" fill="#4A5568" font-family="Segoe UI">for you. Focus on building</text>
+  <text x="670" y="440" font-size="13" fill="#4A5568" font-family="Segoe UI">great applications.</text>
+  <text x="670" y="475" font-size="12" fill="#00D4FF" font-family="Segoe UI" font-weight="bold">Zero infrastructure overhead</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/app-service/overview">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: MS Learn — Azure App Service Overview</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">3 / 10</text>
+</svg>

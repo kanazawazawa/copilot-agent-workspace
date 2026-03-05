@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Architecture: Production Baseline (Zone-Redundant)</text>
+
+  <!-- Subheading -->
+  <text x="40" y="105" font-size="15" fill="#4A5568" font-family="Segoe UI">Secure, highly available architecture with WAF, private networking, and zone redundancy.</text>
+
+  <!-- Architecture diagram — simplified flow -->
+  <!-- Internet / Users -->
+  <circle cx="70" cy="280" r="25" fill="#1B2A4A"/>
+  <text x="70" y="286" font-size="16" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">👤</text>
+  <text x="70" y="320" font-size="11" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">Internet</text>
+
+  <!-- Arrow -->
+  <line x1="98" y1="280" x2="140" y2="280" stroke="#00D4FF" stroke-width="2"/>
+  <polygon points="140,274 152,280 140,286" fill="#00D4FF"/>
+
+  <!-- Application Gateway + WAF -->
+  <rect x="155" y="245" width="130" height="70" rx="8" fill="#1B2A4A"/>
+  <text x="220" y="272" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Gateway</text>
+  <text x="220" y="290" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">+ WAF</text>
+  <text x="220" y="335" font-size="10" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">TLS termination</text>
+
+  <!-- VNet boundary box -->
+  <rect x="300" y="130" width="620" height="340" rx="10" fill="none" stroke="#C8CED6" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="315" y="152" font-size="11" fill="#8B939E" font-family="Segoe UI">Azure Virtual Network</text>
+
+  <!-- Arrow to App Service -->
+  <line x1="288" y1="280" x2="340" y2="280" stroke="#00D4FF" stroke-width="2"/>
+  <polygon points="340,274 352,280 340,286" fill="#00D4FF"/>
+  <text x="312" y="270" font-size="9" fill="#8B939E" font-family="Segoe UI">Private</text>
+  <text x="310" y="260" font-size="9" fill="#8B939E" font-family="Segoe UI">Endpoint</text>
+
+  <!-- App Service (zone-redundant) -->
+  <rect x="355" y="240" width="135" height="80" rx="8" fill="#1A3A4A"/>
+  <text x="422" y="268" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Service</text>
+  <text x="422" y="288" font-size="10" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">Zone-Redundant</text>
+  <text x="422" y="305" font-size="10" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">Premium v3</text>
+
+  <!-- VNet Integration label -->
+  <text x="422" y="343" font-size="9" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">VNet Integration</text>
+
+  <!-- Arrows to backend services -->
+  <line x1="493" y1="260" x2="570" y2="200" stroke="#C8CED6" stroke-width="1.5"/>
+  <line x1="493" y1="280" x2="570" y2="280" stroke="#C8CED6" stroke-width="1.5"/>
+  <line x1="493" y1="300" x2="570" y2="360" stroke="#C8CED6" stroke-width="1.5"/>
+
+  <!-- Key Vault -->
+  <rect x="575" y="170" width="120" height="50" rx="6" fill="#2A7A8C"/>
+  <text x="635" y="195" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Key Vault</text>
+  <text x="635" y="211" font-size="10" fill="#E0F7FA" font-family="Segoe UI" text-anchor="middle">Secrets &amp; Certs</text>
+
+  <!-- SQL Database -->
+  <rect x="575" y="250" width="120" height="50" rx="6" fill="#2A7A8C"/>
+  <text x="635" y="275" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">SQL Database</text>
+  <text x="635" y="291" font-size="10" fill="#E0F7FA" font-family="Segoe UI" text-anchor="middle">Zone-Redundant</text>
+
+  <!-- Storage -->
+  <rect x="575" y="335" width="120" height="50" rx="6" fill="#2A7A8C"/>
+  <text x="635" y="360" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Storage</text>
+  <text x="635" y="376" font-size="10" fill="#E0F7FA" font-family="Segoe UI" text-anchor="middle">Blob / Files</text>
+
+  <!-- Private Endpoints label -->
+  <text x="550" y="248" font-size="9" fill="#8B939E" font-family="Segoe UI">Private</text>
+  <text x="543" y="258" font-size="9" fill="#8B939E" font-family="Segoe UI">Endpoints</text>
+
+  <!-- Azure Monitor -->
+  <rect x="770" y="250" width="130" height="50" rx="6" fill="#1B2A4A"/>
+  <text x="835" y="275" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Azure Monitor</text>
+  <text x="835" y="291" font-size="10" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">App Insights</text>
+
+  <!-- Dashed to Monitor -->
+  <line x1="700" y1="275" x2="765" y2="275" stroke="#C8CED6" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Key features callout -->
+  <rect x="40" y="420" width="880" height="65" rx="6" fill="#E0F7FA"/>
+  <text x="60" y="445" font-size="13" font-weight="bold" fill="#1A3A4A" font-family="Segoe UI">Production-Ready Features:</text>
+  <text x="295" y="445" font-size="12" fill="#4A5568" font-family="Segoe UI">Zone redundancy  •  WAF protection  •  Private networking  •  End-to-end TLS  •  Managed Identity</text>
+  <text x="60" y="470" font-size="12" fill="#4A5568" font-family="Segoe UI">Reference implementation available on GitHub: Azure-Samples/app-service-baseline-implementation</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: Azure Architecture Center — Baseline Zone-Redundant Web App</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">8 / 10</text>
+</svg>

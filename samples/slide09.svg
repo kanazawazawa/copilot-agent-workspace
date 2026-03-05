@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="960" height="70" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="24" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Architecture: Multi-Region Enterprise</text>
+
+  <!-- Subheading -->
+  <text x="40" y="105" font-size="15" fill="#4A5568" font-family="Segoe UI">Active-Active or Active-Passive configuration for maximum availability (99.9%+ SLO).</text>
+
+  <!-- Front Door / Global LB -->
+  <rect x="380" y="125" width="200" height="50" rx="8" fill="#1B2A4A"/>
+  <text x="480" y="150" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Azure Front Door</text>
+  <text x="480" y="167" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Global Load Balancer + WAF</text>
+
+  <!-- Users -->
+  <circle cx="480" y="105" r="18" fill="#1A3A4A"/>
+  <text x="480" y="111" font-size="14" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">👤</text>
+  <line x1="480" y1="118" x2="480" y2="125" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- Arrow to Region 1 -->
+  <line x1="420" y1="175" x2="240" y2="215" stroke="#00D4FF" stroke-width="2"/>
+  <polygon points="237,209 240,222 248,213" fill="#00D4FF"/>
+
+  <!-- Arrow to Region 2 -->
+  <line x1="540" y1="175" x2="720" y2="215" stroke="#00D4FF" stroke-width="2"/>
+  <polygon points="712,213 720,222 723,209" fill="#00D4FF"/>
+
+  <!-- Region 1 box -->
+  <rect x="60" y="215" width="360" height="230" rx="10" fill="none" stroke="#1B2A4A" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="80" y="238" font-size="12" font-weight="bold" fill="#1B2A4A" font-family="Segoe UI">Region 1 (Primary)</text>
+
+  <!-- App Gateway R1 -->
+  <rect x="80" y="250" width="130" height="40" rx="6" fill="#1B2A4A"/>
+  <text x="145" y="275" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Gateway</text>
+
+  <!-- App Service R1 -->
+  <rect x="80" y="305" width="130" height="40" rx="6" fill="#1A3A4A"/>
+  <text x="145" y="330" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Service</text>
+
+  <!-- SQL R1 -->
+  <rect x="230" y="250" width="110" height="40" rx="6" fill="#2A7A8C"/>
+  <text x="285" y="275" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">SQL DB</text>
+
+  <!-- Key Vault R1 -->
+  <rect x="230" y="305" width="110" height="40" rx="6" fill="#2A7A8C"/>
+  <text x="285" y="330" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Key Vault</text>
+
+  <!-- Storage R1 -->
+  <rect x="230" y="360" width="110" height="40" rx="6" fill="#2A7A8C"/>
+  <text x="285" y="385" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Storage</text>
+
+  <!-- Cache R1 -->
+  <rect x="355" y="250" width="55" height="40" rx="6" fill="#1A3A4A"/>
+  <text x="382" y="275" font-size="9" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Cache</text>
+
+  <!-- Connect lines R1 -->
+  <line x1="145" y1="290" x2="145" y2="305" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="213" y1="325" x2="228" y2="275" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="213" y1="325" x2="228" y2="325" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="213" y1="325" x2="228" y2="380" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- Region 2 box -->
+  <rect x="540" y="215" width="360" height="230" rx="10" fill="none" stroke="#1A3A4A" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="560" y="238" font-size="12" font-weight="bold" fill="#1A3A4A" font-family="Segoe UI">Region 2 (Secondary)</text>
+
+  <!-- App Gateway R2 -->
+  <rect x="560" y="250" width="130" height="40" rx="6" fill="#1B2A4A" opacity="0.7"/>
+  <text x="625" y="275" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Gateway</text>
+
+  <!-- App Service R2 -->
+  <rect x="560" y="305" width="130" height="40" rx="6" fill="#1A3A4A" opacity="0.7"/>
+  <text x="625" y="330" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">App Service</text>
+
+  <!-- SQL R2 -->
+  <rect x="710" y="250" width="110" height="40" rx="6" fill="#2A7A8C" opacity="0.7"/>
+  <text x="765" y="275" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">SQL DB</text>
+
+  <!-- Key Vault R2 -->
+  <rect x="710" y="305" width="110" height="40" rx="6" fill="#2A7A8C" opacity="0.7"/>
+  <text x="765" y="330" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Key Vault</text>
+
+  <!-- Storage R2 -->
+  <rect x="710" y="360" width="110" height="40" rx="6" fill="#2A7A8C" opacity="0.7"/>
+  <text x="765" y="385" font-size="11" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Storage</text>
+
+  <!-- Cache R2 -->
+  <rect x="835" y="250" width="55" height="40" rx="6" fill="#1A3A4A" opacity="0.7"/>
+  <text x="862" y="275" font-size="9" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Cache</text>
+
+  <!-- Connect lines R2 -->
+  <line x1="625" y1="290" x2="625" y2="305" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="693" y1="325" x2="708" y2="275" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="693" y1="325" x2="708" y2="325" stroke="#C8CED6" stroke-width="1"/>
+  <line x1="693" y1="325" x2="708" y2="380" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- Geo-replication arrow -->
+  <line x1="345" y1="270" x2="535" y2="270" stroke="#00D4FF" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="440" y="262" font-size="9" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Geo-Replication</text>
+
+  <!-- Bottom callout -->
+  <rect x="60" y="460" width="840" height="40" rx="6" fill="#E0F7FA"/>
+  <text x="80" y="485" font-size="12" font-weight="bold" fill="#1A3A4A" font-family="Segoe UI">Hub-and-Spoke Topology  •  Azure Front Door for global routing  •  Active-Passive failover  •  99.9%+ composite SLA</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/architecture/web-apps/app-service/architectures/multi-region">
+    <text x="40" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 Source: Azure Architecture Center — Multi-Region App Service</text>
+  </a>
+  <text x="920" y="520" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">9 / 10</text>
+</svg>
