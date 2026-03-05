@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <radialGradient id="glow-cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-teal" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#2A7A8C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#2A7A8C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-dark)"/>
+
+  <!-- Teal decorative circles -->
+  <circle cx="700" cy="480" r="320" fill="#1A3A4A" opacity="0.7"/>
+  <circle cx="880" cy="380" r="200" fill="#2A7A8C" opacity="0.45"/>
+  <circle cx="820" cy="100" r="200" fill="url(#glow-cyan)"/>
+  <circle cx="120" cy="500" r="180" fill="url(#glow-teal)"/>
+
+  <!-- Network decoration (top right) -->
+  <circle cx="820" cy="70" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="860" cy="50" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="895" cy="85" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="855" cy="110" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="885" cy="130" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="920" cy="55" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <line x1="820" y1="70" x2="860" y2="50" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="860" y1="50" x2="895" y2="85" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="895" y1="85" x2="855" y2="110" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="855" y1="110" x2="820" y2="70" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="860" y1="50" x2="920" y2="55" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <line x1="895" y1="85" x2="885" y2="130" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+
+  <!-- Icon area: container/registry icon (simplified) -->
+  <rect x="80" y="148" width="52" height="44" rx="4" fill="#1A3A4A" opacity="0.85"/>
+  <rect x="86" y="155" width="14" height="30" rx="2" fill="#00D4FF" opacity="0.9"/>
+  <rect x="104" y="155" width="14" height="30" rx="2" fill="#00D4FF" opacity="0.6"/>
+  <rect x="122" y="155" width="6" height="30" rx="2" fill="#00D4FF" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="80" y="240" font-size="44" font-weight="bold"
+        fill="#FFFFFF" font-family="Segoe UI, Arial">Azure Container Registry</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="292" font-size="22"
+        fill="#00D4FF" font-family="Segoe UI, Arial">Manage, Build, and Secure Container Images at Scale</text>
+
+  <!-- Accent line -->
+  <line x1="80" y1="314" x2="340" y2="314"
+        stroke="#00D4FF" stroke-width="3"/>
+
+  <!-- Description lines -->
+  <text x="80" y="352" font-size="16"
+        fill="#B0C4D8" font-family="Segoe UI, Arial">A fully managed, private container registry on Microsoft Azure</text>
+  <text x="80" y="376" font-size="16"
+        fill="#B0C4D8" font-family="Segoe UI, Arial">supporting Docker images, OCI artifacts, and Helm charts.</text>
+
+  <!-- Tags row -->
+  <rect x="80" y="410" width="96" height="28" rx="14" fill="#1A3A4A" opacity="0.85"/>
+  <text x="128" y="429" font-size="12" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">Containers</text>
+
+  <rect x="186" y="410" width="80" height="28" rx="14" fill="#1A3A4A" opacity="0.85"/>
+  <text x="226" y="429" font-size="12" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">DevOps</text>
+
+  <rect x="276" y="410" width="96" height="28" rx="14" fill="#1A3A4A" opacity="0.85"/>
+  <text x="324" y="429" font-size="12" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">Kubernetes</text>
+
+  <rect x="382" y="410" width="80" height="28" rx="14" fill="#1A3A4A" opacity="0.85"/>
+  <text x="422" y="429" font-size="12" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">Security</text>
+
+  <!-- Date -->
+  <text x="80" y="500" font-size="13"
+        fill="#8B939E" font-family="Segoe UI, Arial">March 2026</text>
+
+  <!-- Footer -->
+  <text x="880" y="522" font-size="12"
+        fill="#8B939E" font-family="Segoe UI, Arial"
+        text-anchor="end">Microsoft Azure</text>
+</svg>
