@@ -1,0 +1,41 @@
+# =============================================================
+# Copilot Coding Agent — 環境セットアップ
+# =============================================================
+# Issue からコーディングエージェントを割り当てた際に、
+# エージェントが作業を開始する前に自動実行されるセットアップ。
+#
+# ここで実行されるステップはファイアウォールの対象外。
+# 参考: https://docs.github.com/copilot/customizing-copilot/customizing-the-development-environment-for-copilot-coding-agent
+# =============================================================
+
+name: "Copilot Setup Steps"
+
+# 変更時に自動検証 & 手動テスト用
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # ジョブ名は必ず copilot-setup-steps にする（これ以外だと Copilot に認識されない）
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies for svg2pptx
+        run: pip install -r scripts/requirements.txt
