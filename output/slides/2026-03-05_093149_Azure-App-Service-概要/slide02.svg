@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <desc>Azure App Service は HTTP ベースのサービスをホストするフルマネージド PaaS です。Web アプリ、REST API、モバイルバックエンドをサポートし、.NET / Java / Node.js / Python / PHP など多言語対応。OS は Windows と Linux の両方をサポートします。</desc>
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="accent-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure App Service とは？</text>
+  <text x="900" y="47" font-size="13" fill="#8B939E" font-family="Segoe UI" text-anchor="end">1 / 7</text>
+
+  <!-- 左: メイン説明ボックス -->
+  <rect x="40" y="95" width="440" height="370" rx="10" fill="#FFFFFF" stroke="#C8CED6"/>
+
+  <!-- 左ボックス: アクセントライン -->
+  <rect x="40" y="95" width="6" height="370" rx="3" fill="#00D4FF"/>
+
+  <text x="65" y="132" font-size="17" font-weight="bold" fill="#1E2328" font-family="Segoe UI">サービス概要</text>
+  <line x1="65" y1="140" x2="460" y2="140" stroke="#C8CED6" stroke-width="1"/>
+
+  <text x="65" y="168" font-size="14" fill="#4A5568" font-family="Segoe UI">Azure App Service は、</text>
+  <text x="65" y="190" font-size="14" fill="#4A5568" font-family="Segoe UI">HTTP ベースのサービス（Web アプリ・API・</text>
+  <text x="65" y="212" font-size="14" fill="#4A5568" font-family="Segoe UI">モバイルバックエンド）をホストするための</text>
+  <text x="65" y="234" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI">フルマネージド PaaS サービス</text>
+  <text x="65" y="256" font-size="14" fill="#4A5568" font-family="Segoe UI">です。サーバーやインフラの管理は Azure が</text>
+  <text x="65" y="278" font-size="14" fill="#4A5568" font-family="Segoe UI">担うため、開発者はコードに集中できます。</text>
+
+  <line x1="65" y1="298" x2="460" y2="298" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- 特長ポイント -->
+  <circle cx="78" cy="325" r="7" fill="#1B2A4A"/>
+  <text x="78" y="329" font-size="10" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="98" y="330" font-size="13" fill="#1E2328" font-family="Segoe UI">多言語対応（.NET / Java / Node.js / Python / PHP）</text>
+
+  <circle cx="78" cy="355" r="7" fill="#1B2A4A"/>
+  <text x="78" y="359" font-size="10" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="98" y="360" font-size="13" fill="#1E2328" font-family="Segoe UI">Windows / Linux 両対応・Docker カスタムコンテナ</text>
+
+  <circle cx="78" cy="385" r="7" fill="#1B2A4A"/>
+  <text x="78" y="389" font-size="10" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="98" y="390" font-size="13" fill="#1E2328" font-family="Segoe UI">SLA 99.95% の高可用性</text>
+
+  <circle cx="78" cy="415" r="7" fill="#1B2A4A"/>
+  <text x="78" y="419" font-size="10" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="98" y="420" font-size="13" fill="#1E2328" font-family="Segoe UI">グローバルスケール・自動スケーリング対応</text>
+
+  <circle cx="78" cy="445" r="7" fill="#1B2A4A"/>
+  <text x="78" y="449" font-size="10" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">✓</text>
+  <text x="98" y="450" font-size="13" fill="#1E2328" font-family="Segoe UI">GitHub / Azure DevOps との CI/CD 連携</text>
+
+  <!-- 右: 3つのユースケースカード -->
+  <text x="510" y="110" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI">主なユースケース</text>
+
+  <!-- カード1: Web アプリ -->
+  <rect x="510" y="120" width="200" height="100" rx="8" fill="url(#accent-card)"/>
+  <text x="610" y="150" font-size="28" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🌐</text>
+  <text x="610" y="178" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">Web アプリ</text>
+  <text x="610" y="198" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">社内・社外向け Web サイト</text>
+
+  <!-- カード2: REST API -->
+  <rect x="730" y="120" width="200" height="100" rx="8" fill="url(#accent-card)"/>
+  <text x="830" y="150" font-size="28" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">⚡</text>
+  <text x="830" y="178" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">REST API</text>
+  <text x="830" y="198" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">外部連携・マイクロサービス</text>
+
+  <!-- カード3: モバイルバックエンド -->
+  <rect x="510" y="238" width="420" height="100" rx="8" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="720" y="275" font-size="28" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">📱</text>
+  <text x="720" y="303" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">モバイルバックエンド</text>
+  <text x="720" y="323" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">iOS / Android アプリのバックエンド API 基盤</text>
+
+  <!-- PaaS 位置づけ図 -->
+  <rect x="510" y="355" width="420" height="105" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="720" y="378" font-size="13" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">サービスモデルの位置づけ</text>
+  <rect x="530" y="387" width="110" height="60" rx="4" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="585" y="413" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">IaaS</text>
+  <text x="585" y="432" font-size="10" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">VM 管理あり</text>
+  <rect x="655" y="387" width="110" height="60" rx="4" fill="#1B2A4A"/>
+  <text x="710" y="413" font-size="12" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">PaaS ← 今ここ</text>
+  <text x="710" y="432" font-size="10" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">インフラ管理不要</text>
+  <rect x="780" y="387" width="130" height="60" rx="4" fill="#EEF1F5" stroke="#C8CED6"/>
+  <text x="845" y="413" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">SaaS</text>
+  <text x="845" y="432" font-size="10" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">アプリも管理なし</text>
+
+  <!-- フッター情報源 -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/app-service/overview">
+    <text x="40" y="528" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 MS Learn — Azure App Service 概要 →</text>
+  </a>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <desc>Azure App Service の主要機能: 自動スケーリング・高可用性、CI/CD 連携、認証・認可、カスタムドメイン・SSL、監視・診断、デプロイスロット。これらがフルマネージドで利用可能。</desc>
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card-teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#2A7A8C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">主な機能</text>
+  <text x="900" y="47" font-size="13" fill="#8B939E" font-family="Segoe UI" text-anchor="end">2 / 7</text>
+
+  <!-- 機能カード 1: 自動スケーリング -->
+  <rect x="40" y="92" width="280" height="130" rx="8" fill="url(#card-dark)"/>
+  <text x="160" y="125" font-size="28" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">📈</text>
+  <text x="160" y="152" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">自動スケーリング</text>
+  <text x="160" y="172" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">負荷に応じて自動でスケール</text>
+  <text x="160" y="188" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">アップ／アウト。SLA 99.95%</text>
+  <text x="160" y="208" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">▲ スケールイン・スケールアウト</text>
+
+  <!-- 機能カード 2: CI/CD 連携 -->
+  <rect x="340" y="92" width="280" height="130" rx="8" fill="url(#card-dark)"/>
+  <text x="480" y="125" font-size="28" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🔄</text>
+  <text x="480" y="152" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">CI/CD 連携</text>
+  <text x="480" y="172" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">GitHub / Azure DevOps と連携し</text>
+  <text x="480" y="188" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">コード変更を自動デプロイ</text>
+  <text x="480" y="208" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">▲ ZIP・FTP・CLIデプロイも対応</text>
+
+  <!-- 機能カード 3: 認証・認可 -->
+  <rect x="640" y="92" width="280" height="130" rx="8" fill="url(#card-teal)"/>
+  <text x="780" y="125" font-size="28" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🔒</text>
+  <text x="780" y="152" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">認証・認可</text>
+  <text x="780" y="172" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">Azure AD / Google / GitHub 等</text>
+  <text x="780" y="188" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">の外部 IdP との組み込み統合</text>
+  <text x="780" y="208" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">▲ コード変更なしで認証を追加</text>
+
+  <!-- 機能カード 4: カスタムドメイン・SSL -->
+  <rect x="40" y="240" width="280" height="130" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="160" y="275" font-size="28" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">🌍</text>
+  <text x="160" y="300" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">カスタムドメイン・SSL</text>
+  <text x="160" y="320" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">独自ドメイン設定とマネージド</text>
+  <text x="160" y="336" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">SSL 証明書（無料）を提供</text>
+  <text x="160" y="356" font-size="11" fill="#2A7A8C" font-family="Segoe UI" text-anchor="middle">▲ HTTPS を標準でサポート</text>
+
+  <!-- 機能カード 5: 監視・診断 -->
+  <rect x="340" y="240" width="280" height="130" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="480" y="275" font-size="28" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">📊</text>
+  <text x="480" y="300" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">監視・診断</text>
+  <text x="480" y="320" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Application Insights による</text>
+  <text x="480" y="336" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">パフォーマンス監視とログ分析</text>
+  <text x="480" y="356" font-size="11" fill="#2A7A8C" font-family="Segoe UI" text-anchor="middle">▲ 診断ツール・ライブストリーム</text>
+
+  <!-- 機能カード 6: デプロイスロット -->
+  <rect x="640" y="240" width="280" height="130" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="780" y="275" font-size="28" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">🔀</text>
+  <text x="780" y="300" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">デプロイスロット</text>
+  <text x="780" y="320" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">本番・ステージングを分離し</text>
+  <text x="780" y="336" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">スワップでゼロダウンタイム</text>
+  <text x="780" y="356" font-size="11" fill="#2A7A8C" font-family="Segoe UI" text-anchor="middle">▲ ロールバックも即時対応</text>
+
+  <!-- 下部: キーメッセージ -->
+  <rect x="40" y="388" width="880" height="48" rx="8" fill="#1B2A4A"/>
+  <text x="480" y="418" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">これらすべてがフルマネージドで利用可能 — インフラ管理の手間ゼロ</text>
+
+  <!-- フッター情報源 -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/app-service/overview">
+    <text x="40" y="528" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 MS Learn — Azure App Service 概要 →</text>
+  </a>
+</svg>
