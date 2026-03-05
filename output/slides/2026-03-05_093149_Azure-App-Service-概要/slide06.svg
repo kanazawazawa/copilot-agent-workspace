@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <desc>デプロイスロットを使うと、本番環境をダウンさせずにステージング環境でテストし、スワップ操作で瞬時に切り替えられます。ロールバックも即時可能。Standard プラン以上で利用可能。</desc>
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="slot-prod" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="slot-staging" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#2A7A8C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">デプロイスロット — ゼロダウンタイムリリース</text>
+  <text x="900" y="47" font-size="13" fill="#8B939E" font-family="Segoe UI" text-anchor="end">5 / 7</text>
+
+  <!-- 左側: フロー図 -->
+  <!-- 開発者 -->
+  <circle cx="100" cy="155" r="28" fill="#1B2A4A"/>
+  <text x="100" y="162" font-size="20" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">👨‍💻</text>
+  <text x="100" y="200" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">コードプッシュ</text>
+
+  <!-- 矢印: 開発者 → ステージング -->
+  <line x1="130" y1="155" x2="215" y2="155" stroke="#2A7A8C" stroke-width="2"/>
+  <polygon points="215,149 228,155 215,161" fill="#2A7A8C"/>
+
+  <!-- ステージングスロット -->
+  <rect x="228" y="110" width="200" height="90" rx="10" fill="url(#slot-staging)"/>
+  <text x="328" y="145" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">ステージングスロット</text>
+  <text x="328" y="163" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">新バージョン v2.0</text>
+  <text x="328" y="181" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">テスト・検証</text>
+
+  <!-- スワップ矢印（双方向） -->
+  <text x="478" y="148" font-size="22" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">⇄</text>
+  <rect x="456" y="158" width="44" height="22" rx="11" fill="#1B2A4A"/>
+  <text x="478" y="174" font-size="10" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">SWAP</text>
+
+  <!-- 本番スロット -->
+  <rect x="528" y="110" width="200" height="90" rx="10" fill="url(#slot-prod)"/>
+  <text x="628" y="145" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">本番スロット</text>
+  <text x="628" y="163" font-size="11" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">現行バージョン v1.0</text>
+  <text x="628" y="181" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">稼働中 🟢</text>
+
+  <!-- ユーザー -->
+  <circle cx="820" cy="155" r="28" fill="#2A7A8C"/>
+  <text x="820" y="162" font-size="20" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">👥</text>
+  <text x="820" y="200" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">エンドユーザー</text>
+
+  <!-- 矢印: 本番 → ユーザー -->
+  <line x1="728" y1="155" x2="793" y2="155" stroke="#2A7A8C" stroke-width="2"/>
+  <polygon points="793,149 806,155 793,161" fill="#2A7A8C"/>
+
+  <!-- スワップ後の状態説明 -->
+  <text x="478" y="235" font-size="12" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">スワップ後</text>
+  <line x1="228" y1="248" x2="728" y2="248" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <rect x="228" y="258" width="200" height="52" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="328" y="281" font-size="12" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">ステージング</text>
+  <text x="328" y="299" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">旧 v1.0（ロールバック用）</text>
+
+  <rect x="528" y="258" width="200" height="52" rx="8" fill="#1B2A4A"/>
+  <text x="628" y="281" font-size="12" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">本番</text>
+  <text x="628" y="299" font-size="11" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">新 v2.0 が稼働 🚀</text>
+
+  <!-- 右側: メリット一覧 -->
+  <rect x="760" y="96" width="168" height="215" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="760" y="96" width="168" height="6" rx="3" fill="#00D4FF"/>
+  <text x="844" y="120" font-size="12" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">スロットのメリット</text>
+  <line x1="775" y1="128" x2="913" y2="128" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="775" y="148" font-size="11" fill="#4A5568" font-family="Segoe UI">✅ ゼロダウンタイム</text>
+  <text x="785" y="165" font-size="10" fill="#8B939E" font-family="Segoe UI">スワップで瞬時切替</text>
+  <text x="775" y="185" font-size="11" fill="#4A5568" font-family="Segoe UI">✅ 即時ロールバック</text>
+  <text x="785" y="202" font-size="10" fill="#8B939E" font-family="Segoe UI">旧版を保持し即切戻し</text>
+  <text x="775" y="222" font-size="11" fill="#4A5568" font-family="Segoe UI">✅ 本番前テスト</text>
+  <text x="785" y="239" font-size="10" fill="#8B939E" font-family="Segoe UI">本番と同環境で検証</text>
+  <text x="775" y="259" font-size="11" fill="#4A5568" font-family="Segoe UI">✅ 環境設定の分離</text>
+  <text x="785" y="276" font-size="10" fill="#8B939E" font-family="Segoe UI">スロットごとに設定変更</text>
+  <text x="775" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI">✅ カナリアリリース</text>
+  <text x="785" y="313" font-size="10" fill="#8B939E" font-family="Segoe UI">トラフィック分割で検証</text>
+
+  <!-- 下部: 利用条件 -->
+  <rect x="40" y="328" width="700" height="70" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="40" y="328" width="6" height="70" rx="3" fill="#2A7A8C"/>
+  <text x="62" y="352" font-size="13" font-weight="bold" fill="#1E2328" font-family="Segoe UI">利用条件・制限</text>
+  <text x="62" y="374" font-size="12" fill="#4A5568" font-family="Segoe UI">• Standard プラン以上で利用可能（S: 5 スロット、P: 20 スロット、I: 20 スロット）</text>
+  <text x="62" y="392" font-size="12" fill="#4A5568" font-family="Segoe UI">• スロットは同じ App Service Plan 内のリソースを共有するため、本番への影響に注意</text>
+
+  <!-- フッター情報源 -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/app-service/deploy-staging-slots">
+    <text x="40" y="528" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 MS Learn — ステージング環境のセットアップ →</text>
+  </a>
+</svg>

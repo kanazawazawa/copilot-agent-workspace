@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <desc>Azure App Service はマルチランタイム対応。.NET / .NET Core、Java、Node.js、Python、PHP、Ruby をサポート。Docker カスタムコンテナも利用可能。Windows と Linux 両方の OS に対応。</desc>
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="badge-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">サポート言語・ランタイム環境</text>
+  <text x="900" y="47" font-size="13" fill="#8B939E" font-family="Segoe UI" text-anchor="end">3 / 7</text>
+
+  <!-- OS サポート セクション -->
+  <text x="40" y="100" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">対応 OS</text>
+  <line x1="40" y1="106" x2="920" y2="106" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- Windows バッジ -->
+  <rect x="40" y="114" width="200" height="50" rx="8" fill="url(#badge-dark)"/>
+  <text x="140" y="145" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🪟 Windows</text>
+
+  <!-- Linux バッジ -->
+  <rect x="260" y="114" width="200" height="50" rx="8" fill="#1A3A4A"/>
+  <text x="360" y="145" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🐧 Linux</text>
+
+  <!-- Docker バッジ -->
+  <rect x="480" y="114" width="200" height="50" rx="8" fill="#2A7A8C"/>
+  <text x="580" y="145" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">🐳 Docker コンテナ</text>
+
+  <!-- 注記 -->
+  <text x="700" y="145" font-size="12" fill="#8B939E" font-family="Segoe UI">カスタムコンテナイメージも対応</text>
+
+  <!-- 言語ランタイム セクション -->
+  <text x="40" y="190" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">対応言語・ランタイム</text>
+  <line x1="40" y1="196" x2="920" y2="196" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- .NET カード -->
+  <rect x="40" y="204" width="160" height="140" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="40" y="204" width="160" height="6" rx="4" fill="#1B2A4A"/>
+  <text x="120" y="248" font-size="24" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">.NET</text>
+  <line x1="60" y1="260" x2="180" y2="260" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="120" y="278" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">.NET 8 / 7 / 6</text>
+  <text x="120" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">.NET Framework</text>
+  <text x="120" y="314" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">ASP.NET Core</text>
+  <text x="120" y="332" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Win / Linux</text>
+
+  <!-- Java カード -->
+  <rect x="216" y="204" width="160" height="140" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="216" y="204" width="160" height="6" rx="4" fill="#1A3A4A"/>
+  <text x="296" y="248" font-size="24" fill="#1A3A4A" font-family="Segoe UI" text-anchor="middle">☕ Java</text>
+  <line x1="236" y1="260" x2="356" y2="260" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="296" y="278" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Java 21 / 17 / 11 / 8</text>
+  <text x="296" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Spring Boot</text>
+  <text x="296" y="314" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Tomcat / JBoss</text>
+  <text x="296" y="332" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Win / Linux</text>
+
+  <!-- Node.js カード -->
+  <rect x="392" y="204" width="160" height="140" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="392" y="204" width="160" height="6" rx="4" fill="#2A7A8C"/>
+  <text x="472" y="248" font-size="20" fill="#2A7A8C" font-family="Segoe UI" text-anchor="middle">Node.js</text>
+  <line x1="412" y1="260" x2="532" y2="260" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="472" y="278" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Node 20 / 18 / 16</text>
+  <text x="472" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Express / Next.js</text>
+  <text x="472" y="314" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">NestJS など</text>
+  <text x="472" y="332" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Win / Linux</text>
+
+  <!-- Python カード -->
+  <rect x="568" y="204" width="160" height="140" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="568" y="204" width="160" height="6" rx="4" fill="#1B2A4A"/>
+  <text x="648" y="248" font-size="24" fill="#1B2A4A" font-family="Segoe UI" text-anchor="middle">🐍 Python</text>
+  <line x1="588" y1="260" x2="708" y2="260" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="648" y="278" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Python 3.12 / 3.11</text>
+  <text x="648" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Django / Flask</text>
+  <text x="648" y="314" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">FastAPI</text>
+  <text x="648" y="332" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Linux のみ</text>
+
+  <!-- PHP カード -->
+  <rect x="744" y="204" width="180" height="140" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <rect x="744" y="204" width="180" height="6" rx="4" fill="#1A3A4A"/>
+  <text x="834" y="248" font-size="22" fill="#1A3A4A" font-family="Segoe UI" text-anchor="middle">PHP / Ruby</text>
+  <line x1="764" y1="260" x2="904" y2="260" stroke="#EEF1F5" stroke-width="1"/>
+  <text x="834" y="278" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">PHP 8.3 / 8.2 / 8.1</text>
+  <text x="834" y="296" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Laravel / WordPress</text>
+  <text x="834" y="314" font-size="11" fill="#4A5568" font-family="Segoe UI" text-anchor="middle">Ruby on Rails</text>
+  <text x="834" y="332" font-size="10" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">Win / Linux</text>
+
+  <!-- 下部: ポイント -->
+  <rect x="40" y="358" width="880" height="70" rx="8" fill="#FFFFFF" stroke="#C8CED6"/>
+  <text x="40" y="358" font-size="0" fill="none"/>
+  <rect x="40" y="358" width="6" height="70" rx="3" fill="#00D4FF"/>
+  <text x="65" y="385" font-size="13" font-weight="bold" fill="#1E2328" font-family="Segoe UI">マルチ言語・マルチランタイムの柔軟性</text>
+  <text x="65" y="408" font-size="12" fill="#4A5568" font-family="Segoe UI">既存コードをそのまま移行可能。カスタム Docker コンテナで対応言語をさらに拡張。ランタイムバージョンはポータルから簡単に変更できます。</text>
+
+  <!-- フッター情報源 -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/app-service/overview#built-in-languages-and-frameworks">
+    <text x="40" y="528" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 MS Learn — 組み込み言語とフレームワーク →</text>
+  </a>
+</svg>

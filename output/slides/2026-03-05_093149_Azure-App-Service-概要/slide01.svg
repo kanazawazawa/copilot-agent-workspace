@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <desc>Azure App Service は、フルマネージド PaaS として Web アプリ・API・モバイルバックエンドを簡単に構築・デプロイ・スケールできる Azure のコアサービスです。</desc>
+  <defs>
+    <linearGradient id="bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <radialGradient id="glow-cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-dark)"/>
+
+  <!-- ティール装飾円 -->
+  <circle cx="680" cy="500" r="320" fill="#1A3A4A" opacity="0.7"/>
+  <circle cx="880" cy="420" r="220" fill="#2A7A8C" opacity="0.45"/>
+
+  <!-- シアングロー -->
+  <circle cx="820" cy="100" r="200" fill="url(#glow-cyan)"/>
+
+  <!-- ネットワーク装飾（右上） -->
+  <circle cx="820" cy="70" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="860" cy="50" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="890" cy="90" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="845" cy="115" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="875" cy="130" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <line x1="820" y1="70" x2="860" y2="50" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="860" y1="50" x2="890" y2="90" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="890" y1="90" x2="845" y2="115" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="845" y1="115" x2="820" y2="70" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="845" y1="115" x2="875" y2="130" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+
+  <!-- 左側アクセントライン（縦） -->
+  <rect x="60" y="160" width="4" height="180" fill="#00D4FF" opacity="0.8"/>
+
+  <!-- メインタイトル -->
+  <text x="80" y="210" font-size="42" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure App Service</text>
+
+  <!-- サブタイトル -->
+  <text x="80" y="260" font-size="24" fill="#00D4FF" font-family="Segoe UI">概要と主要機能</text>
+
+  <!-- アクセントライン（横） -->
+  <line x1="80" y1="280" x2="340" y2="280" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- 説明文 -->
+  <text x="80" y="318" font-size="15" fill="#B0C4D8" font-family="Segoe UI">フルマネージド PaaS — Web アプリ・API・モバイルバックエンドを</text>
+  <text x="80" y="340" font-size="15" fill="#B0C4D8" font-family="Segoe UI">インフラ管理不要で構築・デプロイ・スケール</text>
+
+  <!-- バッジ風テキスト -->
+  <rect x="80" y="370" width="120" height="28" rx="14" fill="#1A3A4A" stroke="#00D4FF" stroke-width="1"/>
+  <text x="140" y="389" font-size="12" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">PaaS</text>
+  <rect x="215" y="370" width="140" height="28" rx="14" fill="#1A3A4A" stroke="#2A7A8C" stroke-width="1"/>
+  <text x="285" y="389" font-size="12" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">フルマネージド</text>
+  <rect x="370" y="370" width="160" height="28" rx="14" fill="#1A3A4A" stroke="#2A7A8C" stroke-width="1"/>
+  <text x="450" y="389" font-size="12" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">SLA 99.95%</text>
+
+  <!-- 日付 -->
+  <text x="80" y="500" font-size="13" fill="#8B939E" font-family="Segoe UI">2026年3月</text>
+
+  <!-- フッター -->
+  <text x="920" y="525" font-size="12" fill="#8B939E" font-family="Segoe UI" text-anchor="end">Microsoft Azure</text>
+
+  <!-- 情報源リンク -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/app-service/overview">
+    <text x="80" y="525" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 MS Learn — Azure App Service 概要 →</text>
+  </a>
+</svg>
