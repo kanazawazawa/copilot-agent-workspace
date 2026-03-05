@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <!-- Background -->
+  <rect width="960" height="540" fill="#0d1117"/>
+  
+  <!-- Top accent bar -->
+  <rect x="0" y="0" width="960" height="4" fill="#6e40c9"/>
+  
+  <!-- Title -->
+  <text x="60" y="55" font-family="Segoe UI, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">Architecture</text>
+  <text x="200" y="55" font-family="Segoe UI, sans-serif" font-size="14" fill="#8b949e">End-to-End Pipeline</text>
+
+  <!-- ====== FLOW: Left to Right ====== -->
+  
+  <!-- 1. User Prompt -->
+  <rect x="30" y="90" width="130" height="70" rx="8" fill="#1f2937" stroke="#58a6ff" stroke-width="2"/>
+  <text x="95" y="120" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#58a6ff" text-anchor="middle">User Prompt</text>
+  <text x="95" y="140" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">workflow_dispatch</text>
+  
+  <!-- Arrow 1→2 -->
+  <line x1="160" y1="125" x2="195" y2="125" stroke="#30363d" stroke-width="2"/>
+  <polygon points="195,120 205,125 195,130" fill="#30363d"/>
+  
+  <!-- 2. GitHub Actions -->
+  <rect x="205" y="80" width="160" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="285" y="108" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">GitHub Actions</text>
+  <text x="285" y="128" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Node.js 22 / Python 3</text>
+  <text x="285" y="148" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">ubuntu-latest</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="365" y1="125" x2="400" y2="125" stroke="#30363d" stroke-width="2"/>
+  <polygon points="400,120 410,125 400,130" fill="#30363d"/>
+
+  <!-- 3. Copilot SDK Runner -->
+  <rect x="410" y="80" width="190" height="90" rx="8" fill="#21262d" stroke="#6e40c9" stroke-width="2"/>
+  <text x="505" y="105" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#d2a8ff" text-anchor="middle">Copilot SDK Runner</text>
+  <text x="505" y="123" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">copilot-sdk-runner.mjs</text>
+  <text x="505" y="140" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">CopilotClient / sendAndWait</text>
+  <text x="505" y="157" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Retry: 2 attempts / Timeout: 10m</text>
+
+  <!-- Arrow 3→4 (down) -->
+  <line x1="505" y1="170" x2="505" y2="210" stroke="#6e40c9" stroke-width="2"/>
+  <polygon points="500,210 505,220 510,210" fill="#6e40c9"/>
+
+  <!-- 4. Copilot Agentic Core -->
+  <rect x="410" y="220" width="190" height="80" rx="8" fill="#6e40c9" stroke="#8957e5" stroke-width="1"/>
+  <text x="505" y="248" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">GitHub Copilot</text>
+  <text x="505" y="268" font-family="Segoe UI, sans-serif" font-size="11" fill="#e0d4f7" text-anchor="middle">Agentic Core</text>
+  <text x="505" y="288" font-family="Segoe UI, sans-serif" font-size="10" fill="#c9b8e8" text-anchor="middle">claude-opus-4.6 / gpt-5.2</text>
+
+  <!-- Arrow to MS Learn (left from Copilot) -->
+  <line x1="410" y1="260" x2="340" y2="260" stroke="#0078d4" stroke-width="2"/>
+  <polygon points="340,255 330,260 340,265" fill="#0078d4"/>
+
+  <!-- MS Learn MCP -->
+  <rect x="175" y="230" width="155" height="60" rx="8" fill="#0078d4" stroke="#3794ff" stroke-width="1"/>
+  <text x="252" y="255" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">MS Learn MCP</text>
+  <text x="252" y="273" font-family="Segoe UI, sans-serif" font-size="10" fill="#cce5ff" text-anchor="middle">learn.microsoft.com/api/mcp</text>
+
+  <!-- Arrow from Copilot down to SVG -->
+  <line x1="505" y1="300" x2="505" y2="335" stroke="#6e40c9" stroke-width="2"/>
+  <polygon points="500,335 505,345 510,335" fill="#6e40c9"/>
+
+  <!-- 5. SVG Generation -->
+  <rect x="430" y="345" width="150" height="55" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="505" y="370" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#3fb950" text-anchor="middle">SVG Slides</text>
+  <text x="505" y="388" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">960×540 / Text + Diagrams</text>
+
+  <!-- Arrow 5→6 -->
+  <line x1="580" y1="373" x2="625" y2="373" stroke="#30363d" stroke-width="2"/>
+  <polygon points="625,368 635,373 625,378" fill="#30363d"/>
+
+  <!-- 6. svg2pptx.py -->
+  <rect x="635" y="345" width="150" height="55" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="710" y="368" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#f0883e" text-anchor="middle">svg2pptx.py</text>
+  <text x="710" y="386" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">SVG → Native PPTX Objects</text>
+
+  <!-- Arrow 6→7 -->
+  <line x1="710" y1="400" x2="710" y2="430" stroke="#30363d" stroke-width="2"/>
+  <polygon points="705,430 710,440 715,430" fill="#30363d"/>
+
+  <!-- 7. Editable PPTX -->
+  <rect x="640" y="440" width="140" height="50" rx="8" fill="#1f2937" stroke="#58a6ff" stroke-width="1"/>
+  <text x="710" y="465" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#58a6ff" text-anchor="middle">Editable .pptx</text>
+  <text x="710" y="480" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Shapes + TextBoxes</text>
+
+  <!-- Arrow to Azure Blob -->
+  <line x1="640" y1="465" x2="545" y2="465" stroke="#0078d4" stroke-width="2"/>
+  <polygon points="545,460 535,465 545,470" fill="#0078d4"/>
+
+  <!-- 8. Azure Blob Storage -->
+  <rect x="380" y="440" width="155" height="50" rx="8" fill="#0078d4" stroke="#3794ff" stroke-width="1"/>
+  <text x="457" y="462" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Azure Blob Storage</text>
+  <text x="457" y="478" font-family="Segoe UI, sans-serif" font-size="10" fill="#cce5ff" text-anchor="middle">copilot-outputs container</text>
+
+  <!-- Arrow to Blazor App -->
+  <line x1="380" y1="465" x2="310" y2="465" stroke="#0078d4" stroke-width="2"/>
+  <polygon points="310,460 300,465 310,470" fill="#0078d4"/>
+
+  <!-- 9. Blazor Web App -->
+  <rect x="145" y="440" width="155" height="50" rx="8" fill="#0078d4" stroke="#3794ff" stroke-width="1"/>
+  <text x="222" y="462" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Blazor Web App</text>
+  <text x="222" y="478" font-family="Segoe UI, sans-serif" font-size="10" fill="#cce5ff" text-anchor="middle">.NET 10 / App Service</text>
+
+  <!-- Legends -->
+  <rect x="30" y="345" width="120" height="45" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="40" y="363" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b949e">Legend</text>
+  <rect x="40" y="372" width="8" height="8" fill="#6e40c9"/>
+  <text x="54" y="380" font-family="Segoe UI, sans-serif" font-size="9" fill="#8b949e">Copilot SDK</text>
+  <rect x="40" y="382" width="8" height="8" fill="#0078d4"/>
+  <text x="54" y="390" font-family="Segoe UI, sans-serif" font-size="9" fill="#8b949e" >Azure / MS</text>
+
+  <!-- SDK Features callout -->
+  <rect x="660" y="85" width="270" height="155" rx="8" fill="#161b22" stroke="#6e40c9" stroke-width="1"/>
+  <text x="680" y="110" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#d2a8ff">SDK Features</text>
+  <text x="685" y="133" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ CopilotClient + createSession</text>
+  <text x="685" y="153" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ sendAndWait (sync execution)</text>
+  <text x="685" y="173" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ onPermissionRequest (auto)</text>
+  <text x="685" y="193" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ Retry: 2 attempts / 10s delay</text>
+  <text x="685" y="213" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ Timeout: 600s (configurable)</text>
+  <text x="685" y="233" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">▸ Model: claude-opus-4.6 / gpt-5.2</text>
+
+  <!-- Microsoft Azure integration callout -->
+  <rect x="30" y="120" width="1" height="1" fill="none"/>
+
+  <!-- GitHub Copilot SDK badge -->
+  <rect x="750" y="24" width="170" height="26" rx="13" fill="#6e40c9"/>
+  <text x="770" y="42" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#ffffff">GitHub Copilot SDK</text>
+</svg>

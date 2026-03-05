@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <!-- Background -->
+  <rect width="960" height="540" fill="#0d1117"/>
+  
+  <!-- Top accent bar -->
+  <rect x="0" y="0" width="960" height="4" fill="#6e40c9"/>
+  
+  <!-- Title -->
+  <text x="60" y="70" font-family="Segoe UI, sans-serif" font-size="32" font-weight="bold" fill="#ffffff">Copilot Slide Agent</text>
+  <text x="60" y="105" font-family="Segoe UI, sans-serif" font-size="16" fill="#8b949e">One Prompt → Editable PowerPoint with Diagrams in 10 Minutes</text>
+  
+  <!-- Repo link -->
+  <text x="700" y="70" font-family="Segoe UI, sans-serif" font-size="11" fill="#58a6ff">github.com/kanazawazawa/</text>
+  <text x="700" y="88" font-family="Segoe UI, sans-serif" font-size="11" fill="#58a6ff">copilot-agent-workspace</text>
+
+  <!-- Problem Section -->
+  <rect x="40" y="130" width="420" height="180" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="160" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#f85149">Problem</text>
+  
+  <text x="60" y="192" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">顧客向け技術スライドを作るのに</text>
+  <text x="60" y="212" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">毎回 2〜3 時間かかっている</text>
+  
+  <text x="75" y="242" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">① MS Learn で最新情報を調査</text>
+  <text x="75" y="262" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">② 内容を構造化してスライドに落とす</text>
+  <text x="75" y="282" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">③ 図表・レイアウトを手作業で整える</text>
+  <text x="75" y="302" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">④ レビュー・修正を繰り返す</text>
+
+  <!-- Solution Section -->
+  <rect x="500" y="130" width="420" height="180" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="520" y="160" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#3fb950">Solution</text>
+  
+  <text x="520" y="192" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">プロンプト 1 行で調査から PPTX 生成まで</text>
+  <text x="520" y="212" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">全自動。約 10 分で完了</text>
+
+  <text x="535" y="242" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">✅ Copilot SDK が MS Learn を自動調査</text>
+  <text x="535" y="262" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">✅ AI が SVG スライドを生成（図表込み）</text>
+  <text x="535" y="282" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">✅ svg2pptx.py で編集可能な PPTX に変換</text>
+  <text x="535" y="302" font-family="Segoe UI, sans-serif" font-size="12" fill="#8b949e">✅ Azure Blob 経由で Web アプリから取得</text>
+
+  <!-- Arrow between sections -->
+  <line x1="465" y1="220" x2="495" y2="220" stroke="#6e40c9" stroke-width="2"/>
+  <polygon points="495,215 505,220 495,225" fill="#6e40c9"/>
+
+  <!-- Key Differentiators -->
+  <rect x="40" y="330" width="880" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="360" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#58a6ff">Key Differentiators</text>
+  
+  <!-- Differentiator cards -->
+  <rect x="60" y="375" width="200" height="32" rx="4" fill="#1f2937"/>
+  <text x="70" y="396" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">📝 Editable PPTX (not images)</text>
+  
+  <rect x="280" y="375" width="200" height="32" rx="4" fill="#1f2937"/>
+  <text x="290" y="396" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">🔄 SDK Retry + Timeout</text>
+  
+  <rect x="500" y="375" width="200" height="32" rx="4" fill="#1f2937"/>
+  <text x="510" y="396" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">📚 MS Learn MCP (live data)</text>
+  
+  <rect x="720" y="375" width="200" height="32" rx="4" fill="#1f2937"/>
+  <text x="730" y="396" font-family="Segoe UI, sans-serif" font-size="11" fill="#c9d1d9">⚙️ CI/CD on GitHub Actions</text>
+
+  <!-- Business Value -->
+  <rect x="40" y="440" width="880" height="80" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="470" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#d2a8ff">Enterprise Business Value</text>
+  
+  <text x="60" y="500" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">⏱ 2-3h → 10min per deck</text>
+  <text x="300" y="500" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">🔁 Reusable across any Azure topic</text>
+  <text x="600" y="500" font-family="Segoe UI, sans-serif" font-size="13" fill="#c9d1d9">🏢 Team productivity × 10</text>
+
+  <!-- GitHub Copilot SDK badge -->
+  <rect x="750" y="24" width="170" height="26" rx="13" fill="#6e40c9"/>
+  <text x="770" y="42" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#ffffff">GitHub Copilot SDK</text>
+</svg>

@@ -29,6 +29,14 @@ output/**
 # memory MCP のデータは個人のセッション記憶なので共有対象外
 .github/memory.json
 
+# ===== 生成バイナリ =====
+# presentations/ 内の PPTX は SVG から再生成可能（python scripts/svg2pptx.py）
+presentations/*.pptx
+
+# ===== Challenge 提出固有 =====
+# 提出フォーム用サマリー（社内コンテスト用）
+docs/SUMMARY.md
+
 # ===== OS =====
 .DS_Store
 Thumbs.db

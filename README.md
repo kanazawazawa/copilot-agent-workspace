@@ -1,59 +1,30 @@
-# Copilot Agent Workspace
+# Copilot Slide Agent
 
-## この環境について
+**One prompt → 10 minutes → Editable PPTX with diagrams.**
 
-GitHub Copilot を **調査アシスタント & ドキュメント作成パートナー** として活用するためのエージェント環境です。Web UI からプロンプトを入力すると、GitHub Actions 上で Copilot CLI が実行され、PPTX スライドが自動生成されます。
-
-- **Web アプリ**: Blazor Server (.NET 10) — プロンプト入力・ジョブ管理・履歴閲覧
-- **バックエンド**: GitHub Actions + Copilot CLI — SVG スライド生成 → PPTX 変換
-- **ストレージ**: Azure Blob Storage — 生成済み PPTX の保管・配信
-- **ホスティング**: Azure App Service（`app-20260304.azurewebsites.net`）
-
-[microsoft/skills](https://github.com/microsoft/skills) や [github/awesome-copilot](https://github.com/github/awesome-copilot) のパターンを参考に構築しています。
+GitHub Copilot SDK を使い、自然言語プロンプトから **編集可能な PowerPoint スライド** を自動生成するエージェントです。  
+顧客向け技術スライドの作成にかかる **2〜3 時間の作業を約 10 分** に短縮します。
 
 ---
 
-## ディレクトリ構成
+## なぜ作ったか
 
-```
-ghcpskills/
-├── .github/
-│   ├── copilot-instructions.md              # Copilot 共通ルール（常に適用）
-│   ├── workflows/
-│   │   └── copilot-poc.yml                  # Copilot CLI 実行ワークフロー
-│   ├── skills/                              # タスク別の専門知識
-│   │   ├── ms-learn-research/SKILL.md       # MS Learn 調査
-│   │   ├── customer-research/SKILL.md       # 顧客情報調査
-│   │   ├── slide-creator/SKILL.md           # SVGスライド→PPTX変換
-│   │   └── document-writer/SKILL.md         # Markdown ドキュメント作成
-│   ├── instructions/                        # ファイルパターン別ルール
-│   │   ├── markdown-quality.instructions.md # *.md 向け
-│   │   └── research-quality.instructions.md # 調査ドキュメント向け
-│   └── prompts/                             # 再利用可能なプロンプト
-│       └── aca-network-research.prompt.md
-├── webapp/                                  # Blazor Server Web アプリ
-│   ├── Components/Pages/
-│   │   ├── Home.razor                       # トップ（プロンプト入力・作成履歴）
-│   │   ├── Jobs.razor                       # ジョブ一覧（GitHub Actions 実行状況）
-│   │   └── History.razor                    # PPTX 履歴（カード表示・検索）
-│   ├── Services/
-│   │   ├── GitHubActionsService.cs          # GitHub Actions API 連携
-│   │   └── BlobStorageService.cs            # Azure Blob Storage 連携
-│   ├── CopilotWebApp.csproj                 # .NET 10 / Octokit 14 / Azure.Storage.Blobs
-│   └── Program.cs
-├── scripts/
-│   └── svg2pptx.py                          # SVG→PPTX 変換スクリプト
-├── output/                                  # 成果物の出力先
-│   ├── research/                            #   調査結果
-│   ├── documents/                           #   提案書・報告書
-│   ├── slides/                              #   SVG スライド + PPTX
-│   └── customers/                           #   顧客調査
-├── .vscode/
-│   └── mcp.json                             # MCP サーバー設定
-├── AGENTS.md                                # 全体方針・原則（常に適用）
-├── LICENSE                                  # MIT License
-└── README.md                                # ← このファイル
-```
+| Before | After |
+|--------|-------|
+| MS Learn を手動で検索 | Copilot が MCP 経由で公式ドキュメントを自動取得 |
+| PowerPoint でゼロからスライドを構築 | SVG → ネイティブ PPTX に自動変換（テキスト編集可能） |
+| 1 デッキに 2〜3 時間 | プロンプト入力 → 約 10 分で完成 |
+| 品質にばらつき | スキル定義でデザイン・構成ルールを統一 |
+
+---
+
+## スライド例
+
+このエージェントが生成するスライドのサンプルです（SVG → 編集可能な PPTX に自動変換されます）。
+
+![Business Value](presentations/slide01.svg)
+
+![Architecture](presentations/slide02.svg)
 
 ---
 
@@ -61,155 +32,171 @@ ghcpskills/
 
 ```mermaid
 flowchart LR
-    User([ユーザー]) -->|プロンプト入力| WebApp[Blazor Server\nApp Service]
-    WebApp -->|workflow_dispatch| GHA[GitHub Actions]
-    GHA -->|Copilot CLI| SVG[SVG スライド生成]
-    SVG -->|svg2pptx.py| PPTX[PPTX 変換]
-    PPTX -->|アップロード| Blob[Azure Blob Storage]
-    WebApp -->|一覧・DL| Blob
-    WebApp -->|ステータス| GHA
+    subgraph Trigger
+        A[ユーザープロンプト] -->|workflow_dispatch| B[GitHub Actions]
+    end
+
+    subgraph "GitHub Actions (CI/CD)"
+        B --> C[Copilot SDK Runner<br/>copilot-sdk-runner.mjs]
+        C -->|"CopilotClient /<br/>createSession /<br/>sendAndWait"| D[GitHub Copilot<br/>Agentic Core]
+        D -->|MCP| E[MS Learn<br/>公式ドキュメント]
+        D --> F[SVG スライド<br/>960×540]
+        F --> G[svg2pptx.py<br/>SVG → ネイティブ PPTX]
+        G --> H[編集可能な .pptx]
+    end
+
+    subgraph "Azure（配信）"
+        H --> I[Azure Blob Storage]
+        I --> J[Blazor Web App<br/>.NET 10]
+    end
+
+    style D fill:#6e40c9,color:#fff
+    style E fill:#0078d4,color:#fff
+    style I fill:#0078d4,color:#fff
+    style J fill:#0078d4,color:#fff
 ```
 
-上記のフローの概要を以下に示す。
-
-1. ユーザーが Web UI でプロンプトを入力して実行
-2. Blazor Server が GitHub Actions の `workflow_dispatch` をトリガー
-3. GitHub Actions 上で Copilot CLI が SVG スライドを生成
-4. `svg2pptx.py` で PPTX に変換し、Azure Blob Storage にアップロード
-5. Web UI から履歴の閲覧・ダウンロードが可能
+1. ユーザーが自然言語プロンプトを入力（Web UI or GitHub Actions 手動実行）
+2. **Copilot SDK**（`@github/copilot-sdk`）がエージェントセッションを開始
+3. Copilot が **MS Learn MCP サーバー** で公式ドキュメントを調査 → **SVG スライド** を生成
+4. `svg2pptx.py` が SVG 要素を **ネイティブ PowerPoint オブジェクト** に変換（図形・テキストボックス — 画像埋め込みではない）
+5. 生成された `.pptx` を Azure Blob Storage にアップロード → Web アプリで配布
 
 ---
 
-## Web アプリの機能
+## SDK で使用している機能
 
-| ページ | 機能 |
-|--------|------|
-| Home (`/`) | プロンプト入力、テンプレート選択、作成履歴テーブル（実行中ジョブ表示付き） |
-| Jobs (`/jobs`) | GitHub Actions 実行一覧、自動更新、Blob ファイル詳細 |
-| History (`/history`) | PPTX カード表示、キーワード検索・絞り込み、ダウンロード |
+| SDK Feature | 用途 |
+|-------------|------|
+| `CopilotClient` | SDK クライアント初期化（自動トークン検出） |
+| `createSession` | モデル選択付きセッション作成（claude-opus-4.6 / gpt-5.2 / o3 等） |
+| `sendAndWait` | タイムアウト付き同期プロンプト実行 |
+| `onPermissionRequest` | ツール使用許可の自動承認 |
+| **リトライ制御** | `COPILOT_MAX_RETRIES` / `COPILOT_RETRY_DELAY` で設定可能なリトライ |
+| **タイムアウト制御** | `COPILOT_TIMEOUT_MS`（デフォルト 10 分） |
 
----
-
-## 各ファイルの役割と使い分け
-
-### AGENTS.md（プロジェクト全体の方針）
-
-- **いつ効くか:** Copilot のすべてのインタラクション
-- **何を書くか:** このプロジェクト固有の原則、ワークフロー、禁止事項
-- **元ネタ:** [microsoft/skills の Agents.md](https://github.com/microsoft/skills/blob/main/Agents.md)
-
-### .github/copilot-instructions.md（Copilot 共通ルール）
-
-- **いつ効くか:** このワークスペースで Copilot を使うとき常に
-- **何を書くか:** 言語設定、回答スタイル、共通フォーマット
-- **違い:** AGENTS.md がプロジェクト固有なのに対し、こちらは Copilot の振る舞いルール
-
-### .github/skills/（スキル）
-
-- **いつ効くか:** 関連するタスクをリクエストしたとき（トリガーワードで発動）
-- **何を書くか:** 特定タスクの手順、テンプレート、ルール
-- **元ネタ:** [microsoft/skills のスキル構造](https://github.com/microsoft/skills/tree/main/.github/skills)、[awesome-copilot の skills/](https://github.com/github/awesome-copilot/tree/main/skills)
-
-### .github/instructions/（インストラクション）
-
-- **いつ効くか:** `applyTo` で指定したファイルパターンの編集時に自動適用
-- **何を書くか:** そのファイル種別固有のルール・品質基準
-
-### .github/workflows/copilot-poc.yml（GitHub Actions ワークフロー）
-
-- **いつ効くか:** Web UI から実行ボタンを押したとき、または手動 dispatch 時
-- **何をするか:** Copilot CLI で SVG 生成 → PPTX 変換 → Blob Storage にアップロード
-
-### .vscode/mcp.json（MCP サーバー設定）
-
-- **いつ効くか:** Copilot がツールとして使える外部サービスの設定
-- **何を書くか:** MCP サーバーの接続情報
+> SDK Runner のコード: [`scripts/copilot-sdk-runner.mjs`](scripts/copilot-sdk-runner.mjs)
 
 ---
 
-## 設定済み MCP サーバー
+## 主要な技術判断
 
-| サーバー | 用途 | 種類 |
-|----------|------|------|
-| `microsoft-docs` | MS Learn 公式ドキュメント検索・取得 | HTTP |
-| `context7` | ドキュメントのセマンティック検索 | stdio |
-| `deepwiki` | GitHub リポジトリの質問応答 | HTTP |
-| `sequentialthinking` | 複雑な問題の段階的推論 | stdio |
-| `memory` | セッション間の記憶保持 | stdio |
-| `github` | GitHub API 操作 | HTTP |
+| 判断 | 理由 |
+|------|------|
+| **中間形式として SVG** | AI はマークアップ生成が得意。SVG は標準テキスト形式で Copilot がネイティブに扱える |
+| **画像ではなくネイティブ PPTX オブジェクト** | `svg2pptx.py` が `add_shape()` / `add_textbox()` / `text_frame` に変換。PowerPoint で完全に編集・検索可能 |
+| **AI と変換の分離** | AI はコンテンツ（SVG）に集中。変換は決定論的 Python コードで行い、ハルシネーションリスクを排除 |
+| **CLI → SDK 移行** | プログラム的制御（リトライ・タイムアウト・パーミッション管理・構造化エラーハンドリング） |
 
 ---
 
-## 使い方の例
+## クイックスタート
 
-### 例1: Web UI からスライド生成
-```
-1. https://app-20260304.azurewebsites.net/ にアクセス
-2. プロンプトを入力（またはテンプレートを選択）
-3. モデルを選択して「▶ 実行」
-4. ジョブ一覧で進捗を確認 → 完了後に履歴からダウンロード
+### GitHub Actions で実行（推奨）
+
+1. **Actions** タブ → **Copilot SDK Runner** → **Run workflow**
+2. プロンプトを入力（例: `Azure Cosmos DB の概要をPPTXで作成してください`）
+3. モデルを選択（`claude-opus-4.6` 推奨）
+4. 完了後、Artifact から `.pptx` をダウンロード
+
+### ローカル実行
+
+```bash
+git clone https://github.com/kanazawazawa/copilot-agent-workspace.git
+cd copilot-agent-workspace
+
+# Python 依存関係
+pip install -r scripts/requirements.txt
+
+# 実行
+export COPILOT_GITHUB_TOKEN="ghp_xxx"
+export COPILOT_PROMPT="Azure App Service の概要をPPTXで作成してください"
+node scripts/copilot-sdk-runner.mjs
 ```
 
-### 例2: Azure サービスの調査
-```
-「Azure Functions と Azure Container Apps の違いを調べて、
- サーバーレスの観点で比較表を作成して」
-```
-→ `ms-learn-research` スキルが発動 → microsoft-docs MCP で検索 → 比較表作成
+### 前提条件
 
-### 例3: 顧客向け提案書の作成
-```
-「〇〇社向けに Azure AI サービスの提案スライドを10枚で作って」
-```
-→ `slide-creator` スキルが発動 → アウトライン提示 → 承認後に SVG スライド生成 → PPTX 変換
+- GitHub Copilot Enterprise / Business ライセンス
+- Fine-grained PAT（`Copilot Requests` パーミッション）
+- Node.js 22+（`@github/copilot-sdk` が `node:sqlite` を使用）
+- Python 3.10+ / `python-pptx` / `lxml`
+- Azure サブスクリプション（任意 — Blob Storage + Web App 用）
 
 ---
 
-## 育て方: 新しいスキルの追加
+## エージェント構成
 
-### 1. スキルフォルダを作成
-```
-.github/skills/<skill-name>/SKILL.md
-```
+Copilot の振る舞いを制御する設定ファイル群:
 
-### 2. フロントマターを書く
-```yaml
+| ファイル | 役割 |
+|---------|------|
+| [`AGENTS.md`](AGENTS.md) | プロジェクト全体の方針・ワークフロー定義 |
+| [`.github/copilot-instructions.md`](.github/copilot-instructions.md) | Copilot の言語・スタイル・出力ルール |
+| `.github/skills/` | タスク別の専門知識パッケージ（MS Learn 調査、スライド設計、ドキュメント作成、顧客調査） |
+| `.github/instructions/` | ファイルパターン別の品質基準（`applyTo` で自動適用） |
+| [`.vscode/mcp.json`](.vscode/mcp.json) | MCP サーバー設定（MS Learn、context7、memory 等 6 サーバー） |
+
 ---
-name: my-new-skill
-description: 'このスキルの説明（10-1024文字）'
+
+## Azure 連携
+
+| サービス | 用途 |
+|----------|------|
+| **Azure Blob Storage** | 生成済み PPTX ファイルの保管・配信 |
+| **Azure App Service** | Blazor Server Web アプリのホスティング（ファイル配布 UI） |
+
+Web アプリ（`webapp/`）はプロンプト入力・ジョブ管理・PPTX の閲覧/ダウンロードを提供する **ファイル配布インターフェース** です。
+
 ---
+
+## Responsible AI
+
+- 生成コンテンツは **MS Learn MCP 経由の公式ドキュメント** に基づく（未検証ソースではない）
+- 生成スライドは顧客提示前に **人間レビュー** が必要
+- 顧客データの処理・保存・送信は **一切行わない**
+- ツール使用許可は現在 all-allow ポリシー（本番ではスコープ限定が必要）
+- PAT は最小権限（`Copilot Requests` のみ）
+
+---
+
+## プロジェクト構成
+
+```
+├── .github/
+│   ├── copilot-instructions.md      # Copilot 共通ルール
+│   ├── workflows/copilot-poc.yml    # CI/CD パイプライン
+│   ├── skills/                      # 4 つの専門スキル
+│   └── instructions/                # ファイルパターン別ルール
+├── scripts/
+│   ├── copilot-sdk-runner.mjs       # SDK ベース Copilot Runner（リトライ付き）
+│   ├── svg2pptx.py                  # SVG → ネイティブ PPTX 変換（1,093 行）
+│   └── requirements.txt
+├── webapp/                          # Blazor Server ファイル配布 UI (.NET 10)
+├── docs/                            # 詳細ドキュメント
+├── presentations/                   # プロジェクト紹介スライド
+├── output/                          # 生成物出力先（.gitignore）
+├── AGENTS.md                        # エージェント全体方針
+├── .vscode/mcp.json                 # MCP サーバー設定（6 サーバー）
+└── README.md                        # ← このファイル
 ```
 
-### 3. 本文に手順・ルール・テンプレートを記載
-
-### 4. AGENTS.md のスキル表に追加
+> 詳細な技術ドキュメントは [`docs/README.md`](docs/README.md) を参照してください。
 
 ---
 
 ## 技術スタック
 
-| カテゴリ | 技術 | バージョン / 備考 |
-|----------|------|-------------------|
-| Web アプリ | Blazor Server (.NET) | .NET 10 LTS |
-| GitHub API | Octokit | 14.0.0 |
-| Blob Storage SDK | Azure.Storage.Blobs | 12.27.0 |
-| ホスティング | Azure App Service | Windows / P0v4 / Japan East |
-| CI/CD | GitHub Actions | Copilot CLI + svg2pptx.py |
-| スライド変換 | python-pptx / lxml | SVG → PPTX |
+| カテゴリ | 技術 |
+|----------|------|
+| SDK | `@github/copilot-sdk`（Node.js 22+） |
+| スライド変換 | `python-pptx` / `lxml`（SVG → ネイティブ PPTX） |
+| CI/CD | GitHub Actions（`workflow_dispatch`） |
+| Web アプリ | Blazor Server / .NET 10 / Octokit 14 |
+| ストレージ | Azure Blob Storage / Azure App Service |
+| MCP | microsoft-docs, context7, memory, github 等 |
 
 ---
 
-## 参考リンク
+## ライセンス
 
-- [microsoft/skills](https://github.com/microsoft/skills) — Azure SDK 向けスキル集（構成の参考元）
-- [github/awesome-copilot](https://github.com/github/awesome-copilot) — コミュニティ製 Copilot カスタマイズ集（構成の参考元）
-- [VS Code Copilot Customization](https://code.visualstudio.com/docs/copilot/copilot-customization) — 公式ドキュメント
-
----
-
-## 成長ロードマップ
-
-- [x] Phase 1: 調査 & ドキュメント作成
-- [x] Phase 2: Web UI + GitHub Actions 自動化
-- [ ] Phase 3: コード生成 & レビュー支援
-- [ ] Phase 4: CI/CD & テスト自動化
+MIT
