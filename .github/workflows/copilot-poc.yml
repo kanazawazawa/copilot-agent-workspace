@@ -9,7 +9,7 @@
 #   3. Actions タブ → "Copilot SDK Runner" → "Run workflow" で手動実行
 #
 # アーキテクチャ:
-#   scripts/copilot-sdk-runner.mjs → @github/copilot-sdk → Copilot CLI (server mode)
+#   src/copilot-sdk-runner.mjs → @github/copilot-sdk → Copilot CLI (server mode)
 #
 # 参考:
 #   - https://github.com/github/copilot-sdk
@@ -133,7 +133,7 @@ jobs:
           fi
           export COPILOT_PROMPT="${COPILOT_PROMPT_BASE}${SUFFIX}"
           echo "📝 Prompt: $COPILOT_PROMPT"
-          node scripts/copilot-sdk-runner.mjs
+          node src/copilot-sdk-runner.mjs
 
       # -------------------------------------------------------
       # 6. 成果物の確認

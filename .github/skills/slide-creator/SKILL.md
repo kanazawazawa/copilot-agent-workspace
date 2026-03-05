@@ -7,7 +7,7 @@ description: 'SVG でスライドを設計し、Python スクリプト (svg2pptx
 
 ## 概要
 
-SVG (960×540) でスライドを設計し、`scripts/svg2pptx.py` で
+SVG (960×540) でスライドを設計し、`src/svg2pptx.py` で
 PowerPoint ネイティブシェイプに変換する。テキスト編集・色変更・移動が可能な状態で出力する。
 
 ## トリガーワード
@@ -345,14 +345,14 @@ Error:        #9B2C2C (深い赤)
 
 ```bash
 # 変換実行（フォルダ名から自動命名）
-python scripts/svg2pptx.py output/slides/2026-03-03_143052_テーマ名/
+python src/svg2pptx.py output/slides/2026-03-03_143052_テーマ名/
 # → 2026-03-03_テーマ名.pptx が同フォルダに生成される
 
 # 出力ファイル名を明示する場合
-python scripts/svg2pptx.py slides/ -o custom_name.pptx
+python src/svg2pptx.py slides/ -o custom_name.pptx
 ```
 
-変換スクリプトの実体は `scripts/svg2pptx.py`（リポジトリルート）。
+変換スクリプトの実体は `src/svg2pptx.py`（リポジトリルート）。
 
 ### Step 3: PowerPoint での微調整
 

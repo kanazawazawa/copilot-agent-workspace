@@ -96,11 +96,11 @@ flowchart LR
 git clone https://github.com/kanazawazawa/copilot-agent-workspace.git
 cd copilot-agent-workspace
 
-pip install -r scripts/requirements.txt
+pip install -r src/requirements.txt
 
 export COPILOT_GITHUB_TOKEN="ghp_xxx"
 export COPILOT_PROMPT="Create a PPTX overview of Azure App Service"
-node scripts/copilot-sdk-runner.mjs
+node src/copilot-sdk-runner.mjs
 ```
 
 ### Prerequisites
@@ -124,7 +124,7 @@ node scripts/copilot-sdk-runner.mjs
 | **Retry control** | Configurable via `COPILOT_MAX_RETRIES` / `COPILOT_RETRY_DELAY` |
 | **Timeout control** | `COPILOT_TIMEOUT_MS` (default: 10 min) |
 
-> SDK Runner source: [`scripts/copilot-sdk-runner.mjs`](scripts/copilot-sdk-runner.mjs)
+> SDK Runner source: [`src/copilot-sdk-runner.mjs`](src/copilot-sdk-runner.mjs)
 
 ---
 
@@ -195,7 +195,7 @@ The web app (`webapp/`) provides prompt input, job tracking, and PPTX browsing/d
 │   ├── workflows/copilot-poc.yml    # CI/CD pipeline
 │   ├── skills/                      # 4 domain knowledge skills
 │   └── instructions/                # File-pattern-specific rules
-├── scripts/
+├── src/
 │   ├── copilot-sdk-runner.mjs       # SDK-based Copilot runner (with retry)
 │   ├── svg2pptx.py                  # SVG → native PPTX converter (1,093 lines)
 │   └── requirements.txt
@@ -318,7 +318,7 @@ flowchart LR
 | **リトライ制御** | `COPILOT_MAX_RETRIES` / `COPILOT_RETRY_DELAY` で設定可能なリトライ |
 | **タイムアウト制御** | `COPILOT_TIMEOUT_MS`（デフォルト 10 分） |
 
-> SDK Runner のコード: [`scripts/copilot-sdk-runner.mjs`](scripts/copilot-sdk-runner.mjs)
+> SDK Runner のコード: [`src/copilot-sdk-runner.mjs`](src/copilot-sdk-runner.mjs)
 
 ---
 
@@ -347,11 +347,11 @@ flowchart LR
 ```bash
 git clone https://github.com/kanazawazawa/copilot-agent-workspace.git
 cd copilot-agent-workspace
-pip install -r scripts/requirements.txt
+pip install -r src/requirements.txt
 
 export COPILOT_GITHUB_TOKEN="ghp_xxx"
 export COPILOT_PROMPT="Azure Cosmos DB の概要をPPTXで作成してください"
-node scripts/copilot-sdk-runner.mjs
+node src/copilot-sdk-runner.mjs
 ```
 
 #### 前提条件

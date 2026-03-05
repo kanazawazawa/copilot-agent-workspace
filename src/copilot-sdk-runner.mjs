@@ -14,7 +14,7 @@
 //   COPILOT_TIMEOUT_MS     - sendAndWait タイムアウト ms（デフォルト: 600000 = 10分）
 //
 // 使い方:
-//   COPILOT_GITHUB_TOKEN=xxx COPILOT_PROMPT="..." node scripts/copilot-sdk-runner.mjs
+//   COPILOT_GITHUB_TOKEN=xxx COPILOT_PROMPT="..." node src/copilot-sdk-runner.mjs
 // =============================================================
 
 import { CopilotClient } from "@github/copilot-sdk";
