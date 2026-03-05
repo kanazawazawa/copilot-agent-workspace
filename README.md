@@ -1,8 +1,8 @@
 # Copilot Slide Agent
 
-**One prompt → 10 minutes → Editable PPTX with diagrams.**
+**One prompt → 10 minutes → Visually rich, editable PPTX with diagrams.**
 
-GitHub Copilot SDK を使い、自然言語プロンプトから **編集可能な PowerPoint スライド** を自動生成するエージェントです。  
+GitHub Copilot SDK を使い、自然言語プロンプトから **デザイン性が高く図表入りの編集可能な PowerPoint スライド** を自動生成するエージェントです。  
 顧客向け技術スライドの作成にかかる **2〜3 時間の作業を約 10 分** に短縮します。
 
 ---
