@@ -1,0 +1,2 @@
+python-pptx>=1.0.0
+lxml>=5.0.0
