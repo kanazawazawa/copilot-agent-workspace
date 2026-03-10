@@ -8,7 +8,7 @@
 // 環境変数:
 //   COPILOT_GITHUB_TOKEN   - GitHub PAT（Copilot 権限付き）
 //   COPILOT_PROMPT         - 実行するプロンプト
-//   COPILOT_MODEL          - 使用するモデル（デフォルト: claude-opus-4.6）
+//   COPILOT_MODEL          - 使用するモデル（デフォルト: claude-sonnet-4.5）
 //   COPILOT_MAX_RETRIES    - 最大試行回数（デフォルト: 2 = 初回 + リトライ1回）
 //   COPILOT_RETRY_DELAY    - リトライ待機秒数（デフォルト: 10）
 //   COPILOT_TIMEOUT_MS     - sendAndWait タイムアウト ms（デフォルト: 600000 = 10分）
@@ -21,7 +21,7 @@ import { CopilotClient } from "@github/copilot-sdk";
 
 // --- 設定 ---
 const prompt = process.env.COPILOT_PROMPT;
-const model = process.env.COPILOT_MODEL || "claude-opus-4.6";
+const model = process.env.COPILOT_MODEL || "claude-sonnet-4.5";
 const maxRetries = parseInt(process.env.COPILOT_MAX_RETRIES || "2", 10); // 最大試行回数（デフォルト2 = 初回 + リトライ1回）
 const retryDelaySec = parseInt(process.env.COPILOT_RETRY_DELAY || "10", 10); // リトライ待機秒数
 const timeoutMs = parseInt(process.env.COPILOT_TIMEOUT_MS || "600000", 10); // タイムアウト（デフォルト10分）

@@ -36,6 +36,10 @@ output/**
 # 提出フォーム用サマリー（社内コンテスト用）
 docs/SUMMARY.md
 
+# ===== Node.js =====
+node_modules/
+package-lock.json
+
 # ===== OS =====
 .DS_Store
 Thumbs.db

@@ -80,7 +80,7 @@ jobs:
             その後 python src/svg2pptx.py output/slides/healthcheck/ を実行して
             PPTX に変換してください。
             これはSDK非対話実行です。アウトラインの確認・承認ステップは不要です。承認済みとして直接ファイルを生成してください。
-          COPILOT_MODEL: claude-opus-4.6
+          COPILOT_MODEL: claude-sonnet-4.5
           COPILOT_MAX_RETRIES: "2"
           COPILOT_TIMEOUT_MS: "600000"
         run: |
