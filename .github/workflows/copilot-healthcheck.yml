@@ -75,8 +75,7 @@ jobs:
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_FG_TOKEN }}
           COPILOT_PROMPT: >-
-            ヘルスチェック用テストスライドを1枚だけ作成してください。
-            テーマ: 「GitHub Copilot ヘルスチェック」
+            Azure Monitor の概要がわかるワンページャーの資料を作成してください。
             output/slides/healthcheck/ に SVG ファイル（960x540）を 1 枚出力し、
             その後 python src/svg2pptx.py output/slides/healthcheck/ を実行して
             PPTX に変換してください。
