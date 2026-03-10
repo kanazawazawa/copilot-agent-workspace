@@ -11,7 +11,13 @@ on:
   schedule:
     # 毎日 JST 9:00（UTC 0:00）に実行
     - cron: '0 0 * * *'
-  workflow_dispatch: # 手動実行も可能
+  workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: 'テスト用: Issue 作成をテストするために意図的に失敗させる'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -57,6 +63,10 @@ jobs:
           COPILOT_MAX_RETRIES: "2"
           COPILOT_TIMEOUT_MS: "120000"
         run: |
+          if [ "${{ inputs.simulate_failure }}" = "true" ]; then
+            echo "🧪 テスト失敗モード: 意図的にエラーを発生させます"
+            exit 1
+          fi
           node --import ./src/register-loader.mjs src/copilot-sdk-runner.mjs
 
       # -------------------------------------------------------
