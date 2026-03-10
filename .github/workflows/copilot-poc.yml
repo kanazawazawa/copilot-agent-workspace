@@ -114,13 +114,36 @@ jobs:
           npm install @github/copilot-sdk
 
       # -------------------------------------------------------
+      # 3b. SDK ESM 互換パッチ（Node.js 22 対応）
+      # -------------------------------------------------------
+      # @github/copilot-sdk@0.1.x の dist/session.js が
+      # "vscode-jsonrpc/node"（拡張子なし）を import しており、
+      # Node.js 22 の厳格な ESM 解決で ERR_MODULE_NOT_FOUND になる。
+      # client.js は正しく "vscode-jsonrpc/node.js" を使っているため、
+      # session.js のみパッチを当てて揃える。
+      # 注意: sed -i は GNU sed (Linux/ubuntu-latest) 専用。
+      - name: Patch copilot-sdk ESM import for Node.js 22
+        run: |
+          SESSION_JS="node_modules/@github/copilot-sdk/dist/session.js"
+          if [ ! -f "$SESSION_JS" ]; then
+            echo "❌ $SESSION_JS not found — npm install が正常に完了しているか確認してください"
+            exit 1
+          fi
+          if grep -q '"vscode-jsonrpc/node"' "$SESSION_JS"; then
+            sed -i 's|from "vscode-jsonrpc/node"|from "vscode-jsonrpc/node.js"|g' "$SESSION_JS"
+            echo "✅ Patched: vscode-jsonrpc/node → vscode-jsonrpc/node.js in $SESSION_JS"
+          else
+            echo "ℹ️  No patch needed (already fixed upstream)"
+          fi
+
+      # -------------------------------------------------------
       # 4. インストール確認
       # -------------------------------------------------------
       - name: Verify installation
         run: |
           echo "📍 Which copilot: $(which copilot)"
           echo "📍 Copilot version: $(copilot --version 2>/dev/null || echo 'unknown')"
-          echo "📍 SDK installed: $(node -e "require('@github/copilot-sdk'); console.log('OK')" 2>&1)"
+          node --input-type=module -e 'import("@github/copilot-sdk").then(()=>console.log("📍 SDK installed: OK")).catch(e=>{console.error("📍 SDK installed: FAIL -",e.message);console.error(e.stack);})'
           copilot --help 2>&1 | head -20 || true
 
       # -------------------------------------------------------

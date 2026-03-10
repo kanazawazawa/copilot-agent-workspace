@@ -48,6 +48,11 @@ $RECYCLE.BIN/
 *~
 .idea/
 
+# ===== Node.js =====
+node_modules/
+npm-debug.log*
+package-lock.json
+
 # ===== VSCode =====
 # mcp.json はプロジェクト設定なので追跡する
 # .vscode/ 内のユーザー固有ファイルのみ除外
