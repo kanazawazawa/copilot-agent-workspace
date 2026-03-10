@@ -48,6 +48,12 @@ $RECYCLE.BIN/
 *~
 .idea/
 
+# ===== webapp ローカル作業ファイル =====
+webapp/publish/
+webapp/webapp.zip
+webapp/app-logs/
+webapp/app-logs-new/
+
 # ===== Node.js =====
 node_modules/
 npm-debug.log*

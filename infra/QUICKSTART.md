@@ -133,7 +133,19 @@ gh secret delete AZURE_STORAGE_CONNECTION_STRING `
 ## 🔑 必要な Secret/設定
 
 ### GitHub Repository Secrets
-- `COPILOT_FG_TOKEN`: Copilot Requests 権限付き Fine-grained PAT
+
+- `COPILOT_FG_TOKEN`: Copilot が作業するための Fine-grained PAT
+
+  [Fine-grained tokens](https://github.com/settings/tokens?type=beta) で作成し、以下を設定します。
+
+  **Repository access**: `Public repositories` を選択
+
+  **Repository permissions**:
+
+  | Permission | 設定値 | 用途 |
+  |-----------|--------|------|
+  | **Copilot Requests** | Read-only | GitHub Actions 内で Copilot に作業を依頼する |
+
 - `AZURE_CLIENT_ID`: Managed Identity のクライアント ID（デプロイ後に取得）
 - `AZURE_TENANT_ID`: Azure テナント ID（デプロイ後に取得）
 - `AZURE_SUBSCRIPTION_ID`: Azure サブスクリプション ID
@@ -142,7 +154,21 @@ gh secret delete AZURE_STORAGE_CONNECTION_STRING `
 > 🔐 **キーレス認証**: Workload Identity Federation (OIDC) を使用するため、Storage の接続文字列やアクセスキーは不要です。
 
 ### Azure App Service Settings
-- `GitHub__Token`: GitHub PAT（リポジトリへのアクセス用）
+
+- `GitHub__Token`: Web アプリからワークフローを操作するための Fine-grained PAT
+
+  [Fine-grained tokens](https://github.com/settings/tokens?type=beta) で作成し、以下を設定します。
+
+  **Repository access**: `All repositories` を選択
+
+  **Repository permissions**:
+
+  | Permission | 設定値 | 用途 |
+  |-----------|--------|------|
+  | **Actions** | **Read and write** | Web アプリから `workflow_dispatch` でジョブを登録・ステータス確認 |
+  | **Metadata** | Read-only | 自動付与（Actions 追加時に自動で設定される） |
+
+  > ⚠️ **Actions: Read and write がないと Web アプリの実行ボタンを押しても 403 エラー** になります。
 - `AzureStorage__AccountName`: 自動設定済み
 - `GitHub__Owner`, `GitHub__Repo`: 自動設定済み
 

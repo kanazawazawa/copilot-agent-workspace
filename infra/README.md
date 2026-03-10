@@ -264,6 +264,21 @@ gh secret list --repo YOUR_GITHUB_USERNAME/copilot-agent-workspace
 
 ### ステップ 8: GitHub PAT の App Service への登録
 
+#### PAT の作成と権限設定
+
+[GitHub → Settings → Developer settings → Fine-grained tokens](https://github.com/settings/tokens?type=beta) で PAT を作成します。
+
+**Repository access**: `All repositories` を選択
+
+**Repository permissions**:
+
+| Permission | 設定値 | 用途 |
+|-----------|--------|------|
+| **Actions** | **Read and write** | Web アプリから `workflow_dispatch` でジョブを登録・ステータス確認 |
+| **Metadata** | Read-only | 自動付与（Actions 追加時に自動で設定される） |
+
+> ⚠️ **Actions: Read and write がないと 403 エラー** になります。Web アプリの実行ボタンを押してもワークフローを起動できません。
+
 ```bash
 # App Service 名を取得
 APP_SERVICE_NAME=$(az deployment group show \

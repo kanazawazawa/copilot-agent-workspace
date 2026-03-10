@@ -276,6 +276,21 @@ copilot "GitHub リポジトリに Secret を Web UI で登録する手順を教
 
 ### ステップ 9: GitHub PAT を App Service に登録
 
+#### PAT の作成と権限設定
+
+[GitHub → Settings → Developer settings → Fine-grained tokens](https://github.com/settings/tokens?type=beta) で PAT を作成します。
+
+**Repository access**: `All repositories` を選択
+
+**Repository permissions**:
+
+| Permission | 設定値 | 用途 |
+|-----------|--------|------|
+| **Actions** | **Read and write** | Web アプリから `workflow_dispatch` でジョブを登録・ステータス確認 |
+| **Metadata** | Read-only | 自動付与（Actions 追加時に自動で設定される） |
+
+> ⚠️ **Actions: Read and write がないと 403 エラー** になります。Web アプリの実行ボタンを押してもワークフローを起動できません。
+
 Copilot に依頼：
 ```bash
 copilot "Azure App Service の設定に GitHub__Token という App Setting を追加する Azure CLI コマンド"
