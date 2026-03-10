@@ -1,0 +1,99 @@
+# =============================================================
+# Copilot SDK ヘルスチェック — 毎日定時実行 & 失敗時 Issue 自動作成
+# =============================================================
+# 1日1回、Copilot SDK が正常に動作するかを軽量プロンプトで確認。
+# 失敗した場合は GitHub Issue を自動作成して通知する。
+# =============================================================
+
+name: Copilot SDK Healthcheck
+
+on:
+  schedule:
+    # 毎日 JST 9:00（UTC 0:00）に実行
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # -------------------------------------------------------
+      # 1. チェックアウト
+      # -------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      # -------------------------------------------------------
+      # 2. Node.js セットアップ
+      # -------------------------------------------------------
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # -------------------------------------------------------
+      # 3. Copilot CLI + SDK インストール
+      # -------------------------------------------------------
+      - name: Install Copilot CLI and SDK
+        run: |
+          npm install -g @github/copilot
+          npm install
+
+      # -------------------------------------------------------
+      # 4. ヘルスチェック実行（軽量プロンプト）
+      # -------------------------------------------------------
+      - name: Run healthcheck
+        id: healthcheck
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_FG_TOKEN }}
+          COPILOT_PROMPT: "Hello. Reply with just 'OK' to confirm you are working."
+          COPILOT_MODEL: claude-sonnet-4
+          COPILOT_MAX_RETRIES: "2"
+          COPILOT_TIMEOUT_MS: "120000"
+        run: |
+          node --import ./src/register-loader.mjs src/copilot-sdk-runner.mjs
+
+      # -------------------------------------------------------
+      # 5. 失敗時に Issue を作成
+      # -------------------------------------------------------
+      - name: Create issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 同じタイトルの Open Issue が既にあればスキップ
+          EXISTING=$(gh issue list --state open --search "Copilot SDK Healthcheck 失敗" --json number --jq 'length')
+          if [ "$EXISTING" -gt 0 ]; then
+            echo "⏭️ 既に Open の Issue があるためスキップ"
+            exit 0
+          fi
+
+          ISSUE_URL=$(gh issue create \
+            --title "🚨 Copilot SDK Healthcheck 失敗 ($(TZ=Asia/Tokyo date '+%Y-%m-%d'))" \
+            --body "## ヘルスチェック失敗
+
+**日時:** $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M JST')
+**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+### 確認事項
+- [ ] Fine-grained PAT（\`COPILOT_FG_TOKEN\`）の有効期限
+- [ ] \`@github/copilot-sdk\` の互換性（\`vscode-jsonrpc\` 問題など）
+- [ ] Copilot サービスの障害情報: https://www.githubstatus.com/
+
+### やること
+Actions の Run ログを確認し、原因を特定して修正してください。
+ESM loader の問題であれば \`src/esm-loader.mjs\` を更新してください。" \
+            --label "bug")
+
+          echo "📋 Issue created: $ISSUE_URL"
+
+          # Copilot（Coding Agent）を Issue にアサイン
+          ISSUE_NUM=$(echo "$ISSUE_URL" | grep -oE '[0-9]+$')
+          gh issue edit "$ISSUE_NUM" --add-assignee "copilot"
+          echo "🤖 Copilot assigned to issue #$ISSUE_NUM"
