@@ -73,6 +73,7 @@ jobs:
       # 5. 失敗時に Issue を作成
       # -------------------------------------------------------
       - name: Create issue on failure
+        id: create-issue
         if: failure()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -90,8 +91,20 @@ jobs:
 
           ISSUE_URL=$(gh issue create --title "$TITLE" --body-file /tmp/issue_body.md --label "bug")
           echo "📋 Issue created: $ISSUE_URL"
+          echo "issue-number=$(echo "$ISSUE_URL" | grep -oE '[0-9]+$')" >> "$GITHUB_OUTPUT"
 
-          # Copilot（Coding Agent）を Issue にアサイン
-          ISSUE_NUM=$(echo "$ISSUE_URL" | grep -oE '[0-9]+$')
-          gh issue edit "$ISSUE_NUM" --add-assignee "copilot"
-          echo "🤖 Copilot assigned to issue #$ISSUE_NUM"
+      # -------------------------------------------------------
+      # 6. Copilot Coding Agent を Issue にアサイン
+      # -------------------------------------------------------
+      - name: Assign Copilot to issue
+        if: failure() && steps.create-issue.outputs.issue-number
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ISSUE_NUM="${{ steps.create-issue.outputs.issue-number }}"
+          echo "🤖 Copilot を Issue #$ISSUE_NUM にアサイン中..."
+          gh api "repos/${{ github.repository }}/copilot/tasks" \
+            -X POST \
+            -f "issue_number=$ISSUE_NUM" \
+            || echo "⚠️ Copilot アサイン失敗（手動でアサインしてください）"
