@@ -53,7 +53,7 @@ jobs:
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_FG_TOKEN }}
           COPILOT_PROMPT: "Hello. Reply with just 'OK' to confirm you are working."
-          COPILOT_MODEL: claude-sonnet-4
+          COPILOT_MODEL: claude-opus-4-6
           COPILOT_MAX_RETRIES: "2"
           COPILOT_TIMEOUT_MS: "120000"
         run: |
