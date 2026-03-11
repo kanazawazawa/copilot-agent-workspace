@@ -54,3 +54,10 @@ $RECYCLE.BIN/
 .vscode/settings.json
 .vscode/launch.json
 .vscode/extensions.json
+
+# ===== Azure Infrastructure =====
+# パラメータファイルには機密情報（GitHub PAT等）が含まれるため除外
+infra/*.parameters.json
+infra/*.parameters.*.json
+# テンプレートファイル（サンプル）は保持
+!infra/*.parameters.template.json

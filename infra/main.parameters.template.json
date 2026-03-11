@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "projectPrefix": {
+      "value": "ghcp"
+    },
+    "environment": {
+      "value": "dev"
+    },
+    "appServiceSku": {
+      "value": "B1"
+    },
+    "githubOwner": {
+      "value": "YOUR_GITHUB_USERNAME"
+    },
+    "githubRepo": {
+      "value": "copilot-agent-workspace"
+    }
+  }
+}
