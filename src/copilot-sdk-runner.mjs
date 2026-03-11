@@ -49,9 +49,13 @@ console.log("");
 // COPILOT_GITHUB_TOKEN は SDK が自動で読み取る
 const client = new CopilotClient();
 
+// 空テキストブロックエラー時にプロンプトへ追加するガイダンス
+const EMPTY_TEXT_BLOCK_GUIDANCE = "\n\n重要: 各ツール呼び出しの前に必ず1文以上の説明テキストを含めること。テキストなしでのツール呼び出しのみの応答は禁止。";
+
 try {
   let response = null;
   let lastError = null;
+  let currentPrompt = prompt;
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -70,7 +74,7 @@ try {
       // --- プロンプト送信 & 完了待ち ---
       console.log("🚀 プロンプト送信中...");
       response = await session.sendAndWait(
-        { prompt },
+        { prompt: currentPrompt },
         timeoutMs
       );
 
@@ -91,6 +95,20 @@ try {
     } catch (err) {
       lastError = err;
       console.error(`⚠️ [${attempt}/${maxRetries}] 失敗: ${err.message}`);
+
+      // 空テキストブロックエラー（Claude API の制約）
+      // モデルがテキストなしでツール呼び出しを行った場合に発生する
+      const errMsg = err.message ?? "";
+      const isEmptyTextBlockError =
+        errMsg.includes("text content blocks must contain non-whitespace text");
+      if (isEmptyTextBlockError) {
+        console.error("💡 原因: Claude モデルがテキストなしでツール呼び出しを行いました。");
+        if (attempt < maxRetries && currentPrompt === prompt) {
+          // リトライ時はプロンプトにガイダンスを追加してテキスト必須を強制（1回のみ）
+          currentPrompt = prompt + EMPTY_TEXT_BLOCK_GUIDANCE;
+          console.log("🔁 リトライ時のプロンプトにツール呼び出しガイダンスを追加します。");
+        }
+      }
 
       if (attempt < maxRetries) {
         console.log(`⏳ ${retryDelaySec}秒後にリトライします...`);
