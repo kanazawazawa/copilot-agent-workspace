@@ -77,11 +77,14 @@ on:
 
 permissions:
   contents: read
+  id-token: write  # Workload Identity Federation (OIDC) for Azure
 
 jobs:
   copilot-run:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
 
     steps:
       # -------------------------------------------------------
@@ -197,15 +200,24 @@ jobs:
           echo "✅ Saved prompt.txt"
 
       # -------------------------------------------------------
-      # 9. Blob Storage にアップロード（Web App 用）
+      # 9. Azure OIDC ログイン（Blob Storage アップロード用）
+      # -------------------------------------------------------
+      - name: Azure Login (OIDC)
+        if: always() && env.AZURE_STORAGE_ACCOUNT_NAME != ''
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      # -------------------------------------------------------
+      # 10. Blob Storage にアップロード（Web App 用）
       # -------------------------------------------------------
       - name: Upload to Blob Storage
-        if: always()
-        env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        if: always() && env.AZURE_STORAGE_ACCOUNT_NAME != ''
         run: |
-          if [ -z "$AZURE_STORAGE_CONNECTION_STRING" ]; then
-            echo "⚠️ AZURE_STORAGE_CONNECTION_STRING not set — skipping blob upload"
+          if [ -z "$AZURE_STORAGE_ACCOUNT_NAME" ]; then
+            echo "⚠️ AZURE_STORAGE_ACCOUNT_NAME not set — skipping blob upload"
             exit 0
           fi
           if [ -d "output" ] && [ "$(find output/ -type f | wc -l)" -gt 0 ]; then
@@ -214,7 +226,8 @@ jobs:
               --destination copilot-outputs \
               --source output/ \
               --destination-path "runs/${{ github.run_number }}" \
-              --connection-string "$AZURE_STORAGE_CONNECTION_STRING" \
+              --account-name "$AZURE_STORAGE_ACCOUNT_NAME" \
+              --auth-mode login \
               --overwrite
             echo "✅ Blob upload complete"
           else
