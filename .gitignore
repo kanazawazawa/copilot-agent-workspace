@@ -61,3 +61,8 @@ infra/*.parameters.json
 infra/*.parameters.*.json
 # テンプレートファイル（サンプル）は保持
 !infra/*.parameters.template.json
+
+# ===== Node.js =====
+node_modules/
+npm-debug.log*
+package-lock.json
