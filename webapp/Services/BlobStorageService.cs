@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
@@ -6,6 +7,7 @@ namespace CopilotWebApp.Services;
 /// <summary>
 /// Azure Blob Storage からワークフロー出力ファイルを取得するサービス。
 /// Blob は runs/{run_number}/ プレフィックスで整理されている前提。
+/// 認証: DefaultAzureCredential（Managed Identity / 開発時は Azure CLI 認証）
 /// </summary>
 public class BlobStorageService
 {
@@ -16,11 +18,12 @@ public class BlobStorageService
     {
         _logger = logger;
 
-        var connectionString = config["AzureStorage:ConnectionString"]
-            ?? throw new ArgumentException("AzureStorage:ConnectionString is required");
+        var accountName = config["AzureStorage:AccountName"]
+            ?? throw new ArgumentException("AzureStorage:AccountName is required");
         var containerName = config["AzureStorage:ContainerName"] ?? "copilot-outputs";
 
-        var serviceClient = new BlobServiceClient(connectionString);
+        var serviceUri = new Uri($"https://{accountName}.blob.core.windows.net");
+        var serviceClient = new BlobServiceClient(serviceUri, new DefaultAzureCredential());
         _container = serviceClient.GetBlobContainerClient(containerName);
     }
 

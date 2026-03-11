@@ -5,3 +5,9 @@ nul
 *.suo
 .vs/
 appsettings.Development.json
+
+# デプロイ用ZIPと診断ログ（ローカル作業ファイル）
+webapp.zip
+app-logs/
+app-logs-new/
+publish/
