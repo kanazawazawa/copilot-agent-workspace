@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <!-- タイトル背景: 最深ネイビー → ダークネイビー -->
+    <linearGradient id="bg-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <!-- シアングロー -->
+    <radialGradient id="glow-cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- ティールグロー -->
+    <radialGradient id="glow-teal" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#2A7A8C" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#2A7A8C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-dark)"/>
+
+  <!-- ティール装飾円（左下） -->
+  <circle cx="120" cy="480" r="280" fill="#1A3A4A" opacity="0.7"/>
+  <circle cx="60" cy="520" r="180" fill="#2A7A8C" opacity="0.4"/>
+
+  <!-- ティール装飾円（右上） -->
+  <circle cx="820" cy="100" r="260" fill="#1A3A4A" opacity="0.6"/>
+  <circle cx="900" cy="60" r="160" fill="#2A7A8C" opacity="0.45"/>
+
+  <!-- シアングロー（右上） -->
+  <circle cx="850" cy="120" r="220" fill="url(#glow-cyan)"/>
+
+  <!-- ネットワーク図形（右上コーナー） -->
+  <circle cx="760" cy="60" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="800" cy="40" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="840" cy="70" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="820" cy="100" r="3" fill="#FFFFFF" opacity="0.35"/>
+  <circle cx="780" cy="90" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <line x1="760" y1="60" x2="800" y2="40" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="800" y1="40" x2="840" y2="70" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="840" y1="70" x2="820" y2="100" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="820" y1="100" x2="780" y2="90" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+  <line x1="780" y1="90" x2="760" y2="60" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+
+  <!-- ネットワーク図形（左下コーナー） -->
+  <circle cx="100" cy="470" r="2.5" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="140" cy="490" r="2.5" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="130" cy="450" r="2.5" fill="#FFFFFF" opacity="0.25"/>
+  <line x1="100" y1="470" x2="140" y2="490" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <line x1="140" y1="490" x2="130" y2="450" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+
+  <!-- アクセントライン（左端） -->
+  <rect x="60" y="160" width="4" height="180" rx="2" fill="#00D4FF" opacity="0.9"/>
+
+  <!-- メインタイトル -->
+  <text x="85" y="220" font-size="44" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure Cosmos DB</text>
+
+  <!-- サブタイトル -->
+  <text x="85" y="272" font-size="26" fill="#00D4FF" font-family="Segoe UI">概要・入門ガイド</text>
+
+  <!-- アクセントライン（水平） -->
+  <line x1="85" y1="295" x2="340" y2="295" stroke="#00D4FF" stroke-width="2.5"/>
+
+  <!-- 説明文 -->
+  <text x="85" y="330" font-size="15" fill="#B0C4D8" font-family="Segoe UI">次世代グローバル分散データベースサービス</text>
+  <text x="85" y="355" font-size="15" fill="#B0C4D8" font-family="Segoe UI">マルチモデル対応・99.999% SLA・無制限スケール</text>
+
+  <!-- 日付 -->
+  <text x="85" y="490" font-size="13" fill="#8B939E" font-family="Segoe UI">2026年3月</text>
+
+  <!-- フッター -->
+  <text x="920" y="522" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">Microsoft Azure</text>
+
+  <!-- 情報源リンク -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/cosmos-db/introduction">
+    <text x="85" y="520" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 詳細: MS Learn — Azure Cosmos DB →</text>
+  </a>
+</svg>

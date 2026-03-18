@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="left-panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="merit-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFBFC"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <radialGradient id="glow-small" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure Cosmos DB ─ ユースケースと導入メリット</text>
+  <text x="920" y="46" font-size="13" fill="#B0C4D8" font-family="Segoe UI" text-anchor="end">3 / 3</text>
+
+  <!-- サブヘッダー -->
+  <text x="40" y="98" font-size="14" fill="#4A5568" font-family="Segoe UI">様々な業界・ワークロードで選ばれるグローバル分散データベース</text>
+  <line x1="40" y1="108" x2="920" y2="108" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- ===== 左パネル: ユースケース ===== -->
+  <rect x="30" y="118" width="440" height="380" rx="10" fill="url(#left-panel)"/>
+
+  <!-- グロー装飾 -->
+  <circle cx="400" cy="320" r="180" fill="url(#glow-small)"/>
+
+  <!-- パネルタイトル -->
+  <text x="250" y="152" font-size="17" font-weight="bold" fill="#00D4FF" font-family="Segoe UI" text-anchor="middle">主なユースケース</text>
+  <line x1="60" y1="160" x2="440" y2="160" stroke="#00D4FF" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- ユースケース一覧 -->
+  <!-- UC1 -->
+  <circle cx="65" cy="192" r="14" fill="#2A7A8C" opacity="0.9"/>
+  <text x="65" y="197" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">1</text>
+  <text x="90" y="188" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">EC・リテール</text>
+  <text x="90" y="207" font-size="12" fill="#B0C4D8" font-family="Segoe UI">商品カタログ・カート・注文管理を低遅延で処理</text>
+
+  <line x1="55" y1="220" x2="455" y2="220" stroke="#1A3A4A" stroke-width="1" opacity="0.8"/>
+
+  <!-- UC2 -->
+  <circle cx="65" cy="247" r="14" fill="#2A7A8C" opacity="0.9"/>
+  <text x="65" y="252" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">2</text>
+  <text x="90" y="243" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">ゲーム・エンタメ</text>
+  <text x="90" y="262" font-size="12" fill="#B0C4D8" font-family="Segoe UI">リアルタイムランキング・プレイヤーデータ管理</text>
+
+  <line x1="55" y1="275" x2="455" y2="275" stroke="#1A3A4A" stroke-width="1" opacity="0.8"/>
+
+  <!-- UC3 -->
+  <circle cx="65" cy="302" r="14" fill="#2A7A8C" opacity="0.9"/>
+  <text x="65" y="307" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">3</text>
+  <text x="90" y="298" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">IoT・テレメトリ</text>
+  <text x="90" y="317" font-size="12" fill="#B0C4D8" font-family="Segoe UI">デバイスデータの高速取り込みと分析</text>
+
+  <line x1="55" y1="330" x2="455" y2="330" stroke="#1A3A4A" stroke-width="1" opacity="0.8"/>
+
+  <!-- UC4 -->
+  <circle cx="65" cy="357" r="14" fill="#2A7A8C" opacity="0.9"/>
+  <text x="65" y="362" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">4</text>
+  <text x="90" y="353" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">金融・FinTech</text>
+  <text x="90" y="372" font-size="12" fill="#B0C4D8" font-family="Segoe UI">トランザクション処理・不正検知・リスク管理</text>
+
+  <line x1="55" y1="385" x2="455" y2="385" stroke="#1A3A4A" stroke-width="1" opacity="0.8"/>
+
+  <!-- UC5 -->
+  <circle cx="65" cy="412" r="14" fill="#2A7A8C" opacity="0.9"/>
+  <text x="65" y="417" font-size="13" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI" text-anchor="middle">5</text>
+  <text x="90" y="408" font-size="14" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">ヘルスケア</text>
+  <text x="90" y="427" font-size="12" fill="#B0C4D8" font-family="Segoe UI">患者データ・医療記録の安全なグローバル共有</text>
+
+  <!-- パネル下部: 導入実績 -->
+  <line x1="55" y1="445" x2="455" y2="445" stroke="#2A7A8C" stroke-width="1.5" opacity="0.7"/>
+  <text x="250" y="472" font-size="13" fill="#B0C4D8" font-family="Segoe UI" text-anchor="middle">OpenAI / LinkedIn / Xbox / Skype 等で採用実績あり</text>
+
+  <!-- ===== 右パネル: 導入メリット ===== -->
+  <text x="510" y="140" font-size="17" font-weight="bold" fill="#1E2328" font-family="Segoe UI">導入メリット</text>
+  <line x1="510" y1="148" x2="930" y2="148" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- メリット1 -->
+  <rect x="510" y="158" width="420" height="72" rx="8" fill="url(#merit-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="510" y="158" width="5" height="72" rx="2" fill="#1B2A4A"/>
+  <text x="530" y="182" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">運用コストの削減</text>
+  <text x="530" y="202" font-size="12" fill="#4A5568" font-family="Segoe UI">インフラ管理不要のフルマネージドサービス。</text>
+  <text x="530" y="220" font-size="12" fill="#4A5568" font-family="Segoe UI">パッチ適用・バックアップ・スケールを自動化</text>
+
+  <!-- メリット2 -->
+  <rect x="510" y="240" width="420" height="72" rx="8" fill="url(#merit-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="510" y="240" width="5" height="72" rx="2" fill="#1A3A4A"/>
+  <text x="530" y="264" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">柔軟なスケーリング</text>
+  <text x="530" y="284" font-size="12" fill="#4A5568" font-family="Segoe UI">秒単位での RU (Request Unit) 調整が可能。</text>
+  <text x="530" y="302" font-size="12" fill="#4A5568" font-family="Segoe UI">サーバーレス課金で小規模から大規模まで対応</text>
+
+  <!-- メリット3 -->
+  <rect x="510" y="322" width="420" height="72" rx="8" fill="url(#merit-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="510" y="322" width="5" height="72" rx="2" fill="#2A7A8C"/>
+  <text x="530" y="346" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">開発生産性の向上</text>
+  <text x="530" y="366" font-size="12" fill="#4A5568" font-family="Segoe UI">SDK は .NET / Java / Python / Node.js 等に対応。</text>
+  <text x="530" y="384" font-size="12" fill="#4A5568" font-family="Segoe UI">Azure OpenAI との統合で AI アプリを迅速に構築</text>
+
+  <!-- メリット4 -->
+  <rect x="510" y="404" width="420" height="72" rx="8" fill="url(#merit-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="510" y="404" width="5" height="72" rx="2" fill="#1B2A4A"/>
+  <text x="530" y="428" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI">業界最高水準の SLA</text>
+  <text x="530" y="448" font-size="12" fill="#4A5568" font-family="Segoe UI">可用性 99.999%・低レイテンシ・スループットを</text>
+  <text x="530" y="466" font-size="12" fill="#4A5568" font-family="Segoe UI">財務保証 (SLA) で提供。ミッションクリティカルに最適</text>
+
+  <!-- フッター -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/cosmos-db/use-cases">
+    <text x="40" y="530" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 参考: MS Learn — Azure Cosmos DB のユースケース →</text>
+  </a>
+  <text x="920" y="530" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">Microsoft Azure</text>
+</svg>

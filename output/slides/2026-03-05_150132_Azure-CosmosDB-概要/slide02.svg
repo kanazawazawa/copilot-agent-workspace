@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card1-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card2-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#2A7A8C"/>
+    </linearGradient>
+    <linearGradient id="card3-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A7A8C"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFBFC"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- ヘッダーバー -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI">Azure Cosmos DB ─ 主要機能・特徴</text>
+
+  <!-- スライド番号 -->
+  <text x="920" y="46" font-size="13" fill="#B0C4D8" font-family="Segoe UI" text-anchor="end">2 / 3</text>
+
+  <!-- サブヘッダー -->
+  <text x="40" y="98" font-size="14" fill="#4A5568" font-family="Segoe UI">エンタープライズグレードの4大機能でビジネスを加速する</text>
+  <line x1="40" y1="108" x2="920" y2="108" stroke="#C8CED6" stroke-width="1"/>
+
+  <!-- === カード1: グローバル分散 === -->
+  <rect x="30" y="118" width="210" height="390" rx="10" fill="url(#card-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <!-- カードヘッダー -->
+  <rect x="30" y="118" width="210" height="52" rx="10" fill="url(#card1-top)"/>
+  <rect x="30" y="148" width="210" height="22" fill="url(#card1-top)"/>
+  <!-- アイコン背景 -->
+  <circle cx="135" cy="205" r="30" fill="#1B2A4A"/>
+  <!-- 地球アイコン（円と線） -->
+  <circle cx="135" cy="205" r="18" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  <ellipse cx="135" cy="205" rx="8" ry="18" fill="none" stroke="#00D4FF" stroke-width="1.5"/>
+  <line x1="117" y1="205" x2="153" y2="205" stroke="#00D4FF" stroke-width="1.5"/>
+  <!-- タイトル -->
+  <text x="135" y="254" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">グローバル分散</text>
+  <line x1="60" y1="262" x2="210" y2="262" stroke="#00D4FF" stroke-width="1.5"/>
+  <!-- 内容 -->
+  <text x="50" y="285" font-size="12" fill="#4A5568" font-family="Segoe UI">• 世界 60+ リージョンに展開</text>
+  <text x="50" y="308" font-size="12" fill="#4A5568" font-family="Segoe UI">• 1クリックでレプリカ追加</text>
+  <text x="50" y="331" font-size="12" fill="#4A5568" font-family="Segoe UI">• 自動フェイルオーバー対応</text>
+  <text x="50" y="354" font-size="12" fill="#4A5568" font-family="Segoe UI">• マルチリージョン書き込み</text>
+  <text x="50" y="377" font-size="12" fill="#4A5568" font-family="Segoe UI">• データ主権・コンプライ</text>
+  <text x="50" y="395" font-size="12" fill="#4A5568" font-family="Segoe UI">  アンス要件に対応</text>
+  <!-- カードフッター -->
+  <text x="135" y="490" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">SLA 99.999%</text>
+
+  <!-- === カード2: マルチモデル対応 === -->
+  <rect x="260" y="118" width="210" height="390" rx="10" fill="url(#card-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="260" y="118" width="210" height="52" rx="10" fill="url(#card1-top)"/>
+  <rect x="260" y="148" width="210" height="22" fill="url(#card1-top)"/>
+  <!-- アイコン背景 -->
+  <circle cx="365" cy="205" r="30" fill="#1A3A4A"/>
+  <!-- DB アイコン（スタック） -->
+  <ellipse cx="365" cy="195" rx="15" ry="6" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  <line x1="350" y1="195" x2="350" y2="215" stroke="#00D4FF" stroke-width="2"/>
+  <line x1="380" y1="195" x2="380" y2="215" stroke="#00D4FF" stroke-width="2"/>
+  <ellipse cx="365" cy="215" rx="15" ry="6" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  <!-- タイトル -->
+  <text x="365" y="254" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">マルチモデル対応</text>
+  <line x1="290" y1="262" x2="440" y2="262" stroke="#00D4FF" stroke-width="1.5"/>
+  <!-- 内容 -->
+  <text x="280" y="285" font-size="12" fill="#4A5568" font-family="Segoe UI">• NoSQL (ドキュメント)</text>
+  <text x="280" y="308" font-size="12" fill="#4A5568" font-family="Segoe UI">• グラフ (Gremlin)</text>
+  <text x="280" y="331" font-size="12" fill="#4A5568" font-family="Segoe UI">• キーバリュー</text>
+  <text x="280" y="354" font-size="12" fill="#4A5568" font-family="Segoe UI">• テーブル API</text>
+  <text x="280" y="377" font-size="12" fill="#4A5568" font-family="Segoe UI">• PostgreSQL 互換</text>
+  <text x="365" y="490" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">5種類の API</text>
+
+  <!-- === カード3: 低レイテンシ === -->
+  <rect x="490" y="118" width="210" height="390" rx="10" fill="url(#card-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="490" y="118" width="210" height="52" rx="10" fill="url(#card2-top)"/>
+  <rect x="490" y="148" width="210" height="22" fill="url(#card2-top)"/>
+  <!-- アイコン背景 -->
+  <circle cx="595" cy="205" r="30" fill="#2A7A8C"/>
+  <!-- スピードアイコン（矢印） -->
+  <line x1="578" y1="205" x2="612" y2="205" stroke="#FFFFFF" stroke-width="2.5"/>
+  <polygon points="610,199 618,205 610,211" fill="#FFFFFF"/>
+  <circle cx="582" cy="200" r="3" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="582" cy="210" r="3" fill="#FFFFFF" opacity="0.7"/>
+  <!-- タイトル -->
+  <text x="595" y="254" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">低レイテンシ保証</text>
+  <line x1="520" y1="262" x2="670" y2="262" stroke="#2A7A8C" stroke-width="1.5"/>
+  <!-- 内容 -->
+  <text x="510" y="285" font-size="12" fill="#4A5568" font-family="Segoe UI">• 読み取り &lt;10ms (P99)</text>
+  <text x="510" y="308" font-size="12" fill="#4A5568" font-family="Segoe UI">• 書き込み &lt;10ms (P99)</text>
+  <text x="510" y="331" font-size="12" fill="#4A5568" font-family="Segoe UI">• SLA による保証</text>
+  <text x="510" y="354" font-size="12" fill="#4A5568" font-family="Segoe UI">• 自動スケーリング</text>
+  <text x="510" y="377" font-size="12" fill="#4A5568" font-family="Segoe UI">• サーバーレス対応</text>
+  <text x="595" y="490" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">一桁ミリ秒</text>
+
+  <!-- === カード4: エンタープライズセキュリティ === -->
+  <rect x="720" y="118" width="210" height="390" rx="10" fill="url(#card-bg)" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="720" y="118" width="210" height="52" rx="10" fill="url(#card3-top)"/>
+  <rect x="720" y="148" width="210" height="22" fill="url(#card3-top)"/>
+  <!-- アイコン背景 -->
+  <circle cx="825" cy="205" r="30" fill="#1A3A4A"/>
+  <!-- シールドアイコン -->
+  <polygon points="825,186 840,193 840,208 825,220 810,208 810,193" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  <line x1="820" y1="205" x2="824" y2="210" stroke="#00D4FF" stroke-width="2"/>
+  <line x1="824" y1="210" x2="832" y2="200" stroke="#00D4FF" stroke-width="2"/>
+  <!-- タイトル -->
+  <text x="825" y="254" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">エンタープライズ</text>
+  <text x="825" y="272" font-size="15" font-weight="bold" fill="#1E2328" font-family="Segoe UI" text-anchor="middle">セキュリティ</text>
+  <line x1="750" y1="280" x2="900" y2="280" stroke="#00D4FF" stroke-width="1.5"/>
+  <!-- 内容 -->
+  <text x="740" y="300" font-size="12" fill="#4A5568" font-family="Segoe UI">• 保存時・転送時の暗号化</text>
+  <text x="740" y="323" font-size="12" fill="#4A5568" font-family="Segoe UI">• RBAC / Microsoft Entra</text>
+  <text x="740" y="346" font-size="12" fill="#4A5568" font-family="Segoe UI">• プライベートエンドポイント</text>
+  <text x="740" y="369" font-size="12" fill="#4A5568" font-family="Segoe UI">• コンプライアンス認証取得</text>
+  <text x="740" y="392" font-size="12" fill="#4A5568" font-family="Segoe UI">• 自動バックアップ</text>
+  <text x="825" y="490" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="middle">ISO / SOC / HIPAA</text>
+
+  <!-- フッター -->
+  <a href="https://learn.microsoft.com/ja-jp/azure/cosmos-db/introduction">
+    <text x="40" y="530" font-size="10" fill="#00D4FF" font-family="Segoe UI">📖 参考: MS Learn — Azure Cosmos DB の概要 →</text>
+  </a>
+  <text x="920" y="530" font-size="11" fill="#8B939E" font-family="Segoe UI" text-anchor="end">Microsoft Azure</text>
+</svg>
