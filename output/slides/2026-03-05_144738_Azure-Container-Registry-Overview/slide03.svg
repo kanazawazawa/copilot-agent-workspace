@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="tier-basic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#243660"/>
+    </linearGradient>
+    <linearGradient id="tier-std" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#2A7A8C"/>
+    </linearGradient>
+    <linearGradient id="tier-prem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header bar -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold"
+        fill="#FFFFFF" font-family="Segoe UI, Arial">Key Use Cases &amp; Service Tiers</text>
+  <line x1="0" y1="72" x2="960" y2="72" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- === LEFT: Use Cases === -->
+  <text x="40" y="100" font-size="16" font-weight="bold"
+        fill="#1B2A4A" font-family="Segoe UI, Arial">Common Use Cases</text>
+  <line x1="40" y1="106" x2="220" y2="106" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- Use case 1 -->
+  <rect x="40" y="114" width="16" height="16" rx="3" fill="#1B2A4A"/>
+  <text x="64" y="126" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI, Arial">CI/CD Pipeline Integration</text>
+  <text x="64" y="144" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">Push images from GitHub Actions, Azure DevOps,</text>
+  <text x="64" y="160" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">or Jenkins — pull directly to production.</text>
+
+  <!-- Use case 2 -->
+  <rect x="40" y="176" width="16" height="16" rx="3" fill="#1A3A4A"/>
+  <text x="64" y="188" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI, Arial">Kubernetes &amp; AKS Deployments</text>
+  <text x="64" y="206" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">Native integration with Azure Kubernetes Service.</text>
+  <text x="64" y="222" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">Pull images securely using managed identity.</text>
+
+  <!-- Use case 3 -->
+  <rect x="40" y="238" width="16" height="16" rx="3" fill="#2A7A8C"/>
+  <text x="64" y="250" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI, Arial">Multi-Region Distribution</text>
+  <text x="64" y="268" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">Geo-replicate images worldwide for low-latency</text>
+  <text x="64" y="284" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">pulls across global teams and deployments.</text>
+
+  <!-- Use case 4 -->
+  <rect x="40" y="300" width="16" height="16" rx="3" fill="#1B2A4A"/>
+  <text x="64" y="312" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI, Arial">Base Image Auto-Patching</text>
+  <text x="64" y="330" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">ACR Tasks auto-rebuild images when base OS</text>
+  <text x="64" y="346" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">images receive security updates.</text>
+
+  <!-- Use case 5 -->
+  <rect x="40" y="362" width="16" height="16" rx="3" fill="#1A3A4A"/>
+  <text x="64" y="374" font-size="14" font-weight="bold" fill="#1E2328" font-family="Segoe UI, Arial">Artifact &amp; Helm Chart Storage</text>
+  <text x="64" y="392" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">Store OCI-compliant artifacts and Helm charts</text>
+  <text x="64" y="408" font-size="12" fill="#4A5568" font-family="Segoe UI, Arial">alongside container images in one registry.</text>
+
+  <!-- Vertical divider -->
+  <line x1="480" y1="82" x2="480" y2="490" stroke="#C8CED6" stroke-width="1.5"/>
+
+  <!-- === RIGHT: Service Tiers === -->
+  <text x="504" y="100" font-size="16" font-weight="bold"
+        fill="#1B2A4A" font-family="Segoe UI, Arial">Service Tiers at a Glance</text>
+  <line x1="504" y1="106" x2="700" y2="106" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- Tier: Basic -->
+  <rect x="504" y="114" width="416" height="90" rx="6" fill="url(#tier-basic)"/>
+  <text x="524" y="140" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Basic</text>
+  <text x="524" y="162" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• 10 GB included storage</text>
+  <text x="524" y="180" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Suitable for dev/test workloads</text>
+  <text x="524" y="198" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Standard Docker CLI / API compatible</text>
+
+  <!-- Tier: Standard -->
+  <rect x="504" y="214" width="416" height="90" rx="6" fill="url(#tier-std)"/>
+  <text x="524" y="240" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Standard</text>
+  <text x="524" y="262" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• 100 GB included storage, higher throughput</text>
+  <text x="524" y="280" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Webhooks for event-driven workflows</text>
+  <text x="524" y="298" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Most production workloads</text>
+
+  <!-- Tier: Premium -->
+  <rect x="504" y="314" width="416" height="110" rx="6" fill="url(#tier-prem)"/>
+  <text x="524" y="340" font-size="16" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Premium</text>
+  <rect x="648" y="326" width="72" height="20" rx="10" fill="#00D4FF" opacity="0.25"/>
+  <text x="684" y="340" font-size="11" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">Recommended</text>
+  <text x="524" y="362" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• 500 GB storage + geo-replication</text>
+  <text x="524" y="380" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Private endpoints &amp; content trust</text>
+  <text x="524" y="398" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Dedicated throughput &amp; SLA guarantees</text>
+  <text x="524" y="416" font-size="12" fill="#B0C4D8" font-family="Segoe UI, Arial">• Defender for Containers scanning</text>
+
+  <!-- Quick Start hint -->
+  <rect x="504" y="438" width="416" height="44" rx="6" fill="#E0F7FA" stroke="#C8CED6" stroke-width="1"/>
+  <text x="524" y="456" font-size="12" font-weight="bold" fill="#1A3A4A" font-family="Segoe UI, Arial">Quick Start (CLI)</text>
+  <text x="524" y="474" font-size="11" fill="#2A7A8C" font-family="Courier New, monospace">az acr create --name mycompanyregistry --sku Standard</text>
+
+  <!-- Footer -->
+  <a href="https://learn.microsoft.com/en-us/azure/container-registry/">
+    <text x="40" y="526" font-size="11" fill="#00D4FF" font-family="Segoe UI, Arial">📖 MS Learn: learn.microsoft.com/azure/container-registry</text>
+  </a>
+  <text x="920" y="526" font-size="11" fill="#8B939E" font-family="Segoe UI, Arial" text-anchor="end">3 / 3</text>
+</svg>

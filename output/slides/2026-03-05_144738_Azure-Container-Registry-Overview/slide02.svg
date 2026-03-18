@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F7FA"/>
+      <stop offset="100%" stop-color="#EEF1F5"/>
+    </linearGradient>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card-a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2A4A"/>
+      <stop offset="100%" stop-color="#1A3A4A"/>
+    </linearGradient>
+    <linearGradient id="card-b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A4A"/>
+      <stop offset="100%" stop-color="#2A7A8C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bg-light)"/>
+
+  <!-- Header bar -->
+  <rect x="0" y="0" width="960" height="72" fill="url(#header-grad)"/>
+  <text x="40" y="47" font-size="26" font-weight="bold"
+        fill="#FFFFFF" font-family="Segoe UI, Arial">What is Azure Container Registry?</text>
+  <!-- Cyan accent on header right -->
+  <line x1="0" y1="72" x2="960" y2="72" stroke="#00D4FF" stroke-width="2"/>
+
+  <!-- Intro text -->
+  <text x="40" y="102" font-size="14" fill="#4A5568" font-family="Segoe UI, Arial">
+    A managed, private OCI-compliant registry — store, manage, and deploy container images and artifacts.
+  </text>
+
+  <!-- === 4 Feature Cards (2x2 grid) === -->
+
+  <!-- Card 1: Private Registry -->
+  <rect x="40" y="118" width="432" height="170" rx="8" fill="#FFFFFF" stroke="#C8CED6" stroke-width="1"/>
+  <!-- Card 1 top bar -->
+  <rect x="40" y="118" width="432" height="36" rx="8" fill="url(#card-a)"/>
+  <rect x="40" y="136" width="432" height="18" fill="url(#card-a)"/>
+  <!-- circle icon -->
+  <circle cx="68" cy="136" r="13" fill="#00D4FF" opacity="0.18"/>
+  <text x="68" y="141" font-size="14" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">🔒</text>
+  <text x="90" y="141" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Private Registry</text>
+  <!-- Card 1 body -->
+  <text x="56" y="176" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Fully managed, private Docker-compatible</text>
+  <text x="56" y="197" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  registry hosted in Azure</text>
+  <text x="56" y="218" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Supports Docker images, OCI artifacts,</text>
+  <text x="56" y="239" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  and Helm charts</text>
+  <text x="56" y="260" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Azure AD integration &amp; RBAC access control</text>
+  <text x="56" y="278" font-size="12" fill="#8B939E" font-family="Segoe UI, Arial">Tiers: Basic / Standard / Premium</text>
+
+  <!-- Card 2: Geo-Replication -->
+  <rect x="488" y="118" width="432" height="170" rx="8" fill="#FFFFFF" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="488" y="118" width="432" height="36" rx="8" fill="url(#card-a)"/>
+  <rect x="488" y="136" width="432" height="18" fill="url(#card-a)"/>
+  <circle cx="516" cy="136" r="13" fill="#00D4FF" opacity="0.18"/>
+  <text x="516" y="141" font-size="14" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">🌐</text>
+  <text x="538" y="141" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Geo-Replication</text>
+  <text x="504" y="176" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Replicate a single registry across multiple</text>
+  <text x="504" y="197" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  Azure regions (Premium tier)</text>
+  <text x="504" y="218" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Reduce latency &amp; increase reliability</text>
+  <text x="504" y="239" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  for globally distributed teams</text>
+  <text x="504" y="260" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Single registry URL across all regions</text>
+  <text x="504" y="278" font-size="12" fill="#8B939E" font-family="Segoe UI, Arial">Available in: Premium tier</text>
+
+  <!-- Card 3: Security Scanning -->
+  <rect x="40" y="304" width="432" height="170" rx="8" fill="#FFFFFF" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="40" y="304" width="432" height="36" rx="8" fill="url(#card-b)"/>
+  <rect x="40" y="322" width="432" height="18" fill="url(#card-b)"/>
+  <circle cx="68" cy="322" r="13" fill="#00D4FF" opacity="0.18"/>
+  <text x="68" y="327" font-size="14" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">🛡</text>
+  <text x="90" y="327" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">Security &amp; Vulnerability Scanning</text>
+  <text x="56" y="362" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Integrated vulnerability scanning via</text>
+  <text x="56" y="383" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  Microsoft Defender for Containers</text>
+  <text x="56" y="404" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Content trust &amp; image signing (Notary v2)</text>
+  <text x="56" y="425" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Private endpoints &amp; network isolation</text>
+  <text x="56" y="463" font-size="12" fill="#8B939E" font-family="Segoe UI, Arial">Scanning: Premium / Defender add-on</text>
+
+  <!-- Card 4: ACR Tasks -->
+  <rect x="488" y="304" width="432" height="170" rx="8" fill="#FFFFFF" stroke="#C8CED6" stroke-width="1"/>
+  <rect x="488" y="304" width="432" height="36" rx="8" fill="url(#card-b)"/>
+  <rect x="488" y="322" width="432" height="18" fill="url(#card-b)"/>
+  <circle cx="516" cy="322" r="13" fill="#00D4FF" opacity="0.18"/>
+  <text x="516" y="327" font-size="14" fill="#00D4FF" font-family="Segoe UI, Arial" text-anchor="middle">⚙</text>
+  <text x="538" y="327" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="Segoe UI, Arial">ACR Tasks (Build Automation)</text>
+  <text x="504" y="362" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Cloud-based container image build &amp; patch</text>
+  <text x="504" y="383" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Trigger builds on code commit or base</text>
+  <text x="504" y="404" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">  image update (auto-patching)</text>
+  <text x="504" y="425" font-size="13" fill="#1E2328" font-family="Segoe UI, Arial">• Multi-step task pipelines supported</text>
+  <text x="504" y="463" font-size="12" fill="#8B939E" font-family="Segoe UI, Arial">Available in: All tiers</text>
+
+  <!-- Footer link -->
+  <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro">
+    <text x="40" y="526" font-size="11" fill="#00D4FF" font-family="Segoe UI, Arial">📖 MS Learn: learn.microsoft.com/azure/container-registry/container-registry-intro</text>
+  </a>
+  <text x="920" y="526" font-size="11" fill="#8B939E" font-family="Segoe UI, Arial" text-anchor="end">2 / 3</text>
+</svg>
