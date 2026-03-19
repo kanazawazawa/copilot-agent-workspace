@@ -90,7 +90,30 @@ flowchart LR
 3. Select a model (`claude-opus-4.6` recommended)
 4. Download the generated `.pptx` from workflow artifacts
 
-### Local Execution
+### Local Execution — GitHub Copilot CLI (Recommended)
+
+```bash
+cd copilot-agent-workspace
+copilot -p "Research Azure App Service on MS Learn and create a structured PPTX overview for a customer presentation." --allow-all
+```
+
+**Examples:**
+
+```bash
+# Azure service overview slides
+copilot -p "Research Azure Cosmos DB on MS Learn and create a structured PPTX summary for a customer-facing proposal and presentation." --allow-all
+
+# Specific topic research slides
+copilot -p "Research Azure Content Understanding on MS Learn and create a structured PPTX for a customer proposal." --allow-all
+
+# Foundry Agent Service
+copilot -p "Research Microsoft Foundry Agent Service on MS Learn and create a structured PPTX overview for a customer presentation." --allow-all
+```
+
+> **Note:** `copilot` is the GitHub Copilot CLI — not `gh copilot` (the GitHub CLI extension).  
+> `-p` specifies the prompt, `--allow-all` auto-approves all tool executions.
+
+### Local Execution — SDK Runner
 
 ```bash
 git clone https://github.com/kanazawazawa/copilot-agent-workspace.git
@@ -377,7 +400,30 @@ flowchart LR
 3. モデルを選択（`claude-opus-4.6` 推奨）
 4. 完了後、Artifact から `.pptx` をダウンロード
 
-#### ローカル実行
+#### ローカル実行 — GitHub Copilot CLI（推奨）
+
+```bash
+cd copilot-agent-workspace
+copilot -p "Azure App Service についてMS Learn の公式ドキュメントを調査し、構造的にまとめてください。お客様向け、提案・プレゼンで使用します。pptx 形式でのアウトプットをお願いします。" --allow-all
+```
+
+**実行例:**
+
+```bash
+# Azure サービス概要スライド
+copilot -p "Azure Cosmos DB について、MS Learn の公式ドキュメントを調査し、構造的にまとめてください。お客様向け、提案・プレゼンで使用します。pptx 形式でのアウトプットをお願いします。" --allow-all
+
+# 特定テーマの調査スライド
+copilot -p "Azure の Content UnderstandingについてMS Learn の公式ドキュメントを調査し、構造的にPPTXでまとめてください。お客様向け提案資料です" --allow-all
+
+# Foundry Agent Service
+copilot -p "Microsoft Foundry Agent Service について、MS Learn の公式ドキュメントを調査し、構造的にまとめてください。お客様向け、提案・プレゼンで使用します。pptx 形式でのアウトプットをお願いします。" --allow-all
+```
+
+> **Note:** `copilot` は GitHub Copilot CLI です。`gh copilot`（GitHub CLI の拡張）とは別物です。  
+> `-p` はプロンプト指定、`--allow-all` はツール実行の自動承認です。
+
+#### ローカル実行 — SDK Runner
 
 ```bash
 git clone https://github.com/kanazawazawa/copilot-agent-workspace.git
