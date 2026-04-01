@@ -11,7 +11,7 @@
 //   COPILOT_MODEL          - 使用するモデル（デフォルト: claude-opus-4.6）
 //   COPILOT_MAX_RETRIES    - 最大試行回数（デフォルト: 2 = 初回 + リトライ1回）
 //   COPILOT_RETRY_DELAY    - リトライ待機秒数（デフォルト: 10）
-//   COPILOT_TIMEOUT_MS     - sendAndWait タイムアウト ms（デフォルト: 600000 = 10分）
+//   COPILOT_TIMEOUT_MS     - sendAndWait タイムアウト ms（デフォルト: 1200000 = 20分）
 //
 // 使い方:
 //   COPILOT_GITHUB_TOKEN=xxx COPILOT_PROMPT="..." node src/copilot-sdk-runner.mjs
@@ -24,7 +24,7 @@ const prompt = process.env.COPILOT_PROMPT;
 const model = process.env.COPILOT_MODEL || "claude-opus-4.6";
 const maxRetries = parseInt(process.env.COPILOT_MAX_RETRIES || "2", 10); // 最大試行回数（デフォルト2 = 初回 + リトライ1回）
 const retryDelaySec = parseInt(process.env.COPILOT_RETRY_DELAY || "10", 10); // リトライ待機秒数
-const timeoutMs = parseInt(process.env.COPILOT_TIMEOUT_MS || "600000", 10); // タイムアウト（デフォルト10分）
+const timeoutMs = parseInt(process.env.COPILOT_TIMEOUT_MS || "1200000", 10); // タイムアウト（デフォルト20分）
 
 if (!prompt) {
   console.error("❌ COPILOT_PROMPT 環境変数が設定されていません");

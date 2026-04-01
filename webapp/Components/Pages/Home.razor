@@ -9,117 +9,156 @@
 <PageTitle>Copilot Slide Generator</PageTitle>
 
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">🤖 Copilot プロンプト入力</h4>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="prompt" class="form-label fw-bold">プロンプト</label>
-                        <textarea @bind="prompt" id="prompt" class="form-control" rows="6"
-                                  placeholder="@placeholderText"></textarea>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="model" class="form-label fw-bold">モデル</label>
-                        <select @bind="selectedModel" id="model" class="form-select">
-                            <optgroup label="Anthropic">
-                                <option value="claude-opus-4.6">Claude Opus 4.6 (3x)</option>
-                                <option value="claude-opus-4.6-fast">Claude Opus 4.6 Fast (30x)</option>
-                                <option value="claude-opus-4.5">Claude Opus 4.5 (3x)</option>
-                                <option value="claude-sonnet-4.6">Claude Sonnet 4.6 (1x)</option>
-                                <option value="claude-sonnet-4.5">Claude Sonnet 4.5 (1x)</option>
-                                <option value="claude-sonnet-4">Claude Sonnet 4 (1x)</option>
-                                <option value="claude-haiku-4.5">Claude Haiku 4.5 (0.33x)</option>
-                            </optgroup>
-                            <optgroup label="OpenAI">
-                                <option value="gpt-5.4">GPT-5.4 (1x)</option>
-                                <option value="gpt-5.3-codex">GPT-5.3-Codex (1x)</option>
-                                <option value="gpt-5.2-codex">GPT-5.2-Codex (1x)</option>
-                                <option value="gpt-5.2">GPT-5.2 (1x)</option>
-                                <option value="gpt-5.1-codex-max">GPT-5.1-Codex-Max (1x)</option>
-                                <option value="gpt-5.1-codex">GPT-5.1-Codex (1x)</option>
-                                <option value="gpt-5.1-codex-mini">GPT-5.1-Codex-Mini (0.33x)</option>
-                                <option value="gpt-5.1">GPT-5.1 (1x)</option>
-                                <option value="gpt-5-mini">GPT-5 mini (0x)</option>
-                                <option value="gpt-4.1">GPT-4.1 (0x)</option>
-                            </optgroup>
-                            <optgroup label="Google">
-                                <option value="gemini-3-pro-preview">Gemini 3 Pro (1x)</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <button @onclick="RunWorkflow" class="btn btn-primary btn-lg w-100"
-                            disabled="@(isRunning || string.IsNullOrWhiteSpace(prompt))">
-                        @if (isRunning)
-                        {
-                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-                            <span>実行中...</span>
-                        }
-                        else
-                        {
-                            <span>▶ 実行</span>
-                        }
-                    </button>
-
-                    @if (!string.IsNullOrEmpty(statusMessage))
-                    {
-                        <div class="alert @statusCss mt-3 mb-0" role="alert">
-                            @statusMessage
-                        </div>
-                    }
-
-                    @* 実行キー入力ダイアログ *@
-                    @if (showExecKeyDialog)
-                    {
-                        <div class="modal d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">実行キー</h5>
-                                        <button type="button" class="btn-close" @onclick="CloseExecKeyDialog"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" placeholder="実行キー" @bind="execKeyInput"
-                                                   @onkeydown="ExecKeyKeyDown" />
-                                        </div>
-                                        @if (execKeyError)
-                                        {
-                                            <div class="text-danger small mt-2">キーが一致しません</div>
-                                        }
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-sm" @onclick="CloseExecKeyDialog">キャンセル</button>
-                                        <button class="btn btn-primary btn-sm" @onclick="SubmitExecKey">実行</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+    @* ローカル実行への案内 *@
+    <div class="card shadow-sm border-info mb-4">
+        <div class="card-body">
+            <h5 class="card-title">💡 ローカル PC で実行できます</h5>
+            <p class="card-text mb-2">
+                この Web アプリからのプロンプト実行は制限しています。<br />
+                リポジトリをクローンしてローカル PC 上で実行すると、モデル選択やプロンプトの試行錯誤も自由に行えます。<br />
+                <span class="text-info">Web 実行では 20 分のタイムアウト制限がありますが、ローカル実行にはその制限がありません。</span>
+            </p>
+            <div class="bg-light rounded p-3 mb-3">
+                <p class="fw-bold mb-2">🚀 セットアップ手順</p>
+                <ol class="mb-0 small">
+                    <li>リポジトリをクローン<br /><code>git clone https://github.com/kanazawazawa/copilot-agent-workspace.git</code></li>
+                    <li>VS Code で開く<br /><code>code copilot-agent-workspace</code></li>
+                    <li>Python 依存パッケージをインストール<br /><code>pip install -r src/requirements.txt</code></li>
+                    <li>Copilot CLI でスライド生成<br /><code>copilot -p "Azure App Service の概要を PPTX でまとめてください" --allow-all</code></li>
+                </ol>
             </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="card shadow-sm">
-                <div class="card-header">
-                    <h5 class="mb-0">📋 テンプレート</h5>
-                </div>
-                <div class="list-group list-group-flush">
-                    @foreach (var tpl in templates)
-                    {
-                        <button class="list-group-item list-group-item-action" @onclick="() => ApplyTemplate(tpl)">
-                            @tpl.Name
-                        </button>
-                    }
-                </div>
+            <div class="d-flex gap-2">
+                <a href="https://github.com/kanazawazawa/copilot-agent-workspace" target="_blank" class="btn btn-outline-primary btn-sm">
+                    📦 GitHub リポジトリ
+                </a>
+                <a href="https://github.com/kanazawazawa/copilot-agent-workspace#quick-start" target="_blank" class="btn btn-outline-secondary btn-sm">
+                    📖 詳しいセットアップ手順
+                </a>
+            </div>
+            <div class="mt-2">
+                <small class="text-muted">（社内の方限定）うまくいかない場合やご不明点があれば Teams チャットで直接ご連絡ください</small>
             </div>
         </div>
     </div>
+
+    @* プロンプト入力（折りたたみ） *@
+    <details class="mb-4">
+        <summary class="btn btn-outline-secondary w-100 text-start">
+            🤖 プロンプト入力（Web 実行）を開く（非推奨）
+        </summary>
+        <div class="row mt-3">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">🤖 Copilot プロンプト入力</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="prompt" class="form-label fw-bold">プロンプト</label>
+                            <textarea @bind="prompt" id="prompt" class="form-control" rows="6"
+                                      placeholder="@placeholderText"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="model" class="form-label fw-bold">モデル</label>
+                            <select @bind="selectedModel" id="model" class="form-select">
+                                <optgroup label="Anthropic">
+                                    <option value="claude-opus-4.6">Claude Opus 4.6 (3x)</option>
+                                    <option value="claude-opus-4.6-fast">Claude Opus 4.6 Fast (30x)</option>
+                                    <option value="claude-opus-4.5">Claude Opus 4.5 (3x)</option>
+                                    <option value="claude-sonnet-4.6">Claude Sonnet 4.6 (1x)</option>
+                                    <option value="claude-sonnet-4.5">Claude Sonnet 4.5 (1x)</option>
+                                    <option value="claude-sonnet-4">Claude Sonnet 4 (1x)</option>
+                                    <option value="claude-haiku-4.5">Claude Haiku 4.5 (0.33x)</option>
+                                </optgroup>
+                                <optgroup label="OpenAI">
+                                    <option value="gpt-5.4">GPT-5.4 (1x)</option>
+                                    <option value="gpt-5.3-codex">GPT-5.3-Codex (1x)</option>
+                                    <option value="gpt-5.2-codex">GPT-5.2-Codex (1x)</option>
+                                    <option value="gpt-5.2">GPT-5.2 (1x)</option>
+                                    <option value="gpt-5.1-codex-max">GPT-5.1-Codex-Max (1x)</option>
+                                    <option value="gpt-5.1-codex">GPT-5.1-Codex (1x)</option>
+                                    <option value="gpt-5.1-codex-mini">GPT-5.1-Codex-Mini (0.33x)</option>
+                                    <option value="gpt-5.1">GPT-5.1 (1x)</option>
+                                    <option value="gpt-5-mini">GPT-5 mini (0x)</option>
+                                    <option value="gpt-4.1">GPT-4.1 (0x)</option>
+                                </optgroup>
+                                <optgroup label="Google">
+                                    <option value="gemini-3-pro-preview">Gemini 3 Pro (1x)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <button @onclick="RunWorkflow" class="btn btn-primary btn-lg w-100"
+                                disabled="@(isRunning || string.IsNullOrWhiteSpace(prompt))">
+                            @if (isRunning)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                <span>実行中...</span>
+                            }
+                            else
+                            {
+                                <span>▶ 実行</span>
+                            }
+                        </button>
+
+                        @if (!string.IsNullOrEmpty(statusMessage))
+                        {
+                            <div class="alert @statusCss mt-3 mb-0" role="alert">
+                                @statusMessage
+                            </div>
+                        }
+
+                        @* 実行キー入力ダイアログ *@
+                        @if (showExecKeyDialog)
+                        {
+                            <div class="modal d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">実行キー</h5>
+                                            <button type="button" class="btn-close" @onclick="CloseExecKeyDialog"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" placeholder="実行キー" @bind="execKeyInput"
+                                                       @onkeydown="ExecKeyKeyDown" />
+                                            </div>
+                                            @if (execKeyError)
+                                            {
+                                                <div class="text-danger small mt-2">キーが一致しません</div>
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary btn-sm" @onclick="CloseExecKeyDialog">キャンセル</button>
+                                            <button class="btn btn-primary btn-sm" @onclick="SubmitExecKey">実行</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">📋 テンプレート</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        @foreach (var tpl in templates)
+                        {
+                            <button class="list-group-item list-group-item-action" @onclick="() => ApplyTemplate(tpl)">
+                                @tpl.Name
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </details>
 
     <!-- PPTX 履歴テーブル -->
     <div class="row mt-4">
