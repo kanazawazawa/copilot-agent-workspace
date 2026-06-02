@@ -46,8 +46,9 @@ console.log(`⏱️  Timeout: ${timeoutMs / 1000}s`);
 console.log("");
 
 // --- SDK クライアント初期化 ---
-// COPILOT_GITHUB_TOKEN は SDK が自動で読み取る
-const client = new CopilotClient();
+const client = new CopilotClient({
+  gitHubToken: process.env.COPILOT_GITHUB_TOKEN,
+});
 
 try {
   let response = null;

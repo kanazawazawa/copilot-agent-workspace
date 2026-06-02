@@ -162,7 +162,7 @@ Two PATs are necessary because `Copilot Requests` permission is only available o
      - **Pull requests**: Read and write
 4. Add both as **Repository secrets** in **Settings → Secrets and variables → Actions**
 
-> **Note:** `COPILOT_FG_TOKEN` is also used as `COPILOT_GITHUB_TOKEN` in workflows. The SDK reads this token to authenticate with the Copilot API.
+> **Note:** `COPILOT_FG_TOKEN` is also used as `COPILOT_GITHUB_TOKEN` in workflows. The runner passes this token explicitly to `CopilotClient` for SDK authentication.
 
 ---
 
@@ -170,7 +170,7 @@ Two PATs are necessary because `Copilot Requests` permission is only available o
 
 | SDK Feature | Usage |
 |-------------|-------|
-| `CopilotClient` | Client initialization with auto token detection |
+| `CopilotClient` | Client initialization with explicit `gitHubToken` authentication |
 | `createSession` | Session creation with model selection (claude-opus-4.6 / gpt-5.2 / o3) |
 | `sendAndWait` | Synchronous prompt execution with configurable timeout |
 | `onPermissionRequest` | Automated tool permission approval |
@@ -471,7 +471,7 @@ node src/copilot-sdk-runner.mjs
      - **Pull requests**: Read and write
 4. **Settings → Secrets and variables → Actions** にて、両方を **Repository secrets** として登録
 
-> **Note:** `COPILOT_FG_TOKEN` は Workflow 内で `COPILOT_GITHUB_TOKEN` として SDK に渡されます。
+> **Note:** `COPILOT_FG_TOKEN` は Workflow 内で `COPILOT_GITHUB_TOKEN` として渡され、ランナーが `CopilotClient` に明示設定して認証します。
 
 ---
 
